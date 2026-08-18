@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design System — 5 tokens (altere aqui para cada cliente) ───────────────
+   --cor-fundo:          brand.bg.DEFAULT  — fundo da página inteira
+   --cor-card:           brand.bg.card     — fundo dos cards de serviço
+   --cor-destaque:       brand.accent      — botões e ornamentos
+   --cor-destaque-hover: brand.accent ~10% mais clara
+   ─────────────────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --cor-fundo:          #232112;
+  --cor-card:           #545F37;
+  --cor-destaque:       #C9A227;
+  --cor-destaque-hover: #DBB848;
+}
+
+@layer base {
+  .font-heading {
+    font-family: var(--font-lora), 'Lora', Georgia, serif;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--cor-fundo);
+    color: #FFFFFF;
+    font-family: var(--font-poppins);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(201, 162, 39, 0.4);
+    color: #FFFFFF;
+  }
+}
+
+@layer components {
+  /* Fire glow background effect — atualizar hex junto com --cor-destaque e --cor-fundo */
+  .fire-bg {
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, #C9A227 0%, #76621D 35%, #232112 100%);
+  }
+
+  /* Texture overlay */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Card hover effect */
+  .service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 40px rgba(201, 162, 39, 0.3);
+  }
+
+  /* CTA Button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--cor-destaque);
+    color: #2C2C2C !important;
+    font-family: var(--font-poppins);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.4rem;
+    border-radius: 4px;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
+
+  .btn-primary * {
+    color: #2C2C2C !important;
+  }
+
+  .btn-primary:hover {
+    background: var(--cor-destaque-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(201, 162, 39, 0.6);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Dark button */
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--cor-destaque);
+    color: #2C2C2C !important;
+    font-family: var(--font-poppins);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.4rem;
+    border-radius: 100px;
+    transition: background 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+  }
+
+  .btn-dark * {
+    color: #2C2C2C !important;
+  }
+
+  .btn-dark:hover {
+    background: var(--cor-destaque-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-dark:active {
+    transform: translateY(0);
+  }
+
+  /* Sales button — páginas de venda e cards de serviço */
+  .btn-sales {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--cor-destaque);
+    color: #2C2C2C !important;
+    font-family: var(--font-poppins);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.6rem;
+    border-radius: 100px;
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  .btn-sales * {
+    color: #2C2C2C !important;
+  }
+
+  .btn-sales:hover {
+    background: var(--cor-destaque-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(201, 162, 39, 0.5);
+  }
+
+  .btn-sales:active {
+    transform: translateY(0);
+  }
+
+  /* Divider ornament */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--cor-destaque);
+    opacity: 0.5;
+  }
+
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cor-destaque), transparent);
+  }
+}
+
+@layer utilities {
+  /* Fundo dos cards das seções das páginas de venda — atualizar hex junto com --cor-card */
+  .bg-card {
+    background: var(--cor-card);
+    opacity: 1;
+    color: #FFFFFF;
+  }
+
+  /* Seções brancas sempre precisam de texto escuro, independente do tema */
+  .bg-white {
+    color: #2C2C2C;
+  }
+
+  .bg-white *:not(.btn-primary):not(.btn-dark):not(.btn-sales) {
+    color: #2C2C2C !important;
+  }
+
+  .bg-white .btn-primary,
+  .bg-white .btn-dark,
+  .bg-white .btn-sales {
+    color: #2C2C2C !important;
+  }
+
+  /* Footer — usar a cor definida no style inline */
+  footer {
+    color: inherit;
+  }
+
+  footer * {
+    color: inherit;
+  }
+}
