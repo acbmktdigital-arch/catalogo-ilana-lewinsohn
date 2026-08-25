@@ -16,7 +16,7 @@ export default function ImersoesMassixaPage() {
       heroImageWide="/images/placeholder-reconecta.jpg"
       heroCTALabel="Quero minha imersão"
 
-      whatIsTitle={<>O que são as Imersões <span style={{color:'var(--cor-destaque)'}}>MASSIXA</span>?</>}
+      whatIsTitle={<>O que é a Imersão <span style={{color:'var(--cor-destaque)'}}>Reconecta</span>?</>}
       whatIsTexts={[
         "São três horas dedicadas exclusivamente a você, podendo incluir escuta, ritual, massagem, ervas, defumação, banho de ervas e sons curadores.",
         "Tudo é construído de acordo com o que o seu momento pede — um convite a reconectar corpo, coração e propósito.",
