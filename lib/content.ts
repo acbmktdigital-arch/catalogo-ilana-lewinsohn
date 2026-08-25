@@ -2,21 +2,35 @@
 export const siteConfig = {
   name: 'Ilana Lewinsohn',
   handle: '@ilana.lewinsohn',
-  tagline: 'Seja bem-vindo!',
+  tagline: 'Seja bem-vinda!',
   description:
-    'Terapeuta corporal, facilitadora de Rodas de Mulheres e criadora do método MASSIXA — cuidado integrativo que une Yoga, Ayurveda, Xamanismo e a sabedoria da floresta.',
+    'Mulher medicina (bruja), terapeuta integrativa xamânica, facilitadora de Rodas de Mulheres e criadora do método MASSIXA: Um Universo de Cuidado, unindo Ayurveda, Xamanismo, Alquimia, Yoga e a sabedoria da floresta.',
   about: [
-    'Ilana Lewinsohn é a Guardiã da Descida do Instituto Canto da Floresta, em Arraial d\'Ajuda, Bahia. Bióloga, educadora e terapeuta corporal, ela transita há mais de duas décadas entre o estudo da natureza e os processos humanos de transformação, sempre a partir de uma certeza simples: somos natureza, sem separação.',
+    'Ilana Lewinsohn é a Guardiã da Descida do Instituto Canto da Floresta, em Arraial d\'Ajuda, Bahia. Bióloga, educadora e terapeuta corporal, ela transita há mais de duas décadas entre o estudo da natureza e os caminhos humanos de transformação, sempre a partir de uma certeza simples: somos natureza, sem separação.',
     'Ao longo de sua trajetória se aprofundou em Yoga, Ayurveda, Xamanismo e Alquimia, e é autora do método MASSIXA — Massagem Integrativa Xamânica —, além de facilitar Rodas de Mulheres desde 2012. Seu cuidado une toque, ervas, rituais e escuta, sempre construído a partir do que cada momento pede.',
     'Sua missão é apoiar o retorno de cada pessoa a si mesma, através da reconexão com a Terra, com o corpo e com os próprios ciclos — um convite para descer, enraizar e florescer.',
   ],
-  heroImage: '/images/hero.jpg',
+  heroImage: '/images/hero-ilana-arvore.jpg',
+  /* Última linha do rodapé das páginas de venda.
+     A Ilana pediu para manter e acrescentar o nome da empresa depois do "e com". */
+  creditoRodape: 'feito com o Catálogo Holístico',
   aboutImage: '/images/bio.jpg',
   social: {
     instagram: 'https://instagram.com/ilana.lewinsohn',
     whatsapp: 'https://wa.me/557399855339',
   },
 }
+
+/* ─── Ambiente e materiais ──────────────────────────────────────────────────
+   Aparece só nas páginas de atendimento PRESENCIAL (massagens e imersões).
+   Editar aqui muda em todas de uma vez.
+   ──────────────────────────────────────────────────────────────────────── */
+export const ambientePresencial = [
+  'Ambiente aconchegante',
+  'Materiais 100% naturais',
+  'Óleos vegetais e óleos essenciais puros, de primeira qualidade',
+  'Óleo sempre aquecido. Manta térmica e cobertores sempre que for necessário, para manter o aconchego e convidar você ao relaxamento profundo.',
+]
 
 // ─── Services ──────────────────────────────────────────────────────────────
 export type Service = {
@@ -69,58 +83,22 @@ export const services: Service[] = [
     ctaHref: '/anahata-terra',
   },
   {
-    id: 'limpeza-da-fenix',
-    slug: 'limpeza-da-fenix',
-    title: 'MASSIXA Temática | Limpeza da Fênix',
-    description: 'Ventosas e sangria terapêutica inspiradas no Taoísmo para liberar excessos e reequilibrar a energia.',
-    image: '/images/limpeza-da-fenix.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/limpeza-da-fenix',
-  },
-  {
-    id: 'imersao-colo-da-terra',
-    slug: 'imersao-colo-da-terra',
-    title: 'Imersão Colo da Terra',
-    description: 'Imersão de cuidado para gestantes, respeitando cada fase da gravidez.',
-    image: '/images/imersao-colo-da-terra.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/imersao-colo-da-terra',
-  },
-  {
-    id: 'imersao-reconecta',
-    slug: 'imersao-reconecta',
-    title: 'Imersão Reconecta',
-    description: 'Três horas dedicadas só a você — escuta, ritual, toque e ervas, no tempo que o momento pede.',
+    id: 'imersoes-massixa',
+    slug: 'imersoes-massixa',
+    title: 'Imersões MASSIXA',
+    description: 'Três horas dedicadas só a você — escuta, ritual, toque e ervas. Com o recorte Colo da Terra para gestantes.',
     image: '/images/imersao-reconecta.jpg',
     ctaLabel: 'Saber mais',
-    ctaHref: '/imersao-reconecta',
+    ctaHref: '/imersoes-massixa',
   },
   {
-    id: 'vata-pitta-abhyanga',
-    slug: 'vata-pitta-abhyanga',
-    title: 'Vata-Pitta Abhyanga',
-    description: 'Massagem ayurvédica com óleos aquecidos para nutrir os tecidos e acalmar a ansiedade.',
+    id: 'cuidados-ayurvedicos',
+    slug: 'cuidados-ayurvedicos',
+    title: 'Cuidados Plenamente Ayurvédicos',
+    description: 'Abhyangas ou Garshana específicos para cada dosha, com óleos aquecidos e toques próprios para cada situação.',
     image: '/images/vata-pitta-abhyanga.jpg',
     ctaLabel: 'Saber mais',
-    ctaHref: '/vata-pitta-abhyanga',
-  },
-  {
-    id: 'kapha-abhyanga',
-    slug: 'kapha-abhyanga',
-    title: 'Kapha Abhyanga',
-    description: 'Massagem ayurvédica vigorosa para ativar a circulação e despertar a vitalidade.',
-    image: '/images/kapha-abhyanga.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/kapha-abhyanga',
-  },
-  {
-    id: 'garshana',
-    slug: 'garshana',
-    title: 'Garshana',
-    description: 'Esfoliação com óleo, ervas e sal para limpeza física e energética profunda.',
-    image: '/images/garshana.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/garshana',
+    ctaHref: '/cuidados-ayurvedicos',
   },
   {
     id: 'shirodhara',
@@ -130,24 +108,6 @@ export const services: Service[] = [
     image: '/images/shirodhara.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/shirodhara',
-  },
-  {
-    id: 'escalda-pes-ritual',
-    slug: 'escalda-pes-ritual',
-    title: 'Escalda-Pés Ritual',
-    description: 'Ritual com ervas e flores para acolher o corpo e repousar a mente, finalizado com chá.',
-    image: '/images/escalda-pes-ritual.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/escalda-pes-ritual',
-  },
-  {
-    id: 'cone-hindu',
-    slug: 'cone-hindu',
-    title: 'Cone Hindu (Hopi Candle)',
-    description: 'Cuidado complementar tradicional para alívio de tensão, estresse e desconfortos nos ouvidos.',
-    image: '/images/cone-hindu.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/cone-hindu',
   },
   {
     id: 'bussola-orientacao-xamanica',
@@ -166,15 +126,6 @@ export const services: Service[] = [
     image: '/images/acompanhamento-terapeutico.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/acompanhamento-terapeutico',
-  },
-  {
-    id: 'leitura-de-aura',
-    slug: 'leitura-de-aura',
-    title: 'Leitura de Aura',
-    description: 'Avaliação energética à distância, com devolutiva em áudio no seu tempo.',
-    image: '/images/leitura-de-aura.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/leitura-de-aura',
   },
   {
     id: 'rodas-celta-baianas',

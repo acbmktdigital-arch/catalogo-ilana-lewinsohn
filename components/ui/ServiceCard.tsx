@@ -6,26 +6,39 @@ type ServiceCardProps = {
   service: Service
 }
 
+/* Dourado claro: o dourado da marca (#C9A227) sobre o oliva do card daria
+   2,8:1 de contraste. Este tom mantém o dourado e sobe para 4,8:1, acima do
+   mínimo de leitura — importante porque é ele que sinaliza "isto é clicável". */
+const DOURADO_CLARO = '#EDD9A3'
 
 export default function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <article className="service-card relative overflow-hidden rounded-xl mx-4" style={{ background: 'var(--cor-card)' }}>
-      <div className="flex items-stretch h-[170px]">
+    <Link
+      href={service.ctaHref}
+      aria-label={`${service.ctaLabel}: ${service.title}`}
+      className="service-card block relative overflow-hidden rounded-xl mx-4 group"
+      style={{ background: 'var(--cor-card)' }}
+    >
+      <article className="flex items-stretch h-[108px]">
         {/* Text side */}
-        <div className="flex-1 p-5 flex flex-col justify-center gap-4">
+        <div className="flex-1 p-4 flex flex-col justify-center gap-2">
           <h2 className="font-heading text-xl leading-tight italic" style={{ color: '#FFFFFF' }}>
             {service.title}
           </h2>
-          <Link href={service.ctaHref} className="btn-sales w-fit">
+          <span
+            className="font-sans text-[11px] uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
+            style={{ color: DOURADO_CLARO }}
+          >
             {service.ctaLabel}
-          </Link>
+            <span aria-hidden="true">→</span>
+          </span>
         </div>
 
         {/* Image side */}
         <div className="relative w-[38%] shrink-0 overflow-hidden">
           <Image
             src={service.image}
-            alt={service.title}
+            alt=""
             fill
             className="object-cover object-center opacity-80"
           />
@@ -38,7 +51,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             }}
           />
         </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   )
 }

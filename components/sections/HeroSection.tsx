@@ -31,15 +31,16 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Welcome copy */}
-      <div className="relative z-10 px-6 pt-4 pb-6 text-center">
-        <h1 className="font-heading text-3xl mb-4 tracking-wide italic" style={{ color: '#FFFFFF' }}>
-          {siteConfig.tagline}
-        </h1>
-        <p className="font-body text-sm leading-relaxed max-w-xs mx-auto opacity-75" style={{ color: '#FFFFFF' }}>
+      {/* A descrição vem imediatamente abaixo do nome (que fecha a foto), sem
+          o "Seja bem-vinda!" cortando no meio — ele desce e passa a convidar
+          para o catálogo logo abaixo. */}
+      <div className="relative z-10 px-6 pt-5 pb-6 text-center">
+        <p className="font-body text-sm leading-relaxed max-w-sm mx-auto opacity-80" style={{ color: '#FFFFFF' }}>
           {siteConfig.description}
         </p>
-
+        <h1 className="font-heading text-3xl mt-7 tracking-wide italic" style={{ color: '#FFFFFF' }}>
+          {siteConfig.tagline}
+        </h1>
       </div>
     </section>
   )

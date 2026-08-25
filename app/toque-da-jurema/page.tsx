@@ -1,151 +1,125 @@
-import SalesPageTemplate from '@/components/sections/SalesPageTemplate'
+import SalesPageTemplateV3 from '@/components/sections/SalesPageTemplateV3'
 
 export default function ToqueDaJuremaPage() {
   return (
-    <SalesPageTemplate
-      whatsappUrl="https://wa.me/557399855339?text=Ol%C3%A1%2C+quero+saber+mais+sobre+o+Toque+da+Jurema"
+    <SalesPageTemplateV3
+      whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · MASSIXA Temática | Toque da Jurema"
       heroTitle={<>A força da floresta no <span style={{color:'var(--cor-destaque)'}}>Toque da Jurema</span></>}
       heroSubtitle="Massagem sobre uma cama de ervas aromáticas, com toque vigoroso e limpeza energética profunda."
-      heroImage="/images/toque-da-jurema.jpg"
+      heroImageWide="/images/toque-da-jurema.jpg"
       heroCTALabel="Quero minha sessão"
-
-      painPoints={[
-        {
-                "icon": "🌀",
-                "title": "Sensação de peso energético",
-                "desc": "Como se algo estivesse grudado em você"
-        },
-        {
-                "icon": "😣",
-                "title": "Corpo pedindo um toque mais forte",
-                "desc": "Massagens leves não dão conta"
-        },
-        {
-                "icon": "🥀",
-                "title": "Bloqueios que persistem",
-                "desc": "Sente que precisa de uma limpeza mais profunda"
-        },
-        {
-                "icon": "⚡",
-                "title": "Energia estagnada",
-                "desc": "Cansaço que não passa com descanso comum"
-        },
-        {
-                "icon": "🌪️",
-                "title": "Excesso de estímulos",
-                "desc": "Corpo carregado de tudo que absorveu"
-        },
-        {
-                "icon": "🕯️",
-                "title": "Falta de enraizamento",
-                "desc": "Sensação de estar dispersa ou fora do eixo"
-        }
-]}
 
       whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Toque da Jurema</span>?</>}
       whatIsTexts={[
         "É uma sessão realizada sobre uma cama de ervas aromáticas e medicinais, com toque mais vigoroso e possibilidade de limpeza energética profunda.",
-        "Inspirada na força cabocla e na medicina da floresta, é indicada para equilíbrio energético e alívio corporal mais intenso."
-]}
+        "Inspirada na força cabocla e na medicina da floresta, é indicada para equilíbrio energético e alívio corporal mais intenso.",
+      ]}
       whatIsQuote="Há força que cura. A Jurema toca onde é preciso limpar."
-      whatIsImage="/images/toque-da-jurema.jpg"
-      whatIsCTALabel="Quero agendar"
 
-      benefitsTitle="A Transformação que Você Busca"
-      benefitsSubtitle="Limpeza energética e equilíbrio com a força da floresta"
-      benefits={[
+      transformationTitle="A Transformação que Você Busca"
+      transformationSubtitle="De onde você está para onde a sessão leva."
+      transformations={[
         {
-                "icon": "🌳",
-                "title": "Limpeza energética profunda",
-                "desc": "Sensação de leveza após a sessão"
+          antes: "Saudade do mato! Saudade da Terra!",
+          depois: "Alegria por se sentir voltando pra casa, para si — com cheiro do mato",
         },
         {
-                "icon": "💪",
-                "title": "Alívio corporal intenso",
-                "desc": "Toque mais firme onde o corpo pede"
+          antes: "Desejo de cuidado generoso em ervaria — aquela coisa boa de bruxa!",
+          depois: "Alívio por encontrar um acolhimento que faz sentido para o seu jeito de ser",
         },
         {
-                "icon": "🔥",
-                "title": "Energia desbloqueada",
-                "desc": "Menos sensação de estagnação"
+          antes: "Sente que precisa de uma limpeza mais profunda",
+          depois: "Limpeza energética profunda",
+        },
+        { antes: "Corpo pedindo um toque mais forte", depois: "Alívio corporal intenso" },
+        { antes: "Energia estagnada", depois: "Energia desbloqueada: sensação de fluir interno" },
+        {
+          antes: "Falta de enraizamento ou de eixo",
+          depois: "Enraizamento: mais presença no corpo e eixo firmado",
         },
         {
-                "icon": "🌱",
-                "title": "Enraizamento",
-                "desc": "Mais presença e firmeza no corpo"
+          antes: "Sensação de desequilíbrio multidimensional: físico, mental, energético, espiritual",
+          depois: "Equilíbrio energético: sensação de reorganização interna",
         },
-        {
-                "icon": "🕊️",
-                "title": "Equilíbrio energético",
-                "desc": "Sensação de reorganização interna"
-        },
-        {
-                "icon": "✨",
-                "title": "Renovação",
-                "desc": "Disposição para recomeçar mais leve"
-        }
-]}
+      ]}
 
       includedItems={[
         "Sessão sobre cama de ervas aromáticas e medicinais",
         "Toque vigoroso conduzido conforme sua necessidade",
         "Possibilidade de limpeza energética profunda",
-        "Ambiente ritualístico no Instituto Canto da Floresta"
-]}
+        "Ambiente ritualístico no Instituto Canto da Floresta",
+      ]}
       includedCTALabel="Quero agendar minha sessão"
 
-      credentials={[
-        "Bióloga pela UNICAMP",
-        "Mestre em Conservação da Biodiversidade e Desenvolvimento Sustentável (IPÊ)",
-        "Criadora do método MASSIXA — Massagem Integrativa Xamânica",
-        "Facilitadora de Rodas de Mulheres desde 2012"
-]}
-      aboutCTALabel="Agendar com Ilana"
+      pricingImage="/images/toque-da-jurema.jpg"
+      pricingTitle="Toque da Jurema"
+      pricingSubtitle="Escolha a duração que combina com o seu momento e agende pelo WhatsApp."
+      precos={[
+        {
+          label: "60 minutos",
+          valor: "R$ 270,00",
+          descricao: "Sessão com toque vigoroso e limpeza energética",
+        },
+        {
+          label: "90 minutos",
+          valor: "R$ 360,00",
+          descricao: "Mais tempo de imersão e cuidado",
+        },
+      ]}
+      priceNote="Atendimento no Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
+      pricingCTALabel="Quero agendar minha sessão"
 
       faqItems={[
         {
-                "q": "Onde acontece o atendimento?",
-                "a": "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia."
+          q: "Onde acontece o atendimento?",
+          a: "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia.",
         },
         {
-                "q": "O toque é muito forte?",
-                "a": "É mais vigoroso que uma massagem convencional, sempre respeitando o limite do seu corpo."
+          q: "O toque é muito forte?",
+          a: "É mais vigoroso que uma massagem convencional, sempre respeitando o limite do seu corpo.",
         },
         {
-                "q": "Preciso ter alguma vivência espiritual prévia?",
-                "a": "Não. A sessão é aberta a qualquer pessoa que sinta o chamado para esse trabalho."
+          q: "Preciso ter alguma vivência espiritual prévia?",
+          a: "Não. A sessão é aberta a qualquer pessoa que sinta o chamado para esse trabalho.",
         },
         {
-                "q": "O que é a cama de ervas?",
-                "a": "Uma base de ervas aromáticas e medicinais sobre a qual a sessão é realizada, parte da experiência sensorial do Toque da Jurema."
+          q: "O que é a cama de ervas?",
+          a: "Uma base de ervas aromáticas e medicinais sobre a qual a sessão é realizada, parte da experiência sensorial do Toque da Jurema.",
         },
         {
-                "q": "Quanto tempo dura?",
-                "a": "Você escolhe entre 60 ou 90 minutos, conforme sua disponibilidade."
+          q: "Quanto tempo dura?",
+          a: "Você escolhe entre 60 ou 90 minutos, conforme sua disponibilidade.",
         },
         {
-                "q": "Como agendo?",
-                "a": "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário."
-        }
-]}
+          q: "Como agendo?",
+          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+        },
+      ]}
 
-      pricingTitle="Toque da Jurema"
-      pricingSubtitle="Escolha a duração da sua sessão"
-      pricingOptions={[
+      modalEtiqueta="Agendamento"
+      modalTitulo="Seu Toque da Jurema"
+      modalSubtitulo="Cama de ervas, toque vigoroso e limpeza energética no Instituto Canto da Floresta."
+      modalLocal="no Instituto Canto da Floresta, em Arraial d'Ajuda"
+      modalidades={[
         {
-                "label": "60 minutos",
-                "price": "R$ 270,00",
-                "description": "Sessão com toque vigoroso e limpeza energética"
+          id: '60min',
+          titulo: '60 minutos',
+          descricao: 'Toque vigoroso e limpeza energética',
+          nomeNaMensagem: 'sessão Toque da Jurema de 60 minutos',
+          valor: 'R$ 270,00',
         },
         {
-                "label": "90 minutos",
-                "price": "R$ 360,00",
-                "description": "Mais tempo de imersão e cuidado"
-        }
-]}
-      priceNote="Valores válidos para atendimento no Instituto Canto da Floresta"
-      pricingCTALabel="Quero agendar minha sessão"
+          id: '90min',
+          titulo: '90 minutos',
+          descricao: 'Mais tempo de imersão e cuidado',
+          nomeNaMensagem: 'sessão Toque da Jurema de 90 minutos',
+          valor: 'R$ 360,00',
+        },
+      ]}
+
+      ambiente="completo"
+      somAmbiente={false}
     />
   )
 }

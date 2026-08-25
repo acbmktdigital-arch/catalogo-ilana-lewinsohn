@@ -36,8 +36,6 @@ type SalesPageTemplateProps = {
   includedItems: string[]
   includedCTALabel: string
 
-  credentials?: string[]
-  aboutCTALabel: string
 
   faqItems: { q: string; a: string }[]
 
@@ -71,8 +69,6 @@ export default function SalesPageTemplate({
   benefits,
   includedItems,
   includedCTALabel,
-  credentials,
-  aboutCTALabel,
   faqItems,
   pricingTitle,
   pricingSubtitle,
@@ -318,46 +314,6 @@ export default function SalesPageTemplate({
             </div>
           )}
         </div>
-      </section>
-
-      {/* ── 7. SOBRE A TERAPEUTA ────────────────────────── */}
-      <section className="bg-white px-6 py-12">
-        <p
-          className="font-sans text-xs tracking-widest uppercase font-semibold mb-2"
-          style={{ color: 'var(--cor-destaque)' }}
-        >
-          Sua Terapeuta
-        </p>
-        <h2 className="font-heading text-3xl text-brand-black italic mb-5">
-          {siteConfig.name}
-        </h2>
-        {siteConfig.about.map((p, i) => (
-          <p key={i} className="font-body text-brand-black text-sm leading-relaxed mb-3 opacity-80">
-            {p}
-          </p>
-        ))}
-
-        {credentials && credentials.length > 0 && (
-          <ul className="space-y-2 mb-6">
-            {credentials.map((c, i) => (
-              <li key={i} className="flex items-center gap-2 font-body text-brand-black text-sm">
-                <span className="text-xs font-bold shrink-0" style={{ color: 'var(--cor-destaque)' }}>✓</span>
-                {c}
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="relative w-full h-56 rounded-2xl overflow-hidden mb-6" style={{ border: '1px solid rgba(201,162,39,0.25)' }}>
-          <Image
-            src={siteConfig.heroImage}
-            alt={siteConfig.name}
-            fill
-            className="object-cover object-top"
-          />
-        </div>
-        <a href={ctaUrl} className="btn-sales">
-          {aboutCTALabel}
-        </a>
       </section>
 
       {/* ── 8. FAQ ──────────────────────────────────────── */}
