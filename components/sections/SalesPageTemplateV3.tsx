@@ -48,6 +48,15 @@ type SalesPageTemplateV3Props = {
   transformationTitle: string
   transformationSubtitle: string
   transformations: Transformacao[]
+  /* Segundo painel de transformação, para quando a página abriga dois
+     assuntos com dores distintas (ex.: Colo da Terra dentro das Imersões).
+     A Ilana escreveu conjuntos separados; misturar num painel só apagaria
+     a diferença entre quem vem descansar e quem vem gestando. */
+  transformacaoSecundaria?: {
+    titulo: string
+    subtitulo: string
+    itens: Transformacao[]
+  }
 
   includedItems: string[]
   includedCTALabel: string
@@ -115,6 +124,65 @@ function Chevron() {
   )
 }
 
+/* Painel de "antes → depois". Vira componente porque a página das Imersões
+   mostra dois deles em sequência, um para cada recorte. */
+function PainelTransformacao({
+  titulo,
+  subtitulo,
+  itens,
+}: {
+  titulo: string
+  subtitulo: string
+  itens: Transformacao[]
+}) {
+  return (
+    <div
+      className="w-full rounded-2xl p-6 sm:p-8"
+      style={{
+        background: PAINEL,
+        border: `1px solid ${FIO_CLARO}`,
+        boxShadow: '0 10px 34px rgba(0,0,0,0.28)',
+      }}
+    >
+      <h2 className="font-heading text-xl sm:text-2xl text-center mb-1" style={{ color: '#FFFFFF' }}>
+        {titulo}
+      </h2>
+      <p
+        className="font-body text-[11px] sm:text-xs text-center mb-7"
+        style={{ color: 'rgba(255,255,255,0.55)' }}
+      >
+        {subtitulo}
+      </p>
+
+      <div className="flex flex-col">
+        {itens.map((item, i) => (
+          <div
+            key={i}
+            className="py-3.5 first:pt-0 last:pb-0 text-left"
+            style={{ borderBottom: i === itens.length - 1 ? 'none' : `1px solid ${FIO_CLARO}` }}
+          >
+            <p
+              className="font-body text-xs sm:text-[13px] mb-1"
+              style={{ color: 'rgba(255,255,255,0.45)' }}
+            >
+              {item.antes}
+            </p>
+            <p
+              className="font-sans text-xs sm:text-[13px] font-medium flex items-center gap-1.5"
+              style={{ color: '#FFFFFF' }}
+            >
+              <span className="text-sm leading-none" style={{ color: 'var(--cor-destaque)' }} aria-hidden="true">
+                →
+              </span>
+              <span>{item.depois}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 /* Pílula dourada de largura automática, como no layout de origem */
 function BotaoV3({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
   return (
@@ -150,6 +218,7 @@ export default function SalesPageTemplateV3({
   transformationTitle,
   transformationSubtitle,
   transformations,
+  transformacaoSecundaria,
   includedItems,
   includedCTALabel,
   pricingImage,
@@ -326,51 +395,20 @@ export default function SalesPageTemplateV3({
         </section>
 
         {/* ── 3. A TRANSFORMAÇÃO ──────────────────────────── */}
-        <section className="w-full py-8 px-2 sm:px-4">
-          <div
-            className="w-full rounded-2xl p-6 sm:p-8"
-            style={{
-              background: PAINEL,
-              border: `1px solid ${FIO_CLARO}`,
-              boxShadow: '0 10px 34px rgba(0,0,0,0.28)',
-            }}
-          >
-            <h2 className="font-heading text-xl sm:text-2xl text-center mb-1" style={{ color: '#FFFFFF' }}>
-              {transformationTitle}
-            </h2>
-            <p
-              className="font-body text-[11px] sm:text-xs text-center mb-7"
-              style={{ color: 'rgba(255,255,255,0.55)' }}
-            >
-              {transformationSubtitle}
-            </p>
+        <section className="w-full py-8 px-2 sm:px-4 flex flex-col gap-5">
+          <PainelTransformacao
+            titulo={transformationTitle}
+            subtitulo={transformationSubtitle}
+            itens={transformations}
+          />
 
-            <div className="flex flex-col">
-              {transformations.map((item, i) => (
-                <div
-                  key={i}
-                  className="py-3.5 first:pt-0 last:pb-0 text-left"
-                  style={{ borderBottom: i === transformations.length - 1 ? 'none' : `1px solid ${FIO_CLARO}` }}
-                >
-                  <p
-                    className="font-body text-xs sm:text-[13px] mb-1"
-                    style={{ color: 'rgba(255,255,255,0.45)' }}
-                  >
-                    {item.antes}
-                  </p>
-                  <p
-                    className="font-sans text-xs sm:text-[13px] font-medium flex items-center gap-1.5"
-                    style={{ color: '#FFFFFF' }}
-                  >
-                    <span className="text-sm leading-none" style={{ color: 'var(--cor-destaque)' }} aria-hidden="true">
-                      →
-                    </span>
-                    <span>{item.depois}</span>
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+          {transformacaoSecundaria && (
+            <PainelTransformacao
+              titulo={transformacaoSecundaria.titulo}
+              subtitulo={transformacaoSecundaria.subtitulo}
+              itens={transformacaoSecundaria.itens}
+            />
+          )}
         </section>
 
         {/* ── 4. INCLUSO ──────────────────────────────────── */}

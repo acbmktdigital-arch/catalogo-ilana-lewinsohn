@@ -33,16 +33,33 @@ export default function ImersoesMassixaPage() {
         ],
       }}
 
+      /* Dois painéis: a Ilana escreveu dores e transformações separadas para
+         cada recorte. Este é só da Reconecta — os pares da gestante saíram
+         daqui e ganharam painel próprio logo abaixo. */
       transformationTitle="A Transformação que Você Busca"
-      transformationSubtitle="De onde você está para onde a imersão leva."
+      transformationSubtitle="Na Imersão Reconecta — de onde você está para onde a imersão leva."
       transformations={[
         { antes: "Sensação de estar perdida", depois: "Mais clareza" },
-        { antes: "Sobrecarga acumulada", depois: "Sensação de renovação" },
+        { antes: "Distância do próprio propósito", depois: "Reconexão com o próprio propósito" },
         { antes: "Coração pedindo espaço", depois: "Coração mais leve" },
         { antes: "Corpo tenso e cansado", depois: "Corpo relaxado" },
-        { antes: "Desconfortos da gestação", depois: "Cuidado adaptado a cada fase" },
-        { antes: "Ansiedade sobre o parto", depois: "Mais confiança para o que vem" },
+        { antes: "Falta de ritual no dia a dia", depois: "Experiência ritualística" },
+        { antes: "Sobrecarga acumulada", depois: "Sensação de renovação" },
       ]}
+      transformacaoSecundaria={{
+        titulo: "A Transformação no Colo da Terra",
+        subtitulo: "Para quem também está gerando uma nova vida.",
+        itens: [
+          { antes: "Falta de espaço só para si", depois: "Pausa, acolhimento e fortalecimento na gestação" },
+          { antes: "Sentimento de invisibilidade enquanto mulher", depois: "Cuidado profundo para você, a mulher gestando" },
+          { antes: "Falta de fôlego para a grande mudança pela frente", depois: "Fortalecimento para o parto" },
+          { antes: "Corpo em transformação", depois: "Cuidado adaptado a cada fase da gestação" },
+          { antes: "Cansaço acumulado", depois: "Relaxamento profundo" },
+          { antes: "Ansiedade sobre o parto e a criança", depois: "Conexão com o bebê" },
+          { antes: "Sensação de sobrecarga emocional", depois: "Acolhimento emocional" },
+          { antes: "Dores lombares e nas pernas", depois: "Alívio de desconfortos físicos" },
+        ],
+      }}
 
       includedItems={[
         "Imersão de 3 horas construída para o seu momento",

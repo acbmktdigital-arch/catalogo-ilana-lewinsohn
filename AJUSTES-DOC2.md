@@ -95,34 +95,39 @@ dela. Se quiser mantê-las, basta escrever a transformação correspondente.
   Trocar em `app/imersoes-massixa/page.tsx`, prop `heroImageWide`.
 - Dores e transformações reduzidas a uma frase por item
 
-### Colo da Terra ⚠️ parcial
+### Colo da Terra ✅
 - ✅ Virou **bloco com título próprio** dentro da página das Imersões, separado por
   fio dourado, com o texto de abertura e os 4 parágrafos novos dela
-- ❌ **Faltam as 8 dores e 9 transformações** que ela escreveu só para o Colo da Terra
+- ✅ As **8 dores e 9 transformações** entraram em **painel próprio** — resolvido em
+  29/08/2026, opção (A)
 
-**A decisão pendente:** hoje a página tem **um** bloco de transformação, misturando
-Reconecta e Colo da Terra. Ela escreveu conjuntos separados. Ou:
-- **(A)** criar um 2º bloco de transformação, só do Colo da Terra, logo abaixo da
-  seção nova — mais fiel ao que ela quer, mas alonga a página
-- **(B)** manter um bloco só, escolhendo os pares mais fortes dos dois conjuntos
+**Como ficou:** a página passou a ter **dois painéis de transformação** em sequência,
+cada um com seu título:
+
+| Painel | Pares | Subtítulo |
+|---|---|---|
+| "A Transformação que Você Busca" | 6, só da Reconecta | "Na Imersão Reconecta — de onde você está para onde a imersão leva." |
+| "A Transformação no Colo da Terra" | 8, todas as dores dela | "Para quem também está gerando uma nova vida." |
+
+Os dois pares de gestante que estavam no painel da Reconecta saíram de lá — agora esse
+painel é só da Reconecta, e os dois lugares vagos foram preenchidos com pares que já
+estavam nas listas dela ("Distância do próprio propósito" e "Falta de ritual no dia a dia").
+
+No template isso virou a prop opcional `transformacaoSecundaria`. Nenhuma outra página
+usa — some sozinha onde não é passada.
+
+⚠️ **Uma transformação sobrou:** "Equilíbrio energético". As 8 dores do Colo da Terra
+foram todas aproveitadas, mas essa transformação não tem dor correspondente na lista
+dela — e é a mais genérica das nove (já aparece em outras páginas). Se ela quiser
+mantê-la, basta escrever a dor que ela responde.
 
 ---
 
 ## Ainda em aberto
 
-**1. ⬅️ O próximo passo — dores e transformações do Colo da Terra**
-
-A Ilana escreveu **8 dores e 9 transformações só para o Colo da Terra**, no doc 2.
-Hoje a página das Imersões tem **um** bloco de transformação, misturando os dois
-assuntos. Duas saídas:
-
-- **(A)** um 2º bloco de transformação, só do Colo da Terra, logo abaixo da seção nova
-  dele. Mais fiel ao que ela escreveu — ela deu título, subtítulo e 4 parágrafos
-  exclusivos ao Colo da Terra, e um bloco compartilhado contradiz isso. Custo: a
-  página fica bem mais longa.
-- **(B)** manter um bloco só, escolhendo os pares mais fortes dos dois conjuntos.
-
-Recomendação: **(A)**. Aguardando a Vera decidir.
+**1.** ✅ Dores e transformações do Colo da Terra — resolvido em 29/08/2026 com a
+opção (A), painel próprio. Ver o bloco 3 acima. Sobrou "Equilíbrio energético", sem
+dor correspondente.
 
 **2.** Nome da empresa para completar o rodapé ("feito com o Catálogo Holístico e com...")
 
