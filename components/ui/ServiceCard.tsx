@@ -19,10 +19,19 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       className="service-card block relative overflow-hidden rounded-xl mx-4 group"
       style={{ background: 'var(--cor-card)' }}
     >
-      <article className="flex items-stretch h-[108px]">
+      {/* min-h, não h: 108px é o ritmo que os cards curtos mantêm, mas título
+          longo precisa poder crescer. Com altura travada, "Bússola: Orientação
+          Integrativa Xamânica" quebrava em 4 linhas e vazava para fora do card
+          — o overflow-hidden cortava o topo do título e o "SABER MAIS". */}
+      <article className="flex items-stretch min-h-[108px]">
         {/* Text side */}
         <div className="flex-1 p-4 flex flex-col justify-center gap-2">
-          <h2 className="font-heading text-xl leading-tight italic" style={{ color: '#FFFFFF' }}>
+          {/* Um passo menor no celular, onde a coluna de texto tem ~170px:
+              segura o número de linhas sem encolher o título no desktop. */}
+          <h2
+            className="font-heading text-lg sm:text-xl leading-tight italic text-balance"
+            style={{ color: '#FFFFFF' }}
+          >
             {service.title}
           </h2>
           <span
