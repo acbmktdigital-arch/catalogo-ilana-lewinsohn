@@ -19,23 +19,27 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       className="service-card block relative overflow-hidden rounded-xl mx-4 group"
       style={{ background: 'var(--cor-card)' }}
     >
-      {/* min-h, não h: 108px é o ritmo que os cards curtos mantêm, mas título
-          longo precisa poder crescer. Com altura travada, "Bússola: Orientação
-          Integrativa Xamânica" quebrava em 4 linhas e vazava para fora do card
-          — o overflow-hidden cortava o topo do título e o "SABER MAIS". */}
-      <article className="flex items-stretch min-h-[108px]">
+      {/* Altura igual em todos os cards — é ela que dá o ritmo regular da lista.
+          Se cada card cresce conforme o próprio título, a faixa vazia entre um
+          e outro (o gap mais a folga interna de cada um) fica desigual.
+          O corte do título se resolve pela fonte, não soltando a altura. */}
+      <article className="flex items-stretch h-[104px]">
         {/* Text side */}
-        <div className="flex-1 p-4 flex flex-col justify-center gap-2">
-          {/* Um passo menor no celular, onde a coluna de texto tem ~170px:
-              segura o número de linhas sem encolher o título no desktop. */}
+        <div className="flex-1 px-4 py-3 flex flex-col justify-center gap-1.5">
+          {/* No celular a coluna de texto tem ~170px. A 16px os títulos longos
+              cabem em 2 ou 3 linhas, e 3 linhas ainda entram nos 104px. A 20px
+              a Bússola quebrava em 4 e vazava para fora do card. */}
           <h2
-            className="font-heading text-lg sm:text-xl leading-tight italic text-balance"
+            className="font-heading text-base sm:text-xl leading-tight italic text-balance"
             style={{ color: '#FFFFFF' }}
           >
             {service.title}
           </h2>
           <span
-            className="font-sans text-[11px] uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
+            /* leading-none: o "SABER MAIS" tem 11px, mas a entrelinha padrão
+               reservava ~16px. Os 5px que sobravam eram justamente o que fazia
+               um título de 3 linhas não caber nos 104px. */
+            className="font-sans text-[11px] leading-none uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
             style={{ color: DOURADO_CLARO }}
           >
             {service.ctaLabel}
