@@ -27,8 +27,11 @@ type SalesPageTemplateV3Props = {
      Omitir nas demais: o hero abre direto no rótulo e no título. */
   heroImageA?: string
   heroImageB?: string
-  /* Foto panorâmica logo acima do botão */
+  /* Foto que abre a página */
   heroImageWide: string
+  /* 'alto' dá mais altura à moldura — para fotos verticais, onde a faixa
+     baixa cortaria parte do assunto. Padrão é a faixa panorâmica. */
+  heroAspecto?: 'padrao' | 'alto'
   heroCTALabel: string
 
   whatIsTitle: React.ReactNode
@@ -138,6 +141,7 @@ export default function SalesPageTemplateV3({
   heroImageA,
   heroImageB,
   heroImageWide,
+  heroAspecto = 'padrao',
   heroCTALabel,
   whatIsTitle,
   whatIsTexts,
@@ -188,8 +192,15 @@ export default function SalesPageTemplateV3({
      usa o degradê da versão original: a base dissolve no fundo em vez de ter
      borda. Por isso só os cantos de cima são arredondados — uma borda embaixo
      contornaria um trecho que o degradê já apagou. */
+  /* Classes escritas por extenso para o Tailwind enxergar as duas variantes.
+     'alto' é quadrado em QUALQUER largura de propósito: a imagem também é
+     quadrada, então encaixa exata e nada é cortado. Com um `sm:` mais largo,
+     o desktop aparava o topo da foto — e cortava a cabeça. */
+  const aspectoHero =
+    heroAspecto === 'alto' ? 'aspect-square' : 'aspect-[4/3] sm:aspect-[16/10]'
+
   const fotoPanoramica = (
-    <div className="w-full max-w-[440px] aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-t-2xl sm:rounded-t-3xl mb-2 relative">
+    <div className={`w-full max-w-[440px] ${aspectoHero} overflow-hidden rounded-t-2xl sm:rounded-t-3xl mb-2 relative`}>
       <Image src={heroImageWide} alt="" fill className="object-cover" priority />
       <div
         className="absolute inset-0 z-10"

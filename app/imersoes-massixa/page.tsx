@@ -9,11 +9,8 @@ export default function ImersoesMassixaPage() {
       heroSubtitle="Um convite a reconectar corpo, coração e propósito — com o recorte Colo da Terra para quem está gestando."
       heroImageA="/images/imersoes-ninho-terra.jpg"
       heroImageB="/images/imersao-colo-da-terra.jpg"
-      /* PENDENTE: a foto atual mostrava uma roda em grupo, e a Reconecta é
-         individual. A Ilana apontou isso no doc 2. Substituir pela imagem
-         certa quando ela for localizada no Drive:
-         FOTOS PARA LINK TREE → ATENDIMENTOS → RECONECTA */
-      heroImageWide="/images/placeholder-reconecta.jpg"
+      heroImageWide="/images/reconecta-gongo-v3.jpg"
+      heroAspecto="alto"
       heroCTALabel="Quero minha imersão"
 
       whatIsTitle={<>O que é a Imersão <span style={{color:'var(--cor-destaque)'}}>Reconecta</span>?</>}

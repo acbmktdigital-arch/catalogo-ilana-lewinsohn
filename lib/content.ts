@@ -4,7 +4,7 @@ export const siteConfig = {
   handle: '@ilana.lewinsohn',
   tagline: 'Seja bem-vinda!',
   description:
-    'Mulher medicina (bruja), terapeuta integrativa xamânica, facilitadora de Rodas de Mulheres e criadora do método MASSIXA: Um Universo de Cuidado, unindo Ayurveda, Xamanismo, Alquimia, Yoga e a sabedoria da floresta.',
+    'Mulher medicina (bruja), terapeuta integrativa xamânica, facilitadora de Rodas de Mulheres e criadora do método MASSIXA — Um Universo de Cuidado, unindo Ayurveda, Xamanismo, Alquimia, Yoga e a sabedoria da floresta.',
   about: [
     'Ilana Lewinsohn é a Guardiã da Descida do Instituto Canto da Floresta, em Arraial d\'Ajuda, Bahia. Bióloga, educadora e terapeuta corporal, ela transita há mais de duas décadas entre o estudo da natureza e os caminhos humanos de transformação, sempre a partir de uma certeza simples: somos natureza, sem separação.',
     'Ao longo de sua trajetória se aprofundou em Yoga, Ayurveda, Xamanismo e Alquimia, e é autora do método MASSIXA — Massagem Integrativa Xamânica —, além de facilitar Rodas de Mulheres desde 2012. Seu cuidado une toque, ervas, rituais e escuta, sempre construído a partir do que cada momento pede.',
