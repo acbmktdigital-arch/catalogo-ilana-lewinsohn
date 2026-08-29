@@ -24,8 +24,15 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           e outro (o gap mais a folga interna de cada um) fica desigual.
           O corte do título se resolve pela fonte, não soltando a altura. */}
       <article className="flex items-stretch h-[104px]">
-        {/* Text side */}
-        <div className="flex-1 px-4 py-3 flex flex-col justify-center gap-1.5">
+        {/* Texto ancorado: título encostado no topo, "SABER MAIS" na base.
+            Centralizar o bloco fazia a folga interna variar com o número de
+            linhas do título — um título de 1 linha sobrava ~21px de ar de cada
+            lado, um de 3 linhas quase nada. Como o vizinho de cima e o de baixo
+            entram na mesma conta, a faixa vazia entre dois cards mudava a cada
+            par. Ancorado, todo card tem exatamente 12px em cima e 12px embaixo,
+            então o intervalo entre quaisquer dois cards é sempre o mesmo — em
+            qualquer largura de tela e com qualquer título. */}
+        <div className="flex-1 px-4 py-3 flex flex-col justify-start gap-1.5">
           {/* No celular a coluna de texto tem ~170px. A 16px os títulos longos
               cabem em 2 ou 3 linhas, e 3 linhas ainda entram nos 104px. A 20px
               a Bússola quebrava em 4 e vazava para fora do card. */}
@@ -39,7 +46,10 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             /* leading-none: o "SABER MAIS" tem 11px, mas a entrelinha padrão
                reservava ~16px. Os 5px que sobravam eram justamente o que fazia
                um título de 3 linhas não caber nos 104px. */
-            className="font-sans text-[11px] leading-none uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
+            /* mt-auto empurra o "SABER MAIS" para a base do card, para que ele
+               fique sempre na mesma altura. leading-none: a 11px a entrelinha
+               padrão reservava ~16px, e essa sobra entrava na conta do respiro. */
+            className="mt-auto font-sans text-[11px] leading-none uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
             style={{ color: DOURADO_CLARO }}
           >
             {service.ctaLabel}
