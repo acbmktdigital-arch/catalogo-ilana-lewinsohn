@@ -110,8 +110,35 @@ Reconecta e Colo da Terra. Ela escreveu conjuntos separados. Ou:
 
 ## Ainda em aberto
 
-1. Nome da empresa para o rodapé
-2. "bruja" ou "bruxa"?
-3. Foto certa da Reconecta (link do Drive)
-4. Como tratar as listas que não pareiam (Bloco 3)
-5. Colo da Terra: seção destacada ou parágrafo?
+**1. ⬅️ O próximo passo — dores e transformações do Colo da Terra**
+
+A Ilana escreveu **8 dores e 9 transformações só para o Colo da Terra**, no doc 2.
+Hoje a página das Imersões tem **um** bloco de transformação, misturando os dois
+assuntos. Duas saídas:
+
+- **(A)** um 2º bloco de transformação, só do Colo da Terra, logo abaixo da seção nova
+  dele. Mais fiel ao que ela escreveu — ela deu título, subtítulo e 4 parágrafos
+  exclusivos ao Colo da Terra, e um bloco compartilhado contradiz isso. Custo: a
+  página fica bem mais longa.
+- **(B)** manter um bloco só, escolhendo os pares mais fortes dos dois conjuntos.
+
+Recomendação: **(A)**. Aguardando a Vera decidir.
+
+**2.** Nome da empresa para completar o rodapé ("feito com o Catálogo Holístico e com...")
+
+**3.** "bruja" com **j** na descrição da home — em todo o resto dos documentos ela
+escreve "bruxa" com **x**. É a primeira frase que a pessoa lê. Proposital ou escapou?
+
+**4.** Os 3 pares descartados em Madalena e Anahata — se ela quiser mantê-los, precisa
+escrever a transformação correspondente.
+
+**5.** ✅ Foto da Reconecta — resolvido em 29/08/2026 (`reconecta-gongo-v3.jpg`).
+
+---
+
+## Depois do doc 2
+
+- **Doc 3:** nunca aberto.
+- **Doc 4:** só a parte da Botica foi lida. Ela reescreve quase a página inteira —
+  inclui eliminar o bloco de dores, virar catálogo de produtos, uma seção nova
+  ("Por que esses não são produtos ordinários?") e trocar a foto.
