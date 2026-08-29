@@ -19,25 +19,25 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       className="service-card block relative overflow-hidden rounded-xl mx-4 group"
       style={{ background: 'var(--cor-card)' }}
     >
-      {/* Altura igual em todos os cards — é ela que dá o ritmo regular da lista.
-          Se cada card cresce conforme o próprio título, a faixa vazia entre um
-          e outro (o gap mais a folga interna de cada um) fica desigual.
-          O corte do título se resolve pela fonte, não soltando a altura. */}
-      <article className="flex items-stretch h-[104px]">
-        {/* Texto ancorado: título encostado no topo, "SABER MAIS" na base.
-            Centralizar o bloco fazia a folga interna variar com o número de
-            linhas do título — um título de 1 linha sobrava ~21px de ar de cada
-            lado, um de 3 linhas quase nada. Como o vizinho de cima e o de baixo
-            entram na mesma conta, a faixa vazia entre dois cards mudava a cada
-            par. Ancorado, todo card tem exatamente 12px em cima e 12px embaixo,
-            então o intervalo entre quaisquer dois cards é sempre o mesmo — em
-            qualquer largura de tela e com qualquer título. */}
-        <div className="flex-1 px-4 py-3 flex flex-col justify-start gap-1.5">
-          {/* No celular a coluna de texto tem ~170px. A 16px os títulos longos
-              cabem em 2 ou 3 linhas, e 3 linhas ainda entram nos 104px. A 20px
-              a Bússola quebrava em 4 e vazava para fora do card. */}
+      {/* Sem altura fixa: cada card tem a altura do próprio conteúdo.
+          É o que permite ter as duas coisas ao mesmo tempo — texto justo
+          dentro do card E intervalo igual entre todos eles. Com altura
+          travada sobra ar, e esse ar ou desfigura o texto (empurrando o
+          "SABER MAIS" para longe do título) ou desiguala o intervalo
+          (se o bloco for centralizado). Sem sobra, não há o que distribuir:
+          o respiro é sempre os 12px do padding, em cima e embaixo.
+          O preço é que os cards ficam com alturas diferentes. */}
+      <article className="flex items-stretch">
+        {/* Título e "SABER MAIS" colados, sem folga a distribuir: o card cresce
+            com eles. Assim os 12px de respiro valem para todos os cards, e a
+            faixa entre dois cards é sempre 12 + 8 (o gap da lista) + 12. */}
+        <div className="flex-1 px-4 py-3 flex flex-col gap-1.5">
+          {/* 15px: medido com a própria Lora Italic, é o tamanho em que todos
+              os títulos cabem em no máximo 2 linhas num celular de 360px. A
+              16px, "Acompanhamento Terapêutico Integrativo" ia a 3 e ficava
+              sendo o único card destoando em altura. */}
           <h2
-            className="font-heading text-base sm:text-xl leading-tight italic text-balance"
+            className="font-heading text-[15px] sm:text-xl leading-tight italic text-balance"
             style={{ color: '#FFFFFF' }}
           >
             {service.title}
@@ -46,10 +46,9 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             /* leading-none: o "SABER MAIS" tem 11px, mas a entrelinha padrão
                reservava ~16px. Os 5px que sobravam eram justamente o que fazia
                um título de 3 linhas não caber nos 104px. */
-            /* mt-auto empurra o "SABER MAIS" para a base do card, para que ele
-               fique sempre na mesma altura. leading-none: a 11px a entrelinha
-               padrão reservava ~16px, e essa sobra entrava na conta do respiro. */
-            className="mt-auto font-sans text-[11px] leading-none uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
+            /* leading-none: a 11px a entrelinha padrão reservava ~16px, e essa
+               sobra invisível entrava na conta do respiro de baixo. */
+            className="font-sans text-[11px] leading-none uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
             style={{ color: DOURADO_CLARO }}
           >
             {service.ctaLabel}
