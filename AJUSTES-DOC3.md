@@ -22,6 +22,14 @@ Criado em 30/08/2026
 | Texto principal da Bússola | `/bussola-orientacao-xamanica` | `85480e3` |
 | Dores e transformações da Bússola | `/bussola-orientacao-xamanica` | `979eee0` |
 | Manter "o que está incluso" na Bússola | — | já estava mantido |
+| Dores e transformações do Shirodhara | `/shirodhara` | feito antes, sem registro |
+
+**Shirodhara — duas diferenças mínimas em relação ao documento**, para a Ilana decidir
+se quer a letra exata dela:
+- a dor *"Mente acelerada e ocupada o tempo todo"* está na página como *"Mente que não
+  para"* — mesma ideia, mais curta;
+- *"Sobrecarga mental"* saiu da 4ª posição para a 6ª, para casar com *"Sensação de paz
+  profunda"*. As outras cinco dores e **todas** as transformações estão idênticas.
 
 **Sobre a foto ayurvédica:** ela avisa no documento que é **gerada por IA**, feita a partir
 de uma que ela tinha. É escolha dela, não um descuido — não precisa levantar de novo.
@@ -34,23 +42,14 @@ cortar nenhuma frase — a compactação foi só de formatação.
 
 ## ⬅️ Pendente
 
-**Ordem combinada com a Vera (30/08):** retomar pelo **Acompanhamento Terapêutico**,
-o item 2 daqui. O Shirodhara fica para depois — não foi resolvido, só adiado.
+**Ordem combinada com a Vera (30/08):** retomar pelo **Acompanhamento Terapêutico**.
 
-### 1. Shirodhara — dores e transformações ⏸️ adiado, não esquecer
-O caso mais fácil do documento: **6 dores e 6 transformações, pareando 1 para 1**,
-na ordem em que ela escreveu. Nada a descartar.
-
-Mente acelerada · ansiedade · insônia · sobrecarga mental · dificuldade de concentração ·
-tensão na cabeça e no rosto → mente mais silenciosa · menos ansiedade · sono mais profundo ·
-mais concentração · alívio de tensão facial · sensação de paz profunda.
-
-### 2. ⬅️ AQUI — Acompanhamento Terapêutico, dores e transformações
+### 1. ⬅️ AQUI — Acompanhamento Terapêutico, dores e transformações
 6 dores. As transformações vêm no formato **título + explicação** (como no doc 2):
 "Apoio contínuo" / "Acompanhamento ao longo do tempo, não só pontual", e assim por diante.
 São 6 pares — decidir se a explicação entra na frase ou se descarta.
 
-### 3. Rodas Celta-Baianas — reescrita grande
+### 2. Rodas Celta-Baianas — reescrita grande
 - Descrição curta do card da home muda
 - "O que são" passa de 2 parágrafos para ~8 (menciona La Loba, Cacaozito Medicina,
   o coven firmado, a mesa vegana como altar)
@@ -65,7 +64,7 @@ São 6 pares — decidir se a explicação entra na frase ou se descarta.
   desta página. Hoje a prop `transformations` é obrigatória no template; vai precisar
   virar opcional.
 
-### 4. Vivências, Imersões e Retiros
+### 3. Vivências, Imersões e Retiros
 - Descrição nova, mais longa
 - Dores e transformações: as **dores** é que vêm no formato título + explicação aqui, e
   há mais dores que transformações — vai precisar descartar algumas
