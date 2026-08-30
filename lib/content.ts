@@ -96,10 +96,7 @@ export const services: Service[] = [
     slug: 'cuidados-ayurvedicos',
     title: 'Cuidados Plenamente Ayurvédicos',
     description: 'Abhyangas ou Garshana específicos para cada dosha, com óleos aquecidos e toques próprios para cada situação.',
-    /* PROVISÓRIA: a foto que estava aqui era um shirodhara e foi para a página
-       certa. Esta entrou no lugar só para não repetir imagem — a Vera vai
-       mandar a definitiva. Trocar aqui e em app/cuidados-ayurvedicos/page.tsx */
-    image: '/images/ayurvedica-toque-nos-pes.jpg',
+    image: '/images/ayurvedica-oleo-morno.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/cuidados-ayurvedicos',
   },
