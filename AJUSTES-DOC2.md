@@ -143,7 +143,8 @@ escrever a transformação correspondente.
 
 ## Depois do doc 2
 
-- **Doc 3:** nunca aberto.
+- **Doc 3:** em andamento desde 30/08. Mapa próprio em `AJUSTES-DOC3.md`.
+  As fotos ayurvédicas e a Bússola já saíram dele.
 - **Doc 4:** só a parte da Botica foi lida. Ela reescreve quase a página inteira —
   inclui eliminar o bloco de dores, virar catálogo de produtos, uma seção nova
   ("Por que esses não são produtos ordinários?") e trocar a foto.
