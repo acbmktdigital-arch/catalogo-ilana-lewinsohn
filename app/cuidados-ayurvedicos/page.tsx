@@ -7,7 +7,9 @@ export default function CuidadosAyurvedicosPage() {
       serviceLabel="Ilana Lewinsohn · Cuidados Plenamente Ayurvédicos"
       heroTitle={<>Cuidados plenamente <span style={{color:'var(--cor-destaque)'}}>Ayurvédicos</span></>}
       heroSubtitle="Abhyangas ou Garshana específicos para cada dosha — o biótipo ayurvédico de cada pessoa."
-      heroImageWide="/images/vata-pitta-abhyanga.jpg"
+      /* PROVISÓRIA — aguardando a foto definitiva da Vera. A que estava aqui
+         era um shirodhara e foi para a página do Shirodhara. */
+      heroImageWide="/images/ayurvedica-toque-nos-pes.jpg"
       heroCTALabel="Quero minha sessão"
 
       whatIsTitle={<>O que são os Cuidados <span style={{color:'var(--cor-destaque)'}}>Ayurvédicos</span>?</>}

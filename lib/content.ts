@@ -96,7 +96,10 @@ export const services: Service[] = [
     slug: 'cuidados-ayurvedicos',
     title: 'Cuidados Plenamente Ayurvédicos',
     description: 'Abhyangas ou Garshana específicos para cada dosha, com óleos aquecidos e toques próprios para cada situação.',
-    image: '/images/vata-pitta-abhyanga.jpg',
+    /* PROVISÓRIA: a foto que estava aqui era um shirodhara e foi para a página
+       certa. Esta entrou no lugar só para não repetir imagem — a Vera vai
+       mandar a definitiva. Trocar aqui e em app/cuidados-ayurvedicos/page.tsx */
+    image: '/images/ayurvedica-toque-nos-pes.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/cuidados-ayurvedicos',
   },
@@ -105,7 +108,7 @@ export const services: Service[] = [
     slug: 'shirodhara',
     title: 'Shirodhara',
     description: 'Fluxo contínuo de óleo sobre o terceiro olho para acalmar profundamente corpo e mente.',
-    image: '/images/shirodhara.jpg',
+    image: '/images/shirodhara-fio-de-oleo.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/shirodhara',
   },

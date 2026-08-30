@@ -7,7 +7,7 @@ export default function ShirodharaPage() {
       serviceLabel="Ilana Lewinsohn · Shirodhara"
       heroTitle={<>Silencie a mente com <span style={{color:'var(--cor-destaque)'}}>Shirodhara</span></>}
       heroSubtitle="Fluxo contínuo de óleo sobre o terceiro olho, para conduzir corpo e mente a um relaxamento profundo."
-      heroImageWide="/images/shirodhara.jpg"
+      heroImageWide="/images/shirodhara-fio-de-oleo.jpg"
       heroCTALabel="Quero minha sessão"
 
       whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Shirodhara</span>?</>}
@@ -36,7 +36,7 @@ export default function ShirodharaPage() {
       ]}
       includedCTALabel="Quero agendar minha sessão"
 
-      pricingImage="/images/shirodhara.jpg"
+      pricingImage="/images/shirodhara-fio-de-oleo.jpg"
       pricingTitle="Shirodhara"
       pricingSubtitle="Silêncio profundo para a mente. Agende pelo WhatsApp."
       precos={[
