@@ -73,13 +73,18 @@ export default function BussolaOrientacaoXamanicaPage() {
 
       transformationTitle="A Transformação que Você Busca"
       transformationSubtitle="De onde você está para onde a orientação leva."
+      /* Listas novas da Ilana: 7 dores e 10 transformações. Os pares seguem a
+         ordem das dores dela. Sobraram duas transformações sem dor
+         correspondente — "Sensação de reorientação" e "Sair com mais leveza e
+         direção" —, as duas mais genéricas e já ditas por outros pares. */
       transformations={[
+        { antes: "Busca de ajuda integrativa que não tem conseguido encontrar", depois: "Ganho de sabedoria integrativa" },
         { antes: "Sensação de estar sem rumo", depois: "Mais clareza de rumo" },
-        { antes: "Confusão emocional", depois: "Acolhimento emocional" },
-        { antes: "Desconexão espiritual", depois: "Reconexão com a intuição" },
-        { antes: "Dúvidas sobre decisões importantes", depois: "Roteiro personalizado por escrito" },
-        { antes: "Padrões que se repetem", depois: "Sensação de reorientação" },
-        { antes: "Corpo e energia desequilibrados", depois: "Sabedoria integrativa" },
+        { antes: "Confusão emocional", depois: "Acolhimento emocional e escuta genuína" },
+        { antes: "Corpo e energia desequilibrados, questões físicas se apresentando", depois: "Possibilidade de reequilíbrio energético e físico" },
+        { antes: "Padrões que se repetem", depois: "Mais confiança nas próprias decisões" },
+        { antes: "Precisando de clareza para seguir em frente", depois: "Roteiro personalizado por escrito" },
+        { antes: "Desconexão espiritual, distância da própria intuição", depois: "Reconexão com a intuição" },
       ]}
 
       includedItems={[
