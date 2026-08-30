@@ -45,9 +45,22 @@ type SalesPageTemplateV3Props = {
     textos: React.ReactNode[]
   }
 
-  transformationTitle: string
-  transformationSubtitle: string
-  transformations: Transformacao[]
+  /* Opcionais: a Ilana pediu que as Rodas Celta-Baianas não tenham o quadro
+     de dores e transformações. Sem `transformations`, a seção inteira some. */
+  transformationTitle?: string
+  transformationSubtitle?: string
+  transformations?: Transformacao[]
+
+  /* Bloco curto logo depois do cartão de preço: um parágrafo e um botão
+     próprio. Nas Rodas é o convite para levar uma roda a outra cidade — vem
+     depois dos valores porque é uma segunda intenção, não o caminho principal
+     da página. O botão abre o modal já com essa opção marcada, para a pessoa
+     não precisar escolher de novo. */
+  convitePosPreco?: {
+    texto: string
+    label: string
+    modalidadeId: string
+  }
   /* Segundo painel de transformação, para quando a página abriga dois
      assuntos com dores distintas (ex.: Colo da Terra dentro das Imersões).
      A Ilana escreveu conjuntos separados; misturar num painel só apagaria
@@ -219,6 +232,7 @@ export default function SalesPageTemplateV3({
   transformationSubtitle,
   transformations,
   transformacaoSecundaria,
+  convitePosPreco,
   includedItems,
   includedCTALabel,
   pricingImage,
@@ -248,7 +262,21 @@ export default function SalesPageTemplateV3({
   somAmbiente = true,
 }: SalesPageTemplateV3Props) {
   const [agendamentoAberto, setAgendamentoAberto] = useState(false)
-  const abrir = () => setAgendamentoAberto(true)
+  /* Qual intenção o modal deve abrir marcada. Só muda quando a página tem
+     mais de um botão levando a modalidades diferentes. */
+  const [modalidadeAlvo, setModalidadeAlvo] = useState<string | undefined>(undefined)
+
+  /* Duas funções separadas de propósito. `abrir` vai direto no onClick dos
+     botões, e o React chama o handler com o evento do clique — se ela
+     recebesse a modalidade por parâmetro, o evento entraria no lugar dela. */
+  const abrir = () => {
+    setModalidadeAlvo(undefined)
+    setAgendamentoAberto(true)
+  }
+  const abrirCom = (modalidadeId: string) => () => {
+    setModalidadeAlvo(modalidadeId)
+    setAgendamentoAberto(true)
+  }
 
   const temArcos = Boolean(heroImageA && heroImageB)
 
@@ -395,21 +423,25 @@ export default function SalesPageTemplateV3({
         </section>
 
         {/* ── 3. A TRANSFORMAÇÃO ──────────────────────────── */}
-        <section className="w-full py-8 px-2 sm:px-4 flex flex-col gap-5">
-          <PainelTransformacao
-            titulo={transformationTitle}
-            subtitulo={transformationSubtitle}
-            itens={transformations}
-          />
-
-          {transformacaoSecundaria && (
+        {/* Some por inteiro quando a página não passa `transformations` —
+            pedido da Ilana para as Rodas Celta-Baianas. */}
+        {transformations && transformations.length > 0 && (
+          <section className="w-full py-8 px-2 sm:px-4 flex flex-col gap-5">
             <PainelTransformacao
-              titulo={transformacaoSecundaria.titulo}
-              subtitulo={transformacaoSecundaria.subtitulo}
-              itens={transformacaoSecundaria.itens}
+              titulo={transformationTitle ?? 'A Transformação que Você Busca'}
+              subtitulo={transformationSubtitle ?? ''}
+              itens={transformations}
             />
-          )}
-        </section>
+
+            {transformacaoSecundaria && (
+              <PainelTransformacao
+                titulo={transformacaoSecundaria.titulo}
+                subtitulo={transformacaoSecundaria.subtitulo}
+                itens={transformacaoSecundaria.itens}
+              />
+            )}
+          </section>
+        )}
 
         {/* ── 4. INCLUSO ──────────────────────────────────── */}
         <section className="w-full py-6 px-2 sm:px-4">
@@ -565,6 +597,28 @@ export default function SalesPageTemplateV3({
           </div>
         </section>
 
+        {/* ── 5b. CONVITE DEPOIS DO PREÇO ─────────────────── */}
+        {/* Segunda intenção da página, separada do caminho principal: quem não
+            se encaixa na primeira oferta ainda tem um convite aqui. */}
+        {convitePosPreco && (
+          <section className="w-full pb-4 px-2 sm:px-4">
+            <div
+              className="w-full rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center"
+              style={{ background: PAINEL, border: `1px solid ${FIO_CLARO}` }}
+            >
+              <p
+                className="font-body text-xs sm:text-sm leading-relaxed max-w-[360px] mb-6"
+                style={{ color: 'rgba(255,255,255,0.75)' }}
+              >
+                {convitePosPreco.texto}
+              </p>
+              <BotaoV3 onClick={abrirCom(convitePosPreco.modalidadeId)}>
+                {convitePosPreco.label}
+              </BotaoV3>
+            </div>
+          </section>
+        )}
+
         {/* ── 6. FAQ ──────────────────────────────────────── */}
         <section className="w-full py-6 px-2 sm:px-4">
           <div
@@ -635,7 +689,12 @@ export default function SalesPageTemplateV3({
         </footer>
       </main>
 
+      {/* A key força o modal a remontar quando o botão clicado aponta para
+          outra modalidade. Sem isso ele guardaria a escolha do clique
+          anterior, já que o estado interno só é inicializado na montagem. */}
       <BookingModalV3
+        key={modalidadeAlvo ?? 'padrao'}
+        modalidadeInicial={modalidadeAlvo}
         aberto={agendamentoAberto}
         aoFechar={() => setAgendamentoAberto(false)}
         whatsappNumero={whatsappNumero}

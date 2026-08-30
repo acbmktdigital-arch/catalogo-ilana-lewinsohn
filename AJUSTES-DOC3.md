@@ -24,6 +24,24 @@ Criado em 30/08/2026
 | Manter "o que está incluso" na Bússola | — | já estava mantido |
 | Dores e transformações do Shirodhara | `/shirodhara` | feito antes, sem registro |
 | Dores e transformações do Acompanhamento | `/acompanhamento-terapeutico` | 30/08 |
+| Rodas Celta-Baianas — reescrita completa | `/rodas-celta-baianas` | 30/08 |
+
+**Rodas — o que a Vera decidiu por cima do documento.** O doc pedia dois botões, um para
+registrar interesse na roda do Instituto e outro para levar uma roda a outra cidade. Ela
+**tirou o primeiro** e **desceu o segundo** para depois do card de valores, com texto novo
+escrito por ela: *"Quer levar a magia e a força das Rodas Celta-Baianas para o seu espaço
+ou cidade? Entre em contato e faça o convite."*
+
+A modalidade "Roda no Instituto" não tem mais botão próprio — segue acessível pelos três
+botões "Quero participar de uma Roda", que abrem o modal com ela já marcada.
+
+⚠️ **Duas respostas do FAQ foram reescritas** porque o texto novo as tornou falsas: uma
+dizia que as rodas são "abertas a qualquer mulher que sinta o chamado" (contradiz o coven
+firmado e a entrevista) e outra mandava clicar para "saber a próxima data" (essas rodas não
+são divulgadas abertamente). Não foi pedido — vale a Ilana confirmar.
+
+**No template**, o quadro de dores e transformações virou opcional, e nasceu o bloco
+`convitePosPreco`. **No modal**, cada botão pode abrir numa modalidade já marcada.
 
 **Acompanhamento — como os pares foram montados.** As 6 transformações dela vêm em
 título + explicação, e as dores são 6: dá 1 para 1, sem descarte. Entrou no card a linha
@@ -57,22 +75,7 @@ cortar nenhuma frase — a compactação foi só de formatação.
 
 ## ⬅️ Pendente
 
-### 1. ⬅️ AQUI — Rodas Celta-Baianas, reescrita grande
-- Descrição curta do card da home muda
-- "O que são" passa de 2 parágrafos para ~8 (menciona La Loba, Cacaozito Medicina,
-  o coven firmado, a mesa vegana como altar)
-- `Ritual. Pertencimento. Natureza. Mulher Selvagem.` → mesma solução de **etiquetas**
-  usada na Bússola
-- Frase de destaque: *"Em roda, a força de uma se soma à força de todas."*
-- "Valores variáveis e sob consulta"
-- ⚠️ **Dois botões diferentes**: um para registrar interesse (a roda do Instituto exige
-  entrevista) e outro "quero uma roda na minha cidade". Hoje a página tem um botão só —
-  isso mexe na estrutura, provavelmente no modal.
-- ⚠️ **"NÃO COLOCAR DORES E TRANSFORMAÇÕES NESTE SETOR"** — o bloco tem que sair só
-  desta página. Hoje a prop `transformations` é obrigatória no template; vai precisar
-  virar opcional.
-
-### 2. Vivências, Imersões e Retiros
+### 1. ⬅️ AQUI — Vivências, Imersões e Retiros
 - Descrição nova, mais longa
 - Dores e transformações: as **dores** é que vêm no formato título + explicação aqui, e
   há mais dores que transformações — vai precisar descartar algumas

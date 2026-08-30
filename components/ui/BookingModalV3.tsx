@@ -24,6 +24,11 @@ type BookingModalV3Props = {
   modalidades: ModalidadeAgendamento[]
   /* Rótulo do seletor. Em produtos, algo como "Escolha o preparado:" */
   labelModalidade?: string
+  /* Qual modalidade já vem marcada ao abrir. Serve para quando a página tem
+     mais de um botão, cada um levando a uma intenção diferente (nas Rodas,
+     participar da roda do Instituto x levar uma roda para outra cidade).
+     Sem isso, abre sempre na primeira. */
+  modalidadeInicial?: string
 
   /* Valor exibido em "Investimento total". Some quando não há preço fechado. */
   valor?: string
@@ -91,6 +96,7 @@ export default function BookingModalV3({
   subtitulo,
   modalidades,
   labelModalidade = 'Selecione a modalidade:',
+  modalidadeInicial,
   valor,
   mostrarValor = true,
   local,
@@ -102,7 +108,9 @@ export default function BookingModalV3({
   mostrarMensagem = true,
   labelEnviar = 'Conversar e agendar no WhatsApp',
 }: BookingModalV3Props) {
-  const [modalidade, setModalidade] = useState(modalidades[0]?.id ?? '')
+  const [modalidade, setModalidade] = useState(
+    modalidadeInicial ?? modalidades[0]?.id ?? ''
+  )
   const [nome, setNome] = useState('')
   const [telefone, setTelefone] = useState('')
   const [periodo, setPeriodo] = useState<PeriodoId>('flexivel')

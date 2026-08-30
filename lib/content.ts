@@ -131,7 +131,7 @@ export const services: Service[] = [
     id: 'rodas-celta-baianas',
     slug: 'rodas-celta-baianas',
     title: 'Rodas Celta-Baianas: Feminino Sagrado',
-    description: 'Jornadas coletivas de fortalecimento feminino com ritual, cacau e partilha em círculo.',
+    description: 'Vivências em grupo de mulheres para fortalecimento e desfrute femininos. Aqui a medicina é o círculo e a ritualística.',
     image: '/images/rodas-celta-baianas.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/rodas-celta-baianas',
