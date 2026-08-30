@@ -19,13 +19,18 @@ export default function AcompanhamentoTerapeuticoPage() {
 
       transformationTitle="A Transformação que Você Busca"
       transformationSubtitle="De onde você está para onde o processo leva."
+      /* Listas do doc 3. As transformações vêm em pares de título + explicação;
+         entra no card a linha que responde melhor à dor. Onde o título é
+         abstrato, ganha a explicação (par 1: "voltam" x "se consolidam").
+         Onde a explicação repetiria as palavras da dor, ganha o título
+         (par 4: a explicação dela também diz "não só pontual"). */
       transformations={[
-        { antes: "Questões que se repetem", depois: "Mais autoconhecimento" },
+        { antes: "Padrões que voltam mesmo depois de tentar resolver", depois: "Mudanças que se consolidam com o tempo" },
         { antes: "Sensação de estar sozinha no processo", depois: "Escuta constante" },
-        { antes: "Falta de constância no autocuidado", depois: "Apoio contínuo" },
-        { antes: "Muitas questões ao mesmo tempo", depois: "Orientação personalizada" },
-        { antes: "Momentos de instabilidade emocional", depois: "Flexibilidade de frequência" },
-        { antes: "Desejo de transformação real", depois: "Transformação sustentável" },
+        { antes: "Dificuldade de constância no autocuidado", depois: "Práticas sugeridas de acordo com seu processo" },
+        { antes: "Precisando de acompanhamento, não só de uma sessão pontual", depois: "Apoio contínuo" },
+        { antes: "Necessidade de apoio regular", depois: "Sessões semanais, quinzenais ou mensais" },
+        { antes: "Desejo de transformação real", depois: "Mais autoconhecimento" },
       ]}
 
       includedItems={[

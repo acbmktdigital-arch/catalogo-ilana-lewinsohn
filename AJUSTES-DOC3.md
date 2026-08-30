@@ -23,6 +23,21 @@ Criado em 30/08/2026
 | Dores e transformações da Bússola | `/bussola-orientacao-xamanica` | `979eee0` |
 | Manter "o que está incluso" na Bússola | — | já estava mantido |
 | Dores e transformações do Shirodhara | `/shirodhara` | feito antes, sem registro |
+| Dores e transformações do Acompanhamento | `/acompanhamento-terapeutico` | 30/08 |
+
+**Acompanhamento — como os pares foram montados.** As 6 transformações dela vêm em
+título + explicação, e as dores são 6: dá 1 para 1, sem descarte. Entrou no card a linha
+que responde melhor à dor — 3 títulos e 3 explicações. Onde o título é abstrato ganhou a
+explicação ("Padrões que **voltam**" → "Mudanças que **se consolidam** com o tempo");
+onde a explicação repetiria as palavras da dor ganhou o título ("não só de uma sessão
+pontual" → "Apoio contínuo", já que a explicação dela também diz "não só pontual").
+
+O par mais discutível é o último: *"Desejo de transformação real"* → *"Mais
+autoconhecimento"*. O eco óbvio seria "Transformação sustentável", mas fica tautológico.
+
+⚠️ **Quatro das seis dores que estavam na página não eram da Ilana** e foram substituídas
+pelas do documento ("Questões que se repetem", "Muitas questões ao mesmo tempo",
+"Momentos de instabilidade emocional" e "Falta de constância no autocuidado").
 
 **Shirodhara — duas diferenças mínimas em relação ao documento**, para a Ilana decidir
 se quer a letra exata dela:
@@ -42,14 +57,7 @@ cortar nenhuma frase — a compactação foi só de formatação.
 
 ## ⬅️ Pendente
 
-**Ordem combinada com a Vera (30/08):** retomar pelo **Acompanhamento Terapêutico**.
-
-### 1. ⬅️ AQUI — Acompanhamento Terapêutico, dores e transformações
-6 dores. As transformações vêm no formato **título + explicação** (como no doc 2):
-"Apoio contínuo" / "Acompanhamento ao longo do tempo, não só pontual", e assim por diante.
-São 6 pares — decidir se a explicação entra na frase ou se descarta.
-
-### 2. Rodas Celta-Baianas — reescrita grande
+### 1. ⬅️ AQUI — Rodas Celta-Baianas, reescrita grande
 - Descrição curta do card da home muda
 - "O que são" passa de 2 parágrafos para ~8 (menciona La Loba, Cacaozito Medicina,
   o coven firmado, a mesa vegana como altar)
@@ -64,7 +72,7 @@ São 6 pares — decidir se a explicação entra na frase ou se descarta.
   desta página. Hoje a prop `transformations` é obrigatória no template; vai precisar
   virar opcional.
 
-### 3. Vivências, Imersões e Retiros
+### 2. Vivências, Imersões e Retiros
 - Descrição nova, mais longa
 - Dores e transformações: as **dores** é que vêm no formato título + explicação aqui, e
   há mais dores que transformações — vai precisar descartar algumas
