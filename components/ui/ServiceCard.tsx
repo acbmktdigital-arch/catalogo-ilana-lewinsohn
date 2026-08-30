@@ -19,25 +19,34 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       className="service-card block relative overflow-hidden rounded-xl mx-4 group"
       style={{ background: 'var(--cor-card)' }}
     >
-      {/* Sem altura fixa: cada card tem a altura do próprio conteúdo.
-          É o que permite ter as duas coisas ao mesmo tempo — texto justo
-          dentro do card E intervalo igual entre todos eles. Com altura
-          travada sobra ar, e esse ar ou desfigura o texto (empurrando o
-          "SABER MAIS" para longe do título) ou desiguala o intervalo
-          (se o bloco for centralizado). Sem sobra, não há o que distribuir:
-          o respiro é sempre os 12px do padding, em cima e embaixo.
-          O preço é que os cards ficam com alturas diferentes. */}
-      <article className="flex items-stretch">
-        {/* Título e "SABER MAIS" colados, sem folga a distribuir: o card cresce
-            com eles. Assim os 12px de respiro valem para todos os cards, e a
-            faixa entre dois cards é sempre 12 + 8 (o gap da lista) + 12. */}
-        <div className="flex-1 px-4 py-3 flex flex-col gap-1.5">
-          {/* 15px: medido com a própria Lora Italic, é o tamanho em que todos
-              os títulos cabem em no máximo 2 linhas num celular de 360px. A
-              16px, "Acompanhamento Terapêutico Integrativo" ia a 3 e ficava
-              sendo o único card destoando em altura. */}
+      {/* Duas regras, uma para cada contexto.
+
+          CELULAR (até 639px): sem altura fixa, cada card tem a altura do
+          próprio conteúdo. É o que permite ter texto justo E intervalo igual
+          entre os cards ao mesmo tempo. Com altura travada sobra ar, e esse ar
+          ou desfigura o texto (empurrando o "SABER MAIS" para longe do título)
+          ou desiguala o intervalo (se o bloco for centralizado). Sem sobra não
+          há o que distribuir. O preço é a altura variar de card para card.
+
+          DESKTOP (640px+): volta a altura fixa de 108px, como sempre foi. Aqui
+          o container trava em 448px, a coluna de texto fica bem mais larga e
+          nenhum título passa de 2 linhas — então a folga sobrando é pequena e
+          o desenho não sofre com ela. */}
+      <article className="flex items-stretch sm:h-[108px]">
+        {/* Celular: título e "SABER MAIS" colados, sem folga a distribuir — o
+            card cresce com eles, e a faixa entre dois cards é sempre 12 + 8
+            (o gap da lista) + 12.
+            Desktop: volta o respiro de 16px e a centralização de antes, que
+            só fazem sentido junto com a altura fixa. */}
+        <div className="flex-1 px-4 py-3 sm:py-4 flex flex-col gap-1.5 sm:gap-2 sm:justify-center">
+          {/* 15px no celular: medido com a própria Lora Italic, é o tamanho em
+              que todos os títulos cabem em no máximo 2 linhas num aparelho de
+              360px. A 16px, "Acompanhamento Terapêutico Integrativo" ia a 3 e
+              ficava sendo o único card destoando em altura.
+              No desktop segue 20px e a quebra normal, como sempre foi — lá a
+              coluna é larga e nada disso era problema. */}
           <h2
-            className="font-heading text-[15px] sm:text-xl leading-tight italic text-balance"
+            className="font-heading text-[15px] sm:text-xl leading-tight italic text-balance sm:text-wrap"
             style={{ color: '#FFFFFF' }}
           >
             {service.title}
@@ -46,9 +55,10 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             /* leading-none: o "SABER MAIS" tem 11px, mas a entrelinha padrão
                reservava ~16px. Os 5px que sobravam eram justamente o que fazia
                um título de 3 linhas não caber nos 104px. */
-            /* leading-none: a 11px a entrelinha padrão reservava ~16px, e essa
-               sobra invisível entrava na conta do respiro de baixo. */
-            className="font-sans text-[11px] leading-none uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
+            /* leading-none no celular: a 11px a entrelinha padrão reservava
+               ~16px, e essa sobra invisível entrava na conta do respiro de
+               baixo. No desktop não atrapalha, então fica como era. */
+            className="font-sans text-[11px] leading-none sm:leading-normal uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
             style={{ color: DOURADO_CLARO }}
           >
             {service.ctaLabel}
