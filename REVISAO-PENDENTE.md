@@ -146,3 +146,18 @@ um "A definir" em Lora 36px, no lugar reservado ao valor, passava a impressão e
 **Ponto que ficou em aberto:** os textos dessas frases foram escritos por mim e
 descrevem como o contato funciona (processo seletivo, lotes pequenos, lista de espera).
 Vale a Ilana ler para confirmar que reflete a prática dela.
+
+---
+
+## Links internos entre páginas — a resolver
+
+**Acompanhamento Terapêutico Integrativo → Bússola.** É essa a direção, definida
+pela Vera em 30/08/2026. A página do Acompanhamento é que deve apontar para a
+Bússola, e não o contrário.
+
+Contexto: o texto novo da Bússola termina dizendo que ela "pode se transformar em
+um processo de Acompanhamento Terapêutico Integrativo". Cheguei a propor linkar
+dali para cá — a Vera corrigiu o sentido. Fica para quando chegarmos na página do
+Acompanhamento.
+
+Nenhum link foi criado até agora. A menção na Bússola segue como texto simples.
