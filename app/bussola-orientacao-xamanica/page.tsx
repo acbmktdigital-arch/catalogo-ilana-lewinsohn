@@ -11,11 +11,65 @@ export default function BussolaOrientacaoXamanicaPage() {
       heroCTALabel="Quero minha orientação"
 
       whatIsTitle={<>O que é a <span style={{color:'var(--cor-destaque)'}}>Bússola</span>?</>}
+      /* Texto novo da Ilana, bem mais longo que o anterior. Vai tudo num item
+         só do array de propósito: assim o espaçamento entre os parágrafos é
+         controlado aqui (10px) em vez dos 16px que o template aplica entre
+         itens, e a seção encolhe sem que nenhuma frase dela se perca. */
       whatIsTexts={[
-        "É um atendimento online de escuta e orientação para reencontrar o rumo em questões físicas, energéticas ou emocionais.",
-        "A partir de referências do Ayurveda, Xamanismo, Alquimia, Yoga e Ervaria, é construído um roteiro personalizado, entregue por escrito.",
+        <>
+          <span className="block mb-2.5">
+            Uma conversa para ajudar você a reencontrar o rumo ou dar atenção a algo
+            em seu corpo físico, energético ou emocional que esteja pedindo mais cuidado.
+            Juntas, construímos um roteiro possível de ações e práticas para apoiar
+            esse momento da sua vida.
+          </span>
+
+          <span className="block mb-2.5">
+            É um atendimento online de escuta, acolhimento e orientação para quem deseja
+            reorganizar a vida com mais clareza, presença e simplicidade.
+          </span>
+
+          <span className="block mb-2.5">
+            A partir de referências do Ayurveda, do Xamanismo, da Alquimia, do Yoga e da
+            Ervaria, construímos um roteiro personalizado, entregue por escrito, com
+            orientações e sugestões práticas para favorecer o equilíbrio da saúde física,
+            mental, emocional e energética.
+          </span>
+
+          <span className="block mb-2.5">
+            O cuidado precisa ser possível para que possa ser vivido, e não provocar mais
+            frustração ou cobrança. Por isso, seguimos por caminhos simples, com pequenas
+            etapas. Pequenos ajustes podem gerar grandes transformações.
+          </span>
+
+          <span className="block mb-3.5">
+            Para quem desejar aprofundar esse caminho, a Bússola pode se transformar em um
+            processo de Acompanhamento Terapêutico Integrativo.
+          </span>
+
+          {/* As cinco palavras viram uma fileira de etiquetas. Soltas, ocupariam
+              cinco alturas de linha; assim cabem em uma ou duas. Dourado como
+              texto é seguro aqui: o fundo desta seção é o #232112. */}
+          <span className="flex flex-wrap gap-x-2 gap-y-2">
+            {['Alimentação', 'Rotina', 'Autocuidado', 'Movimento', 'Presença'].map((palavra) => (
+              <span
+                key={palavra}
+                className="inline-flex items-center rounded-full px-3 py-1 font-sans text-[10px] uppercase tracking-[0.14em] font-semibold"
+                style={{
+                  color: 'var(--cor-destaque)',
+                  border: '1px solid rgba(201,162,39,0.30)',
+                }}
+              >
+                {palavra}
+              </span>
+            ))}
+          </span>
+        </>,
       ]}
-      whatIsQuote="Às vezes, tudo que precisamos é de uma bússola para lembrar o caminho."
+      /* A frase de fechamento dela ocupa o destaque dourado que a seção já
+         tinha. É a última do texto, então o lugar coincide — ganha peso sem
+         custar altura nenhuma e sem sair da ordem em que ela escreveu. */
+      whatIsQuote="Um convite para reencontrar seu centro e seguir com mais consciência e leveza."
 
       transformationTitle="A Transformação que Você Busca"
       transformationSubtitle="De onde você está para onde a orientação leva."
