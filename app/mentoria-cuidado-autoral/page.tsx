@@ -7,7 +7,10 @@ export default function MentoriaCuidadoAutoralPage() {
       serviceLabel="Ilana Lewinsohn · Mentoria Cuidado Autoral"
       heroTitle={<>Fortaleça sua identidade na Mentoria <span style={{color:'var(--cor-destaque)'}}>Cuidado Autoral</span></>}
       heroSubtitle="Para terapeutas que desejam desenvolver uma linguagem própria de cuidado e ampliar presença, confiança e valor percebido."
-      heroImageWide="/images/mentoria-cuidado-autoral.jpg"
+      /* Recortada em 4:3 a partir de y=850 da original, para reduzir a lona da
+         tenda como a Ilana pediu: no celular sobra uma faixa fina no topo e no
+         desktop, onde a moldura vira 16/10 e apara mais, ela some por completo. */
+      heroImageWide="/images/mentoria-cuidado-autoral-aula.jpg"
       heroCTALabel="Quero me candidatar"
 
       whatIsTitle={<>O que é a Mentoria <span style={{color:'var(--cor-destaque)'}}>Cuidado Autoral</span>?</>}
@@ -36,7 +39,7 @@ export default function MentoriaCuidadoAutoralPage() {
       ]}
       includedCTALabel="Quero me candidatar"
 
-      pricingImage="/images/mentoria-cuidado-autoral.jpg"
+      pricingImage="/images/mentoria-cuidado-autoral-aula.jpg"
       pricingTitle="Mentoria Cuidado Autoral"
       pricingSubtitle="Próxima turma em formação."
       precoAviso="As turmas são pequenas e a entrada é por processo seletivo. Fale com Ilana para receber o formulário de aplicação e saber o valor da próxima turma."

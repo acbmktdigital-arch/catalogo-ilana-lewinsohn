@@ -150,7 +150,7 @@ export const services: Service[] = [
     slug: 'mentoria-cuidado-autoral',
     title: 'Mentoria Cuidado Autoral',
     description: 'Mentoria para terapeutas que querem fortalecer sua identidade profissional e linguagem própria de cuidado.',
-    image: '/images/mentoria-cuidado-autoral.jpg',
+    image: '/images/mentoria-cuidado-autoral-aula.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/mentoria-cuidado-autoral',
   },
