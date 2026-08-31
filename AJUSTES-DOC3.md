@@ -25,6 +25,24 @@ Criado em 30/08/2026
 | Dores e transformações do Shirodhara | `/shirodhara` | feito antes, sem registro |
 | Dores e transformações do Acompanhamento | `/acompanhamento-terapeutico` | 30/08 |
 | Rodas Celta-Baianas — reescrita completa | `/rodas-celta-baianas` | 30/08 |
+| Vivências, Imersões e Retiros | `/vivencias-imersoes-retiros` | 30/08 |
+
+**Vivências — como ficou.** As dores dela vêm em pares de título + explicação: são
+**6 dores contra 8 transformações**, então duas ficaram de fora. As duas primeiras linhas
+da lista não eram dores, abriam o bloco — viraram o título (*"Você se reconhece nisso?"*)
+e o subtítulo (*"Frequentemente os bloqueios não são físicos — são energéticos."*).
+
+Descartadas: *"Práticas corporais integradas"* e *"Espaço de escuta e partilha coletiva"*.
+Não por serem fracas: nenhuma das duas é uma transformação. Descrevem o que **acontece na
+vivência**, e já aparecem no texto de abertura e na lista do que está incluído.
+
+A Vera reescreveu a dor mais viva da lista. Era *"Quero uma vivência integrativa e com
+cheiro de mato onde moro e não encontro!"* e passou a *"Quero uma vivência integrativa com
+cheiro de mato, porque onde moro não tenho isso."* — a versão dela explica a causa, e aí a
+dor passa a ser a falta de acesso, que é o que o texto de abertura responde.
+
+Corrigido um erro de digitação do documento: faltava a vírgula em *"grupos, comunidades
+equipes empresariais"*.
 
 **Rodas — o que a Vera decidiu por cima do documento.** O doc pedia dois botões, um para
 registrar interesse na roda do Instituto e outro para levar uma roda a outra cidade. Ela
@@ -73,10 +91,10 @@ cortar nenhuma frase — a compactação foi só de formatação.
 
 ---
 
-## ⬅️ Pendente
+## ✅ Documento 3 concluído
 
-### 1. ⬅️ AQUI — Vivências, Imersões e Retiros
-- Descrição nova, mais longa
-- Dores e transformações: as **dores** é que vêm no formato título + explicação aqui, e
-  há mais dores que transformações — vai precisar descartar algumas
-- Abre com uma pergunta: *"Você se reconhece nisso?"*
+Nada pendente aqui. Os pontos que dependem da Ilana estão marcados com ⚠️ acima:
+as duas respostas do FAQ das Rodas que reescrevi sem ter sido pedido, as quatro dores do
+Acompanhamento que não eram dela e as duas diferenças mínimas do Shirodhara.
+
+**Próximo:** documento 4. Só a parte da Botica foi lida até agora — ver `AJUSTES-DOC2.md`.
