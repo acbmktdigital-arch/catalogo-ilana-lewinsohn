@@ -141,7 +141,7 @@ export const services: Service[] = [
     slug: 'vivencias-imersoes-retiros',
     title: 'Vivências, Imersões e Retiros',
     description: 'Experiências construídas de forma personalizada para grupos, comunidades, equipes empresariais e instituições.',
-    image: '/images/vivencias-imersoes-retiros.jpg',
+    image: '/images/vivencias-roda-em-circulo.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/vivencias-imersoes-retiros',
   },

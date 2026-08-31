@@ -7,7 +7,10 @@ export default function VivenciasImersoesRetirosPage() {
       serviceLabel="Ilana Lewinsohn · Vivências, Imersões e Retiros"
       heroTitle={<>Experiências sob medida em <span style={{color:'var(--cor-destaque)'}}>Vivências, Imersões e Retiros</span></>}
       heroSubtitle="Experiências construídas de forma personalizada para grupos, comunidades, equipes empresariais e instituições."
-      heroImageWide="/images/vivencias-imersoes-retiros.jpg"
+      /* 1280x960, exatamente 4:3 — a mesma proporção da moldura no celular,
+         então nada é cortado ali. No desktop a moldura vira 16/10 e apara 80px
+         em cima e embaixo: sai parede e sobra a roda inteira. */
+      heroImageWide="/images/vivencias-roda-em-circulo.jpg"
       heroCTALabel="Quero construir minha vivência"
 
       whatIsTitle={<>O que são as <span style={{color:'var(--cor-destaque)'}}>Vivências, Imersões e Retiros</span>?</>}
@@ -47,7 +50,7 @@ export default function VivenciasImersoesRetirosPage() {
       ]}
       includedCTALabel="Quero construir minha vivência"
 
-      pricingImage="/images/vivencias-imersoes-retiros.jpg"
+      pricingImage="/images/vivencias-roda-em-circulo.jpg"
       pricingTitle="Vivências, Imersões e Retiros"
       pricingSubtitle="Para grupos, comunidades e empresas."
       precoAviso="Cada vivência é orçada sob medida, conforme o tamanho do grupo, a duração e a programação escolhida."
