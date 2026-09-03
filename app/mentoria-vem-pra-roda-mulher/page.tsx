@@ -5,17 +5,57 @@ export default function MentoriaVemPraRodaMulherPage() {
     <SalesPageTemplateV3
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · Mentoria Vem Pra Roda, Mulher!"
-      heroTitle={<>Aprenda a conduzir Rodas em <span style={{color:'var(--cor-destaque)'}}>Vem Pra Roda, Mulher!</span></>}
+      /* "Celta-Baianas" sem o s em Celta, como no resto do site e no nome da
+         própria página das Rodas. No documento ela escreveu das duas formas. */
+      heroTitle={<>Aprenda a conduzir Rodas Celta-Baianas em <span style={{color:'var(--cor-destaque)'}}>Vem Pra Roda, Mulher!</span></>}
       heroSubtitle="Mentoria para mulheres que desejam criar e conduzir Rodas de Mulheres, com mais de duas décadas de experiência da facilitadora."
       heroImageWide="/images/mentoria-vem-pra-roda-mulher.jpg"
-      heroCTALabel="Quero me candidatar"
+      heroCTALabel="Quero aplicar para a Mentoria"
 
       whatIsTitle={<>O que é a Mentoria <span style={{color:'var(--cor-destaque)'}}>Vem Pra Roda, Mulher!</span>?</>}
       whatIsTexts={[
-        "É uma mentoria voltada a mulheres que desejam criar e conduzir Rodas de Mulheres, com base em mais de duas décadas de experiência da facilitadora.",
-        "Acontece em turmas pequenas, com processo seletivo por formulário de aplicação, para um acompanhamento próximo e cuidadoso.",
+        /* Quatro linhas curtas de abertura, a batida que ela escreveu. Num
+           parágrafo só com quebras: como quatro parágrafos separados, frases
+           de três palavras pareceriam erro de diagramação. */
+        <>
+          Alguns caminhos não se ensinam.
+          <br />
+          São vividos.
+          <br />
+          Atravessados por dentro.
+          <br />
+          E depois, compartilhados.
+        </>,
+
+        'Esta mentoria nasceu do desejo de compartilhar mais de duas décadas de experiência na criação, facilitação e sustentação de Rodas de Mulheres.',
+
+        'É voltada para mulheres que desejam criar e conduzir círculos de fortalecimento feminino em profunda conexão com a Natureza, a comunidade e o Feminino Sagrado.',
+
+        'Inspirada nas Rodas Celta-Baianas, percorre os Sabbaths celtas em diálogo com saberes afro-brasileiros, indígenas, xamânicos e contemporâneos, sempre respeitando a singularidade de cada território, de cada tempo e de cada facilitadora.',
+
+        'Mais do que ensinar roteiros ou rituais prontos — embora seja, sim, rica em dicas preciosas, dinâmicas e elementos práticos que apoiam esse caminho — esta jornada convida você a compreender princípios, refinar a intuição, fortalecer sua presença e encontrar sua própria forma de conduzir mulheres.',
+
+        /* Sete palavras soltas viram etiquetas. Em linhas separadas ocupariam
+           sete alturas de linha; assim cabem em duas ou três. */
+        <span key="etiquetas" className="flex flex-wrap gap-x-2 gap-y-2">
+          {['Escuta', 'Presença', 'Força da Mulher Selvagem', 'Ousadia', 'Criatividade', 'Coragem', 'Sororidade'].map((palavra) => (
+            <span
+              key={palavra}
+              className="inline-flex items-center rounded-full px-3 py-1 font-sans text-[10px] uppercase tracking-[0.14em] font-semibold"
+              style={{
+                color: 'var(--cor-destaque)',
+                border: '1px solid rgba(201,162,39,0.30)',
+              }}
+            >
+              {palavra}
+            </span>
+          ))}
+        </span>,
       ]}
-      whatIsQuote="Quem já foi tocada por uma Roda, um dia sente o chamado para abrir a sua."
+      /* As três frases finais dela são uma coisa só: "Um convite para
+         facilitar... [para] ampliar... [para] fortalecer...". Separá-las
+         deixaria duas frases começando no infinitivo, sem sujeito. */
+      whatIsQuote="Um convite para facilitar rodas vivas, autênticas e profundamente conectadas com quem você é. Ampliar seu repertório de ritualísticas do cuidado. Fortalecer sua identidade como guardiã de círculos femininos e ampliar o valor percebido do seu trabalho."
 
       transformationTitle="A Transformação que Você Busca"
       transformationSubtitle="De onde você está para onde a mentoria leva."
@@ -34,14 +74,19 @@ export default function MentoriaVemPraRodaMulherPage() {
         "Compartilhamento de mais de 20 anos de experiência",
         "Processo seletivo por formulário de aplicação",
       ]}
-      includedCTALabel="Quero me candidatar"
+      includedCTALabel="Quero aplicar para a Mentoria"
 
       pricingImage="/images/mentoria-vem-pra-roda-mulher.jpg"
       pricingTitle="Mentoria Vem Pra Roda, Mulher!"
-      pricingSubtitle="Próxima turma em formação."
-      precoAviso="As turmas são pequenas e a entrada é por processo seletivo. Fale com Ilana para receber o formulário de aplicação e saber o valor da próxima turma."
-      priceNote="Processo seletivo por formulário de aplicação"
-      pricingCTALabel="Quero me candidatar"
+      /* As instruções vêm antes do botão: quem clica precisa saber o que vai
+         acontecer antes de clicar. */
+      pricingSubtitle="Esta travessia é construída para mulheres comprometidas com seu próprio caminho e com o cuidado de outras mulheres. Os grupos são pequenos, favorecendo proximidade, trocas verdadeiras e acompanhamento atento. Se esta mentoria fez sentido para você, preencha o Formulário de Aplicação. Leva cerca de 3 minutos e me permitirá conhecer um pouco da sua trajetória antes da nossa conversa."
+      precoAviso="Próxima turma em formação."
+      /* ⚠️ PENDENTE ANTES DE DIVULGAR: o texto acima promete um Formulário de
+         Aplicação, mas o botão ainda abre o WhatsApp. Mesma situação da
+         Mentoria Cuidado Autoral — ver AJUSTES-DOC4.md. */
+      priceNote="A partir das suas respostas, entrarei em contato pelo WhatsApp para agendarmos uma conversa e avaliarmos, juntas, se este é o momento certo para seguirmos."
+      pricingCTALabel="Quero aplicar para a Mentoria"
 
       faqItems={[
         {
@@ -54,27 +99,27 @@ export default function MentoriaVemPraRodaMulherPage() {
         },
         {
           q: "Como funciona o processo seletivo?",
-          a: "É feito por formulário de aplicação, enviado após contato pelo WhatsApp.",
+          a: "Começa pelo Formulário de Aplicação, que leva cerca de 3 minutos. A partir das suas respostas, Ilana entra em contato pelo WhatsApp para agendarem uma conversa.",
         },
         {
           q: "Quando começa a próxima turma?",
           a: "As turmas são formadas periodicamente; fale com Ilana para saber a próxima data.",
         },
         {
-          q: "Como me candidato?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para receber o formulário de aplicação.",
+          q: "Como faço para aplicar?",
+          a: "Clique no botão e preencha o Formulário de Aplicação, contando um pouco do seu chamado. Ilana retorna pelo WhatsApp para agendarem uma conversa.",
         },
       ]}
 
-      modalEtiqueta="Candidatura"
-      modalTitulo="Candidatar-se à mentoria"
-      modalSubtitulo="Deixe seu contato para receber o formulário de aplicação da próxima turma."
-      modalFraseInicial="Gostaria de me candidatar à"
+      modalEtiqueta="Aplicação"
+      modalTitulo="Aplicar para a mentoria"
+      modalSubtitulo="Deixe seu contato e conte um pouco do seu chamado. Ilana retorna para agendarem uma conversa."
+      modalFraseInicial="Gostaria de aplicar para a"
       modalMostrarValor={false}
       modalMostrarPeriodo={false}
       modalLabelMensagem="Sobre o seu chamado"
       modalPlaceholderMensagem="Já facilita Rodas? O que te trouxe até aqui?"
-      modalLabelEnviar="Enviar candidatura no WhatsApp"
+      modalLabelEnviar="Enviar minha aplicação no WhatsApp"
       modalidades={[
         {
           id: 'mentoria',

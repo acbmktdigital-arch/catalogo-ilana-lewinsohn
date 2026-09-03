@@ -71,8 +71,12 @@ type SalesPageTemplateV3Props = {
     itens: Transformacao[]
   }
 
-  includedItems: string[]
-  includedCTALabel: string
+  /* Opcionais: sem `includedItems` a seção inteira some, com o botão e com o
+     grupo de ambiente e materiais junto. Usado onde a lista ainda não tem o
+     que dizer — na Mentoria Cuidado Autoral, o detalhamento vai vir com o
+     formulário; o doc 4 pede a mesma remoção na Botica. */
+  includedItems?: string[]
+  includedCTALabel?: string
 
   pricingImage: string
   pricingTitle: string
@@ -444,6 +448,10 @@ export default function SalesPageTemplateV3({
         )}
 
         {/* ── 4. INCLUSO ──────────────────────────────────── */}
+        {/* O grupo de ambiente e materiais mora dentro desta seção, então sai
+            junto quando a lista não é passada. É o comportamento certo: ele
+            complementa a lista, não vive sozinho. */}
+        {includedItems && includedItems.length > 0 && (
         <section className="w-full py-6 px-2 sm:px-4">
           <div
             className="w-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center"
@@ -516,6 +524,7 @@ export default function SalesPageTemplateV3({
             <BotaoV3 onClick={abrir}>{includedCTALabel}</BotaoV3>
           </div>
         </section>
+        )}
 
         {/* ── 5. PREÇO ────────────────────────────────────── */}
         <section className="w-full py-10 px-2 sm:px-4">
