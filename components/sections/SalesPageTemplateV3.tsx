@@ -678,10 +678,14 @@ export default function SalesPageTemplateV3({
             psicológicos, nutricionais ou farmacológicos.
           </p>
 
+          {/* Era 11px, menor que o aviso legal logo acima — e é o único caminho
+              de volta ao catálogo. Sobe para 14px no celular e 16px no desktop,
+              com peso médio e área de toque maior. O contraste já era bom:
+              dourado sobre o fundo escuro dá 6,7:1. */}
           <div className="mb-4">
             <Link
               href="/"
-              className="font-sans text-[11px] sm:text-xs transition-opacity hover:opacity-100 inline-flex items-center gap-1"
+              className="font-sans text-sm sm:text-base font-medium py-2 transition-opacity hover:opacity-80 inline-flex items-center gap-1.5"
               style={{ color: 'var(--cor-destaque)' }}
             >
               ← Voltar à página principal
