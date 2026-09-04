@@ -7,7 +7,11 @@ export default function ToqueDaJuremaPage() {
       serviceLabel="Ilana Lewinsohn · MASSIXA Temática | Toque da Jurema"
       heroTitle={<>A força da floresta no <span style={{color:'var(--cor-destaque)'}}>Toque da Jurema</span></>}
       heroSubtitle="Massagem sobre uma cama de ervas aromáticas, com toque vigoroso e limpeza energética profunda."
-      heroImageWide="/images/toque-da-jurema.jpg"
+      /* Original vertical (4000x6000). Moldura quadrada em qualquer largura,
+         para não perder as mãos que colocam a folha na testa — que é o toque
+         que dá nome à terapia. Recorte também quadrado, então nada é cortado. */
+      heroImageWide="/images/toque-da-jurema-cama-de-ervas.jpg"
+      heroAspecto="alto"
       heroCTALabel="Quero minha sessão"
 
       whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Toque da Jurema</span>?</>}
@@ -52,7 +56,7 @@ export default function ToqueDaJuremaPage() {
       ]}
       includedCTALabel="Quero agendar minha sessão"
 
-      pricingImage="/images/toque-da-jurema.jpg"
+      pricingImage="/images/toque-da-jurema-cama-de-ervas.jpg"
       pricingTitle="Toque da Jurema"
       pricingSubtitle="Escolha a duração que combina com o seu momento e agende pelo WhatsApp."
       precos={[

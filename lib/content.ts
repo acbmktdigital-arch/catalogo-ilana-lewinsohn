@@ -60,7 +60,7 @@ export const services: Service[] = [
     slug: 'toque-da-jurema',
     title: 'MASSIXA Temática | Toque da Jurema',
     description: 'Toque vigoroso sobre cama de ervas, inspirado na força cabocla, para limpeza energética profunda.',
-    image: '/images/toque-da-jurema.jpg',
+    image: '/images/toque-da-jurema-cama-de-ervas.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/toque-da-jurema',
   },
