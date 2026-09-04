@@ -14,8 +14,8 @@ export type Categoria = {
   slug: string
   titulo: string
   descricao: string
-  /* ⚠️ Todas as imagens abaixo são PROVISÓRIAS, emprestadas dos serviços.
-     A Ilana vai escolher uma foto própria para cada bloco. */
+  /* Foto do bloco. São emprestadas dos serviços, por decisão da Vera em
+     04/09/2026 — só se a Ilana pedir alguma específica é que trocam. */
   imagem: string
   /* Slugs dos serviços que aparecem na página do bloco */
   servicos: string[]
