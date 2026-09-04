@@ -6,46 +6,79 @@ export default function BoticaDaBruxaPage() {
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · Botica da Bruxa"
       heroTitle={<>Preparados artesanais da <span style={{color:'var(--cor-destaque)'}}>Botica da Bruxa</span></>}
-      heroSubtitle="Linha de preparados artesanais inspirados na Ervaria, produzidos em pequenos lotes."
+      heroSubtitle="Linha de preparados artesanais de Ervaria produzidos em pequenos lotes, com todo zelo e amor."
       heroImageWide="/images/botica-da-bruxa.jpg"
       heroCTALabel="Quero saber a disponibilidade"
 
       whatIsTitle={<>O que é a <span style={{color:'var(--cor-destaque)'}}>Botica da Bruxa</span>?</>}
       whatIsTexts={[
+        /* Nome científico em itálico, gênero com inicial maiúscula e espécie
+           em minúscula — regra que a Ilana pediu por ser bióloga. */
         <>
-          É uma linha de preparados artesanais inspirados na Ervaria, produzidos em pequenos
+          É uma linha de preparados artesanais de Ervaria, produzidos em pequenos
           lotes: Pomada e Tintura de Erva-Baleeira (<em>Cordia verbenacea</em>, linha Maria
-          Preta), blends autorais de óleos essenciais e Rapé de Juerana Vermelha
+          Preta), blends autorais de óleos essenciais puríssimos e Rapé de Juerana Vermelha
           (<em>Parkia pendula</em>).
         </>,
-        "Os blends autorais incluem Cabocla Serena, Lilith, Força de Oyá, Força Imune e Você é Linda — cada um criado com uma intenção específica.",
+        "Os blends autorais incluem Cabocla Serena, Lilith, Força de Oyá, Força Imune e Você é Linda — cada um criado com uma intenção específica, traduzida no nome.",
       ]}
-      whatIsQuote="Cada preparado carrega a intenção de quem planta, colhe e prepara com as mãos."
+      whatIsQuote="Cada preparado carrega a intenção e o zelo de quem planta, colhe e prepara com as mãos. É o rezo materializado em cuidado."
 
-      transformationTitle="A Transformação que Você Busca"
-      transformationSubtitle="De onde você está para o que os preparados trazem."
-      transformations={[
-        { antes: "Tensões e desconfortos do dia a dia", depois: "Pomada e Tintura de Erva-Baleeira" },
-        { antes: "Vontade de rituais próprios em casa", depois: "Blends autorais de óleos essenciais" },
-        { antes: "Interesse por ervaria ancestral", depois: "Rapé de Juerana Vermelha" },
-        { antes: "Dificuldade de encontrar produtos naturais autênticos", depois: "Produção em pequenos lotes" },
-        { antes: "Desejo de proteção e força energética", depois: "Intenção em cada blend" },
-        { antes: "Sistema imunológico pedindo apoio", depois: "Ervaria com raiz ancestral" },
+      /* Sem dores e transformações: aqui não há dor a resolver, e sim produtos
+         a apresentar. O quadro vira catálogo — nome e descrição, sem seta. */
+      paineisDeLista={[
+        {
+          titulo: 'O cuidado preciso que você busca',
+          subtitulo: 'Natural, feito em pequenos lotes e a depender da oferta de plantas no quintal.',
+          itens: [
+            {
+              nome: 'Pomada e Tintura de Erva-Baleeira',
+              descricao: 'Linha Maria Preta: anti-inflamatória, para alívio corporal',
+            },
+            {
+              nome: 'Blends autorais de óleos essenciais',
+              descricao: 'Cabocla Serena, Lilith, Força de Oyá, Força Imune, Você é Linda',
+            },
+            {
+              nome: 'Rapé de Juerana Vermelha',
+              descricao: (
+                <>
+                  Preparado tradicional de medicina da floresta, com cascas da potente{' '}
+                  <em>Parkia pendula</em>.
+                </>
+              ),
+            },
+          ],
+        },
+        {
+          titulo: 'Por que esses não são produtos ordinários?',
+          subtitulo:
+            'Porque são preparados com muito amor, no seio da Mata Atlântica sul-baiana, pelo coração e as mãos de uma bruxa arteira cuidadeira. E além disso:',
+          itens: [
+            {
+              nome: 'Produção em pequenos lotes',
+              descricao: 'No tempo da artesania, com cuidado em cada preparado',
+            },
+            {
+              nome: 'Intenção em cada blend',
+              descricao: 'Produtos criados com propósito específico',
+            },
+            {
+              nome: 'Ervaria com raiz ancestral',
+              descricao: 'Conhecimento passado de geração em geração',
+            },
+          ],
+        },
       ]}
 
-      includedItems={[
-        "Pomada e Tintura de Erva-Baleeira (linha Maria Preta)",
-        "Blends autorais de óleos essenciais",
-        "Rapé de Juerana Vermelha",
-        "Envios fora de Porto Seguro sob encomenda",
-      ]}
-      includedCTALabel="Quero saber a disponibilidade"
+      /* Sem o quadro "O que está incluído": a lista dele repetia os produtos
+         que agora estão no catálogo acima. */
 
       pricingImage="/images/botica-da-bruxa.jpg"
       pricingTitle="Botica da Bruxa"
       pricingSubtitle="Preparados artesanais da Ervaria."
       precoAviso="Como a produção é feita em pequenos lotes, a disponibilidade dos preparados pode variar. Diga qual produto te interessa e informaremos o valor e as opções de envio disponíveis."
-      priceNote="Retirada em Porto Seguro e região · Envios sob encomenda"
+      priceNote="Retirada em Porto Seguro e região · Envios fora de Porto Seguro sob encomenda"
       pricingCTALabel="Quero saber a disponibilidade"
 
       faqItems={[

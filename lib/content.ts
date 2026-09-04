@@ -168,7 +168,7 @@ export const services: Service[] = [
     slug: 'biblioteca-viva',
     title: 'Biblioteca Viva',
     description: 'E-books e materiais de estudo sobre MASSIXA, Rodas Celta-Baianas e cozinha vegana ancestral.',
-    image: '/images/biblioteca-viva.jpg',
+    image: '/images/biblioteca-viva-livros.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/biblioteca-viva',
   },

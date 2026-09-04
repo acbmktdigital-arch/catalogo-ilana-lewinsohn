@@ -51,6 +51,15 @@ type SalesPageTemplateV3Props = {
   transformationSubtitle?: string
   transformations?: Transformacao[]
 
+  /* Painéis de lista, no lugar do quadro de dores e transformações. A Botica
+     não tem dor nenhuma a resolver: tem produto e descrição. Mesma moldura do
+     painel de transformação, mas sem a seta — aqui não há um "antes". */
+  paineisDeLista?: {
+    titulo: string
+    subtitulo?: string
+    itens: { nome: React.ReactNode; descricao: React.ReactNode }[]
+  }[]
+
   /* Bloco curto logo depois do cartão de preço: um parágrafo e um botão
      próprio. Nas Rodas é o convite para levar uma roda a outra cidade — vem
      depois dos valores porque é uma segunda intenção, não o caminho principal
@@ -77,6 +86,10 @@ type SalesPageTemplateV3Props = {
      formulário; o doc 4 pede a mesma remoção na Botica. */
   includedItems?: string[]
   includedCTALabel?: string
+  /* Título do quadro. O padrão fala em "sessão", que não serve onde a lista
+     não é de uma sessão — na Biblioteca Viva ela é do que está sendo
+     preparado, e chamar de "incluído" prometeria algo que ainda não existe. */
+  includedTitle?: string
 
   pricingImage: string
   pricingTitle: string
@@ -200,6 +213,69 @@ function PainelTransformacao({
   )
 }
 
+/* Mesma moldura do painel de transformação, para a página não parecer outra,
+   mas com a hierarquia invertida: o nome do produto vem em destaque e a
+   descrição embaixo, em tom secundário. Sem a seta, que só faz sentido quando
+   há um "antes" virando um "depois". */
+function PainelLista({
+  titulo,
+  subtitulo,
+  itens,
+}: {
+  titulo: string
+  subtitulo?: string
+  itens: { nome: React.ReactNode; descricao: React.ReactNode }[]
+}) {
+  return (
+    <div
+      className="w-full rounded-2xl p-6 sm:p-8"
+      style={{
+        background: PAINEL,
+        border: `1px solid ${FIO_CLARO}`,
+        boxShadow: '0 10px 34px rgba(0,0,0,0.28)',
+      }}
+    >
+      <h2 className="font-heading text-xl sm:text-2xl text-center mb-1" style={{ color: '#FFFFFF' }}>
+        {titulo}
+      </h2>
+      {subtitulo && (
+        <p
+          className="font-body text-[11px] sm:text-xs text-center mb-7 leading-relaxed"
+          style={{ color: 'rgba(255,255,255,0.55)' }}
+        >
+          {subtitulo}
+        </p>
+      )}
+
+      <div className="flex flex-col">
+        {itens.map((item, i) => (
+          <div
+            key={i}
+            className="py-3.5 first:pt-0 last:pb-0 text-left"
+            style={{ borderBottom: i === itens.length - 1 ? 'none' : `1px solid ${FIO_CLARO}` }}
+          >
+            <p
+              className="font-sans text-xs sm:text-[13px] font-medium flex items-start gap-1.5 mb-1"
+              style={{ color: '#FFFFFF' }}
+            >
+              <span className="text-xs leading-5 shrink-0" style={{ color: 'var(--cor-destaque)' }} aria-hidden="true">
+                ✦
+              </span>
+              <span>{item.nome}</span>
+            </p>
+            <p
+              className="font-body text-xs sm:text-[13px] leading-relaxed pl-5"
+              style={{ color: 'rgba(255,255,255,0.55)' }}
+            >
+              {item.descricao}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 /* Pílula dourada de largura automática, como no layout de origem */
 function BotaoV3({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
   return (
@@ -236,9 +312,11 @@ export default function SalesPageTemplateV3({
   transformationSubtitle,
   transformations,
   transformacaoSecundaria,
+  paineisDeLista,
   convitePosPreco,
   includedItems,
   includedCTALabel,
+  includedTitle = 'O que está incluído na sua sessão',
   pricingImage,
   pricingTitle,
   pricingSubtitle,
@@ -447,6 +525,22 @@ export default function SalesPageTemplateV3({
           </section>
         )}
 
+        {/* ── 3b. PAINÉIS DE LISTA ────────────────────────── */}
+        {/* Ocupam o mesmo lugar do quadro de transformação, para páginas em que
+            não há dor a resolver — só produto e descrição. */}
+        {paineisDeLista && paineisDeLista.length > 0 && (
+          <section className="w-full py-8 px-2 sm:px-4 flex flex-col gap-5">
+            {paineisDeLista.map((painel, i) => (
+              <PainelLista
+                key={i}
+                titulo={painel.titulo}
+                subtitulo={painel.subtitulo}
+                itens={painel.itens}
+              />
+            ))}
+          </section>
+        )}
+
         {/* ── 4. INCLUSO ──────────────────────────────────── */}
         {/* O grupo de ambiente e materiais mora dentro desta seção, então sai
             junto quando a lista não é passada. É o comportamento certo: ele
@@ -462,7 +556,7 @@ export default function SalesPageTemplateV3({
             }}
           >
             <h2 className="font-heading text-xl sm:text-2xl mb-6" style={{ color: '#FFFFFF' }}>
-              O que está incluído na sua sessão
+              {includedTitle}
             </h2>
 
             <div className="space-y-4 text-left max-w-[380px] mx-auto mb-8">

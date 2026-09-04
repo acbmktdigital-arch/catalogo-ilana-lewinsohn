@@ -7,41 +7,45 @@ export default function BibliotecaVivaPage() {
       serviceLabel="Ilana Lewinsohn · Biblioteca Viva"
       heroTitle={<>Materiais para estudar em casa na <span style={{color:'var(--cor-destaque)'}}>Biblioteca Viva</span></>}
       heroSubtitle="E-books e materiais de estudo para se aprofundar na MASSIXA, nas Rodas Celta-Baianas e na cozinha vegana ancestral."
-      heroImageWide="/images/biblioteca-viva.jpg"
-      heroCTALabel="Entrar na lista de espera"
+      /* A original é vertical (4000x6000). Numa moldura horizontal ela perderia
+         metade da pilha de livros, então aqui a moldura vai para 'alto', que é
+         quadrada em qualquer largura — a prop existe exatamente para isso.
+         O recorte é quadrado também, então nada é cortado em tela nenhuma. */
+      heroImageWide="/images/biblioteca-viva-livros.jpg"
+      heroAspecto="alto"
+      heroCTALabel="Quero ser avisada em 1ª mão"
 
       whatIsTitle={<>O que é a <span style={{color:'var(--cor-destaque)'}}>Biblioteca Viva</span>?</>}
       whatIsTexts={[
-        "É uma linha de e-books e materiais educativos em desenvolvimento, incluindo o eBook Bases da MASSIXA, o eBook Rodas Celta-Baianas e o Caderno de Receitas da Bruxa Branca da Floresta (vegana, é claro).",
+        /* Nome alinhado ao que a Ilana escreveu no doc 4: era "Caderno de
+           Receitas", nome que eu tinha inventado, e vira "eBook Segredos da
+           Cozinha" — senão o texto e a lista logo abaixo se contradizem. */
+        "É uma linha de e-books e materiais educativos em desenvolvimento, incluindo o eBook Bases da MASSIXA, o eBook Rodas Celta-Baianas e o eBook Segredos da Cozinha da Bruxa Branca da Floresta (vegana, é claro).",
         "Um oráculo autoral também está em produção, ampliando ainda mais esse universo de estudo e conexão com o trabalho de Ilana.",
       ]}
       whatIsQuote="Conhecimento que se planta, cresce e se compartilha."
 
-      transformationTitle="A Transformação que Você Busca"
-      transformationSubtitle="De onde você está para onde os materiais levam."
-      transformations={[
-        { antes: "Curiosidade sobre práticas autorais", depois: "Bases da MASSIXA" },
-        { antes: "Vontade de entender a origem das Rodas", depois: "Rodas Celta-Baianas" },
-        { antes: "Vontade de aprender receitas veganas ancestrais", depois: "Cozinha vegana ancestral" },
-        { antes: "Falta de tempo para uma formação completa", depois: "Estudo no seu próprio ritmo" },
-        { antes: "Conhecimento disperso", depois: "Acesso à sabedoria de Ilana" },
-        { antes: "Vontade de uma referência para consultar sempre", depois: "Oráculo autoral em produção" },
-      ]}
+      /* Sem dores e transformações: pedido explícito da Ilana no doc 4,
+         "ELIMINAR DORES E TRANSFORMAÇÕES, POR COMPLETO". */
 
+      /* O quadro deixa de listar o que está incluído e passa a listar o que
+         está sendo preparado — nada aqui existe ainda, então "incluído" seria
+         uma promessa falsa. */
+      includedTitle="O que está em desenvolvimento"
       includedItems={[
         "eBook Bases da MASSIXA",
         "eBook Rodas Celta-Baianas",
-        "Caderno de Receitas da Bruxa Branca da Floresta",
-        "Aviso em primeira mão sobre o oráculo autoral em produção",
+        "eBook Segredos da Cozinha da Bruxa Branca da Floresta",
+        "Oráculo autoral em produção",
       ]}
-      includedCTALabel="Entrar na lista de espera"
+      includedCTALabel="Quero ser avisada em 1ª mão"
 
-      pricingImage="/images/biblioteca-viva.jpg"
+      pricingImage="/images/biblioteca-viva-livros.jpg"
       pricingTitle="Biblioteca Viva"
       pricingSubtitle="Materiais de estudo em desenvolvimento."
-      precoAviso="Os materiais ainda estão sendo preparados. Entre na lista de espera e você é avisada em primeira mão quando forem lançados — com as condições especiais de quem chegou antes."
+      precoAviso="Os materiais ainda estão sendo preparados. Entre na lista de espera e você é avisada em primeira mão quando forem lançados — em condições especiais de lançamento."
       priceNote="Sem compromisso: só o aviso de lançamento"
-      pricingCTALabel="Entrar na lista de espera"
+      pricingCTALabel="Quero ser avisada em 1ª mão"
 
       faqItems={[
         {
