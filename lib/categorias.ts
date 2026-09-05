@@ -14,8 +14,10 @@ export type Categoria = {
   slug: string
   titulo: string
   descricao: string
-  /* Foto do bloco. São emprestadas dos serviços, por decisão da Vera em
-     04/09/2026 — só se a Ilana pedir alguma específica é que trocam. */
+  /* Foto do bloco. Vêm do acervo que ficou sem uso depois das trocas de
+     foto — assim nenhuma se repete dentro do próprio bloco, que era o que
+     acontecia quando o topo emprestava a imagem de um dos serviços de
+     dentro dele. Só trocam se a Ilana pedir alguma específica. */
   imagem: string
   /* Slugs dos serviços que aparecem na página do bloco */
   servicos: string[]
@@ -29,7 +31,9 @@ export const categorias: Categoria[] = [
     slug: 'atendimentos-individuais',
     titulo: 'Atendimentos Individuais',
     descricao: 'Sessões um a um, presenciais no Instituto ou online.',
-    imagem: '/images/massixa-essencial.jpg',
+    /* Mãos sobre os pés, na cama de ervas: cuidado um a um, que é do que
+       o bloco trata. */
+    imagem: '/images/ayurvedica-toque-nos-pes.jpg',
     servicos: [
       'massixa-essencial',
       'toque-da-jurema',
@@ -46,14 +50,18 @@ export const categorias: Categoria[] = [
     slug: 'vivencias-em-grupo',
     titulo: 'Vivências em Grupo',
     descricao: 'Encontros coletivos, no Instituto ou onde você chamar.',
-    imagem: '/images/vivencias-roda-em-circulo.jpg',
+    /* Cinco mulheres sob a tenda: é a única foto de grupo do acervo que
+       não pertence a nenhum dos dois serviços deste bloco. */
+    imagem: '/images/vivencias-imersoes-retiros.jpg',
     servicos: ['rodas-celta-baianas', 'vivencias-imersoes-retiros'],
   },
   {
     slug: 'aprender',
     titulo: 'Aprender',
     descricao: 'Mentorias e materiais de estudo para quem cuida.',
-    imagem: '/images/mentoria-cuidado-autoral-aula.jpg',
+    /* Não usei a antiga da Mentoria Cuidado Autoral, que seria a escolha
+       óbvia: o doc 4 diz que ela é a futura foto de capa do catálogo. */
+    imagem: '/images/biblioteca-viva.jpg',
     servicos: ['mentoria-cuidado-autoral', 'mentoria-vem-pra-roda-mulher', 'biblioteca-viva'],
   },
   {
