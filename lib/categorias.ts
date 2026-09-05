@@ -1,13 +1,13 @@
 import { services, type Service } from '@/lib/content'
 
-/* ─── Agrupamento do catálogo (piloto) ───────────────────────────────────
-   A home passa a mostrar quatro cards em vez de quinze, um por bloco, e
-   cada um leva a uma página com os serviços daquele bloco. Os quatro
-   blocos são os que a Ilana propôs no doc 4.
+/* ─── Agrupamento do catálogo ────────────────────────────────────────────
+   A home mostra quatro cards em vez de quinze, um por bloco, e cada um leva
+   a uma página com os serviços daquele bloco. São os quatro blocos que a
+   Ilana propôs no doc 4, aprovados em 04/09/2026.
 
-   Vive num arquivo próprio, e não em lib/content.ts, para o piloto não
-   tocar em nada que a home atual usa. Se for aprovado, isso migra e o
-   arquivo some.
+   Fica separado de lib/content.ts de propósito: content.ts é a lista de
+   serviços, e este arquivo é só a maneira de agrupá-los. Mexer no
+   agrupamento não deve exigir tocar no catálogo.
    ──────────────────────────────────────────────────────────────────────── */
 
 export type Categoria = {
@@ -77,7 +77,7 @@ export const categorias: Categoria[] = [
 /* O card do bloco usa o MESMO componente dos cards de serviço, para o
    desenho ser idêntico — por isso a categoria é convertida no formato de
    Service em vez de ganhar um card próprio. */
-export function categoriaComoServico(cat: Categoria, baseHref: string): Service {
+export function categoriaComoServico(cat: Categoria): Service {
   return {
     id: `categoria-${cat.slug}`,
     slug: cat.slug,
@@ -85,7 +85,7 @@ export function categoriaComoServico(cat: Categoria, baseHref: string): Service 
     description: cat.descricao,
     image: cat.imagem,
     ctaLabel: 'Saber mais',
-    ctaHref: cat.hrefDireto ?? `${baseHref}/${cat.slug}`,
+    ctaHref: cat.hrefDireto ?? `/${cat.slug}`,
   }
 }
 

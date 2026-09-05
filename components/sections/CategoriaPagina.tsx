@@ -5,18 +5,15 @@ import ServiceCard from '@/components/ui/ServiceCard'
 import { categorias, servicosDaCategoria } from '@/lib/categorias'
 import { siteConfig } from '@/lib/content'
 
-/* Página de um bloco do catálogo: a foto do bloco, o título, a descrição e
-   os cards dos serviços que pertencem a ele. Mesmo ServiceCard da home, para
-   não haver diferença de desenho entre um nível e outro. */
+/* Corpo da página de um bloco: a foto do bloco, o título, a descrição e os
+   cards dos serviços que pertencem a ele. As três páginas de bloco são
+   arquivos de três linhas que chamam este componente.
 
-export function generateStaticParams() {
-  return categorias.map((c) => ({ categoria: c.slug }))
-}
+   São rotas explícitas, e não uma rota dinâmica na raiz: um [slug] no topo
+   capturaria qualquer caminho não encontrado do site. */
 
-export const metadata = { robots: { index: false, follow: false } }
-
-export default function CategoriaPage({ params }: { params: { categoria: string } }) {
-  const cat = categorias.find((c) => c.slug === params.categoria)
+export default function CategoriaPagina({ slug }: { slug: string }) {
+  const cat = categorias.find((c) => c.slug === slug)
   if (!cat) notFound()
 
   const lista = servicosDaCategoria(cat)
@@ -26,14 +23,7 @@ export default function CategoriaPage({ params }: { params: { categoria: string 
       className="min-h-screen max-w-md mx-auto relative overflow-hidden"
       style={{ background: 'var(--cor-fundo)' }}
     >
-      <div
-        className="px-4 py-2 text-center font-sans text-[10px] uppercase tracking-[0.18em] font-semibold"
-        style={{ background: 'rgba(201,162,39,0.14)', color: 'var(--cor-destaque)' }}
-      >
-        Página de teste · catálogo agrupado
-      </div>
-
-      {/* Topo: mesma faixa com degradê do hero das páginas de venda */}
+      {/* Faixa do topo com o mesmo degradê do hero das páginas de venda */}
       <div className="relative w-full h-[200px]">
         <Image src={cat.imagem} alt="" fill className="object-cover" priority />
         <div
@@ -71,7 +61,7 @@ export default function CategoriaPage({ params }: { params: { categoria: string 
 
       <footer className="pt-6 pb-10 text-center">
         <Link
-          href="/home-agrupada"
+          href="/"
           className="font-sans text-sm sm:text-base font-medium py-2 inline-flex items-center gap-1.5 transition-opacity hover:opacity-80"
           style={{ color: 'var(--cor-destaque)' }}
         >

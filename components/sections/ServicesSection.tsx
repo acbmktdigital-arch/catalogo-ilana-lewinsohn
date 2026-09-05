@@ -1,14 +1,18 @@
 import ServiceCard from '@/components/ui/ServiceCard'
-import { services } from '@/lib/content'
+import { categorias, categoriaComoServico } from '@/lib/categorias'
+
+/* A home mostra os quatro blocos do catálogo, não os quinze serviços. Cada
+   bloco leva a uma página com os seus.
+
+   Usa o mesmo ServiceCard dos serviços, e não um card próprio: assim altura,
+   espaçamento, tipografia e o degradê da foto são idênticos por construção,
+   e não há como divergirem quando um dos dois for ajustado. */
 
 export default function ServicesSection() {
   return (
-    /* Único espaço entre um card e outro, então mexer aqui muda o ritmo da
-       lista inteira de uma vez. 8px no celular, onde a lista precisava ficar
-       mais compacta; os 12px de sempre no desktop. */
     <section className="py-4 flex flex-col gap-2 sm:gap-3">
-      {services.map((service) => (
-        <ServiceCard key={service.id} service={service} />
+      {categorias.map((cat) => (
+        <ServiceCard key={cat.slug} service={categoriaComoServico(cat)} />
       ))}
     </section>
   )
