@@ -5,6 +5,12 @@ export const siteConfig = {
   tagline: 'Seja bem-vinda!',
   description:
     'Mulher medicina (bruja), terapeuta integrativa xamânica, facilitadora de Rodas de Mulheres e criadora do método MASSIXA — Um Universo de Cuidado, unindo Ayurveda, Xamanismo, Alquimia, Yoga e a sabedoria da floresta.',
+  /* O hero destaca o nome do método dentro da frase acima: tudo em negrito e,
+     dentro dele, só a parte depois do travessão também em itálico. A frase
+     segue inteira e em texto puro em `description`, que é o que vai para os
+     metadados — o destaque é visual, não faz parte do conteúdo. */
+  descriptionDestaque: 'MASSIXA — Um Universo de Cuidado',
+  descriptionDestaqueItalico: 'Um Universo de Cuidado',
   about: [
     'Ilana Lewinsohn é a Guardiã da Descida do Instituto Canto da Floresta, em Arraial d\'Ajuda, Bahia. Bióloga, educadora e terapeuta corporal, ela transita há mais de duas décadas entre o estudo da natureza e os caminhos humanos de transformação, sempre a partir de uma certeza simples: somos natureza, sem separação.',
     'Ao longo de sua trajetória se aprofundou em Yoga, Ayurveda, Xamanismo e Alquimia, e é autora do método MASSIXA — Massagem Integrativa Xamânica —, além de facilitar Rodas de Mulheres desde 2012. Seu cuidado une toque, ervas, rituais e escuta, sempre construído a partir do que cada momento pede.',
@@ -85,7 +91,7 @@ export const services: Service[] = [
   {
     id: 'imersoes-massixa',
     slug: 'imersoes-massixa',
-    title: 'Imersões MASSIXA',
+    title: 'Imersões MASSIXA (inclui especial gestantes)',
     description: 'Três horas dedicadas só a você — escuta, ritual, toque e ervas. Com o recorte Colo da Terra para gestantes.',
     image: '/images/imersao-reconecta.jpg',
     ctaLabel: 'Saber mais',
@@ -101,15 +107,6 @@ export const services: Service[] = [
     ctaHref: '/cuidados-ayurvedicos',
   },
   {
-    id: 'shirodhara',
-    slug: 'shirodhara',
-    title: 'Shirodhara',
-    description: 'Fluxo contínuo de óleo sobre o terceiro olho para acalmar profundamente corpo e mente.',
-    image: '/images/shirodhara-fio-de-oleo.jpg',
-    ctaLabel: 'Saber mais',
-    ctaHref: '/shirodhara',
-  },
-  {
     id: 'bussola-orientacao-xamanica',
     slug: 'bussola-orientacao-xamanica',
     title: 'Bússola: Orientação Integrativa Xamânica',
@@ -121,7 +118,7 @@ export const services: Service[] = [
   {
     id: 'acompanhamento-terapeutico',
     slug: 'acompanhamento-terapeutico',
-    title: 'Acompanhamento Terapêutico Integrativo',
+    title: 'Acompanhamento Contínuo',
     description: 'Processo online continuado de escuta, orientação e práticas integrativas ao longo do tempo.',
     image: '/images/acompanhamento-terapeutico.jpg',
     ctaLabel: 'Saber mais',
@@ -148,7 +145,7 @@ export const services: Service[] = [
   {
     id: 'mentoria-cuidado-autoral',
     slug: 'mentoria-cuidado-autoral',
-    title: 'Mentoria Cuidado Autoral',
+    title: 'Travessia da Semente: Mentoria Cuidado Autoral',
     description: 'Mentoria para terapeutas que querem fortalecer sua identidade profissional e linguagem própria de cuidado.',
     image: '/images/mentoria-cuidado-autoral-aula.jpg',
     ctaLabel: 'Saber mais',

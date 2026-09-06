@@ -44,7 +44,7 @@ export default function BussolaOrientacaoXamanicaPage() {
 
           <span className="block mb-3.5">
             Para quem desejar aprofundar esse caminho, a Bússola pode se transformar em um
-            processo de Acompanhamento Terapêutico Integrativo.
+            processo de Acompanhamento Contínuo.
           </span>
 
           {/* As cinco palavras viram uma fileira de etiquetas. Soltas, ocupariam

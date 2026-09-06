@@ -4,13 +4,13 @@ export default function AcompanhamentoTerapeuticoPage() {
   return (
     <SalesPageTemplateV3
       whatsappNumero="557399855339"
-      serviceLabel="Ilana Lewinsohn · Acompanhamento Terapêutico Integrativo"
-      heroTitle={<>Cuidado contínuo no <span style={{color:'var(--cor-destaque)'}}>Acompanhamento Terapêutico</span></>}
+      serviceLabel="Ilana Lewinsohn · Acompanhamento Contínuo"
+      heroTitle={<>Cuidado que se sustenta no <span style={{color:'var(--cor-destaque)'}}>Acompanhamento Contínuo</span></>}
       heroSubtitle="Processo continuado de escuta, orientação e práticas integrativas ao longo do tempo, principalmente online."
       heroImageWide="/images/acompanhamento-terapeutico.jpg"
       heroCTALabel="Quero começar meu acompanhamento"
 
-      whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Acompanhamento Terapêutico Integrativo</span>?</>}
+      whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Acompanhamento Contínuo</span>?</>}
       whatIsTexts={[
         "É um processo continuado, realizado principalmente online — podendo incluir encontros presenciais —, com sessões semanais, quinzenais ou mensais de 60 minutos.",
         "Inclui escuta, orientação e sugestão de práticas integrativas ao longo do tempo, construindo junto com você um caminho de transformação sustentável.",
@@ -42,7 +42,7 @@ export default function AcompanhamentoTerapeuticoPage() {
       includedCTALabel="Quero começar meu acompanhamento"
 
       pricingImage="/images/acompanhamento-terapeutico.jpg"
-      pricingTitle="Acompanhamento Terapêutico Integrativo"
+      pricingTitle="Acompanhamento Contínuo"
       pricingSubtitle="Escolha a frequência que combina com o seu momento e fale com Ilana pelo WhatsApp."
       precos={[
         {
@@ -96,21 +96,21 @@ export default function AcompanhamentoTerapeuticoPage() {
           id: 'semanal',
           titulo: 'Semanal',
           descricao: 'Acompanhamento mais próximo',
-          nomeNaMensagem: 'Acompanhamento Terapêutico Integrativo semanal',
+          nomeNaMensagem: 'Acompanhamento Contínuo semanal',
           valor: 'R$ 134,00',
         },
         {
           id: 'quinzenal',
           titulo: 'Quinzenal',
           descricao: 'Um meio-termo de frequência',
-          nomeNaMensagem: 'Acompanhamento Terapêutico Integrativo quinzenal',
+          nomeNaMensagem: 'Acompanhamento Contínuo quinzenal',
           valor: 'R$ 161,00',
         },
         {
           id: 'mensal',
           titulo: 'Mensal',
           descricao: 'Encontros mais espaçados',
-          nomeNaMensagem: 'Acompanhamento Terapêutico Integrativo mensal',
+          nomeNaMensagem: 'Acompanhamento Contínuo mensal',
           valor: 'R$ 197,00',
         },
       ]}
