@@ -28,41 +28,56 @@ export type Categoria = {
 
 export const categorias: Categoria[] = [
   {
-    slug: 'atendimentos-individuais',
-    titulo: 'Atendimentos Individuais',
-    descricao: 'Sessões um a um, presenciais no Instituto ou online.',
-    /* Mãos sobre os pés, na cama de ervas: cuidado um a um, que é do que
-       o bloco trata. */
+    slug: 'mentorias',
+    titulo: 'Mentorias',
+    descricao: 'Formação online para quem cuida e para quem conduz círculos.',
+    imagem: '/images/biblioteca-viva.jpg',
+    servicos: ['mentoria-cuidado-autoral', 'mentoria-vem-pra-roda-mulher'],
+  },
+  {
+    slug: 'atendimentos-online',
+    titulo: 'Atendimentos Individuais Online',
+    descricao: 'Escuta e orientação de onde você estiver.',
+    /* Retrato da Ilana: online é conversar com ela, e nenhuma foto de
+       ambiente diria isso. A original é vertical e, na faixa de 200px do
+       topo, o corte central pegaria o tronco e cortaria o rosto — por isso
+       está recortada na proporção da própria faixa. */
+    imagem: '/images/ilana-retrato-faixa.jpg',
+    servicos: ['bussola-orientacao-xamanica', 'acompanhamento-terapeutico'],
+  },
+  {
+    slug: 'atendimentos-presenciais',
+    titulo: 'Atendimentos Individuais Presenciais',
+    descricao: 'Massagens, cuidados ayurvédicos e imersões no Instituto Canto da Floresta.',
     imagem: '/images/ayurvedica-toque-nos-pes.jpg',
+    /* As massagens ficam listadas direto aqui, sem um card "Massagens" no
+       meio: a Ilana levantou as duas possibilidades no doc 5, e a Vera
+       escolheu esta, que mantém a navegação em dois níveis. */
     servicos: [
       'massixa-essencial',
       'toque-da-jurema',
       'madalena',
       'anahata-terra',
-      'imersoes-massixa',
       'cuidados-ayurvedicos',
-      'shirodhara',
-      'bussola-orientacao-xamanica',
-      'acompanhamento-terapeutico',
+      'imersoes-massixa',
     ],
   },
   {
     slug: 'vivencias-em-grupo',
     titulo: 'Vivências em Grupo',
     descricao: 'Encontros coletivos, no Instituto ou onde você chamar.',
-    /* Cinco mulheres sob a tenda: é a única foto de grupo do acervo que
-       não pertence a nenhum dos dois serviços deste bloco. */
     imagem: '/images/vivencias-imersoes-retiros.jpg',
     servicos: ['rodas-celta-baianas', 'vivencias-imersoes-retiros'],
   },
   {
-    slug: 'aprender',
-    titulo: 'Aprender',
-    descricao: 'Mentorias e materiais de estudo para quem cuida.',
-    /* Não usei a antiga da Mentoria Cuidado Autoral, que seria a escolha
-       óbvia: o doc 4 diz que ela é a futura foto de capa do catálogo. */
-    imagem: '/images/biblioteca-viva.jpg',
-    servicos: ['mentoria-cuidado-autoral', 'mentoria-vem-pra-roda-mulher', 'biblioteca-viva'],
+    /* Biblioteca e Botica têm um serviço cada, então o card vai direto para
+       a página — uma lista de um item só seria um clique a mais. */
+    slug: 'biblioteca-viva',
+    titulo: 'Biblioteca Viva',
+    descricao: 'E-books e materiais de estudo, em desenvolvimento.',
+    imagem: '/images/biblioteca-viva-livros.jpg',
+    servicos: ['biblioteca-viva'],
+    hrefDireto: '/biblioteca-viva',
   },
   {
     slug: 'botica-da-bruxa',
