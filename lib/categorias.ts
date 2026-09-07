@@ -83,7 +83,11 @@ export const categorias: Categoria[] = [
     slug: 'botica-da-bruxa',
     titulo: 'Botica da Bruxa',
     descricao: 'Preparados artesanais de Ervaria, em pequenos lotes.',
-    imagem: '/images/botica-da-bruxa.jpg',
+    /* Só o card da home usa esta foto — a Botica vai direto para a própria
+       página, que segue com a dela. A original é vertical (4000x6000) e o
+       card é uma faixa horizontal estreita, então está recortada nessa
+       proporção, centrada na cuia. */
+    imagem: '/images/botica-cuia-no-fogo.jpg',
     servicos: ['botica-da-bruxa'],
     hrefDireto: '/botica-da-bruxa',
   },
