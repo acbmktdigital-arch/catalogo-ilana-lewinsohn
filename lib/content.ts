@@ -115,7 +115,9 @@ export const services: Service[] = [
     slug: 'shirodhara',
     title: 'Shirodhara',
     description: 'Fluxo contínuo de óleo sobre o terceiro olho para acalmar profundamente corpo e mente.',
-    image: '/images/shirodhara-fio-de-oleo.jpg',
+    /* Recorte em faixa da mesma foto do topo da página: pega do vasilhame
+       até o rosto de quem recebe, que é o que cabe numa proporção larga. */
+    image: '/images/shirodhara-vasilhame-card.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/shirodhara',
   },

@@ -7,12 +7,16 @@ export default function ShirodharaPage() {
       serviceLabel="Ilana Lewinsohn · Shirodhara"
       heroTitle={<>Silencie a mente com <span style={{color:'var(--cor-destaque)'}}>Shirodhara</span></>}
       heroSubtitle="Fluxo contínuo de óleo sobre o terceiro olho, para conduzir corpo e mente a um relaxamento profundo."
-      /* Moldura quadrada e recorte deslocado para a direita, para o vasilhame
-         nas mãos da Ilana ficar em evidência. Na moldura padrão o desktop
-         aparava 44px do topo — justamente onde ele está. Quadrada, a altura
-         é preservada inteira e aparece o gesto todo: vasilhame, fio de óleo
-         e a testa de quem recebe. */
-      heroImageWide="/images/shirodhara-fio-de-oleo-v2.jpg"
+      /* Recorte da foto original, de 4000x6000, que a Vera encontrou no Drive.
+         Nela o vasilhame de cobre aparece inteiro, com as rosas e as correntes
+         — no arquivo antigo, de 500x400, ele encostava na borda de cima e não
+         havia o que revelar.
+
+         Moldura quadrada: a foto tem a mesma proporção, então celular e
+         desktop mostram exatamente o mesmo. O recorte usa a largura toda de
+         propósito — assim o vasilhame fica a 25% da altura e a testa de quem
+         recebe a 68%, acima da faixa onde o degradê do topo escurece demais. */
+      heroImageWide="/images/shirodhara-vasilhame-de-cobre.jpg"
       heroAspecto="alto"
       heroCTALabel="Quero minha sessão"
 
@@ -42,7 +46,7 @@ export default function ShirodharaPage() {
       ]}
       includedCTALabel="Quero agendar minha sessão"
 
-      pricingImage="/images/shirodhara-fio-de-oleo.jpg"
+      pricingImage="/images/shirodhara-vasilhame-de-cobre.jpg"
       pricingTitle="Shirodhara"
       pricingSubtitle="Silêncio profundo para a mente. Agende pelo WhatsApp."
       precos={[
