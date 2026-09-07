@@ -20,7 +20,10 @@ export const siteConfig = {
   /* Última linha do rodapé das páginas de venda.
      A Ilana pediu para manter e acrescentar o nome da empresa depois do "e com". */
   creditoRodape: 'feito com o Catálogo Holístico',
-  aboutImage: '/images/bio.jpg',
+  /* Recortada na proporção da faixa da seção (~1,75:1). A original é
+     vertical, 1200x1600, e a moldura ancora no topo — sem o recorte,
+     apareceria só a árvore e o alto do arco, sem a Ilana nem o fogo. */
+  aboutImage: '/images/bio-fogueira-noite.jpg',
   social: {
     instagram: 'https://instagram.com/ilana.lewinsohn',
     whatsapp: 'https://wa.me/557399855339',
