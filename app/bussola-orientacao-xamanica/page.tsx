@@ -8,7 +8,7 @@ export default function BussolaOrientacaoXamanicaPage() {
       heroTitle={<>Reencontre seu rumo com a <span style={{color:'var(--cor-destaque)'}}>Bússola</span></>}
       heroSubtitle="Escuta e orientação integrativa xamânica, no formato online, para reencontrar o rumo em questões físicas, energéticas ou emocionais."
       heroImageWide="/images/bussola-orientacao-xamanica.jpg"
-      heroCTALabel="Quero minha orientação"
+      heroCTALabel="Quero agendar a minha sessão"
 
       whatIsTitle={<>O que é a <span style={{color:'var(--cor-destaque)'}}>Bússola</span>?</>}
       /* Texto novo da Ilana, bem mais longo que o anterior. Vai tudo num item
@@ -93,7 +93,7 @@ export default function BussolaOrientacaoXamanicaPage() {
         "Plano de reorientação entregue por escrito",
         "Referências de Ayurveda, Xamanismo, Alquimia, Yoga e Ervaria",
       ]}
-      includedCTALabel="Quero agendar minha orientação"
+      includedCTALabel="Quero agendar a minha sessão"
 
       pricingImage="/images/bussola-orientacao-xamanica.jpg"
       pricingTitle="Bússola"
@@ -106,7 +106,7 @@ export default function BussolaOrientacaoXamanicaPage() {
         },
       ]}
       priceNote="Sessão online de 90 minutos + plano de reorientação entregue por escrito"
-      pricingCTALabel="Quero agendar minha orientação"
+      pricingCTALabel="Quero agendar a minha sessão"
 
       faqItems={[
         {
