@@ -25,7 +25,7 @@ export default function CategoriaPagina({ slug }: { slug: string }) {
     >
       {/* Faixa do topo com o mesmo degradê do hero das páginas de venda */}
       <div className="relative w-full h-[200px]">
-        <Image src={cat.imagem} alt="" fill className="object-cover" priority />
+        <Image src={cat.imagemCapa ?? cat.imagem} alt="" fill className="object-cover" priority />
         <div
           className="absolute inset-0 z-10"
           style={{

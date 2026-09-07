@@ -1,9 +1,9 @@
 import { services, type Service } from '@/lib/content'
 
 /* ─── Agrupamento do catálogo ────────────────────────────────────────────
-   A home mostra quatro cards em vez de quinze, um por bloco, e cada um leva
-   a uma página com os serviços daquele bloco. São os quatro blocos que a
-   Ilana propôs no doc 4, aprovados em 04/09/2026.
+   A home mostra um card por bloco, em vez da lista inteira de serviços, e
+   cada um leva a uma página com os serviços daquele bloco. São os seis
+   blocos que a Ilana definiu no doc 5.
 
    Fica separado de lib/content.ts de propósito: content.ts é a lista de
    serviços, e este arquivo é só a maneira de agrupá-los. Mexer no
@@ -14,11 +14,14 @@ export type Categoria = {
   slug: string
   titulo: string
   descricao: string
-  /* Foto do bloco. Vêm do acervo que ficou sem uso depois das trocas de
-     foto — assim nenhuma se repete dentro do próprio bloco, que era o que
-     acontecia quando o topo emprestava a imagem de um dos serviços de
-     dentro dele. Só trocam se a Ilana pedir alguma específica. */
+  /* Foto do card na home. Nenhuma se repete dentro do próprio bloco: quando
+     o card emprestava a imagem de um serviço de dentro dele, a mesma foto
+     aparecia duas vezes na mesma tela. */
   imagem: string
+  /* Foto do topo da página do bloco, quando ela deve ser diferente da do
+     card. Sem isso, a página usa a mesma. São contextos distintos: o card é
+     uma miniatura que precisa chamar, e o topo é uma faixa larga. */
+  imagemCapa?: string
   /* Slugs dos serviços que aparecem na página do bloco */
   servicos: string[]
   /* Quando o bloco tem um serviço só, o card vai direto para a página dele
@@ -66,7 +69,11 @@ export const categorias: Categoria[] = [
     slug: 'vivencias-em-grupo',
     titulo: 'Vivências em Grupo',
     descricao: 'Encontros coletivos, no Instituto ou onde você chamar.',
-    imagem: '/images/vivencias-imersoes-retiros.jpg',
+    /* Card e capa diferentes por escolha da Ilana: no card, a defumação em
+       roda; no topo da página, a que já estava, das mulheres em pé cheirando
+       ervas. */
+    imagem: '/images/vivencias-em-grupo-defumacao.jpg',
+    imagemCapa: '/images/vivencias-imersoes-retiros.jpg',
     servicos: ['rodas-celta-baianas', 'vivencias-imersoes-retiros'],
   },
   {
