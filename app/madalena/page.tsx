@@ -73,7 +73,7 @@ export default function MadalenaPage() {
       faqItems={[
         {
           q: "Onde acontece o atendimento?",
-          a: "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia.",
+          a: "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia, e em locais distintos quando em viagem.",
         },
         {
           q: "Preciso beber o cacau?",
@@ -81,7 +81,7 @@ export default function MadalenaPage() {
         },
         {
           q: "A sessão é indicada só para mulheres?",
-          a: "É especialmente voltada ao feminino sagrado, mas qualquer pessoa que se identifique com essa proposta pode participar.",
+          a: "Sim, esta sessão é especialmente dedicada para cuidar de mulheres.",
         },
         {
           q: "Preciso estar passando por algo específico para fazer essa sessão?",
@@ -93,7 +93,7 @@ export default function MadalenaPage() {
         },
         {
           q: "Como agendo?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+          a: "Clique no botão QUERO AGENDAR A MINHA SESSÃO e fale com Ilana pelo WhatsApp para combinar data e horário.",
         },
       ]}
 

@@ -53,12 +53,12 @@ export default function CuidadosAyurvedicosPage() {
       precos={[
         {
           label: "60 minutos",
-          valor: "R$ 270,00",
+          valor: "R$ 300,00",
           descricao: "Cuidado ayurvédico conforme sua necessidade",
         },
         {
           label: "90 minutos",
-          valor: "R$ 360,00",
+          valor: "R$ 400,00",
           descricao: "Mais tempo de cuidado e profundidade",
         },
       ]}
@@ -80,7 +80,7 @@ export default function CuidadosAyurvedicosPage() {
         },
         {
           q: "Os óleos podem manchar a roupa?",
-          a: "Recomenda-se usar roupas confortáveis e escuras no dia da sessão.",
+          a: "Recomenda-se usar roupas preferencialmente escuras no dia da sessão. Soltas, confortáveis e passíveis de ficarem com resíduos de óleos, ervas ou argila.",
         },
         {
           q: "Posso fazer se tiver pele sensível?",
@@ -104,7 +104,7 @@ export default function CuidadosAyurvedicosPage() {
         },
         {
           q: "Como agendo?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+          a: "Clique no botão QUERO AGENDAR A MINHA SESSÃO e fale com Ilana pelo WhatsApp para combinar data e horário.",
         },
       ]}
 
@@ -118,14 +118,14 @@ export default function CuidadosAyurvedicosPage() {
           titulo: '60 minutos',
           descricao: 'Cuidado conforme sua necessidade',
           nomeNaMensagem: 'sessão de Cuidados Ayurvédicos de 60 minutos',
-          valor: 'R$ 270,00',
+          valor: 'R$ 300,00',
         },
         {
           id: '90min',
           titulo: '90 minutos',
           descricao: 'Mais tempo de cuidado e profundidade',
           nomeNaMensagem: 'sessão de Cuidados Ayurvédicos de 90 minutos',
-          valor: 'R$ 360,00',
+          valor: 'R$ 400,00',
         },
       ]}
 

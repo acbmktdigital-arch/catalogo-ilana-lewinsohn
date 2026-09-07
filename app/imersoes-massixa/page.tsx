@@ -88,7 +88,7 @@ export default function ImersoesMassixaPage() {
             </>
           ),
           valor: "R$ 605,00",
-          descricao: "Três horas dedicadas exclusivamente a você",
+          descricao: "3 horas dedicadas a cuidar de você, com rituais específicos e sessão de massagem",
         },
       ]}
       priceNote="Imersão de 3 horas · Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
@@ -101,7 +101,7 @@ export default function ImersoesMassixaPage() {
         },
         {
           q: "Qual a diferença entre Reconecta e Colo da Terra?",
-          a: "São a mesma imersão de três horas. Colo da Terra é o recorte voltado a mulheres gestantes, com toque e ritmo adaptados a cada fase da gravidez.",
+          a: "São a mesma imersão de três horas. Colo da Terra é o recorte voltado a mulheres gestantes, com rituais, toque e ritmo adaptados a cada fase da gravidez.",
         },
         {
           q: "O que vai acontecer na minha imersão?",
@@ -109,7 +109,7 @@ export default function ImersoesMassixaPage() {
         },
         {
           q: "Preciso saber o que quero trabalhar antes de agendar?",
-          a: "Não é obrigatório. Você pode chegar apenas com a intenção de se cuidar e reconectar.",
+          a: "Não é obrigatório. Você pode chegar apenas com a intenção de se cuidar e reconectar, mas para um momento personalizado e de alcance terapêutico mais profundo, é ideal conversar antes com Ilana e lhe contar seus anseios e necessidades do momento.",
         },
         {
           q: "É seguro em qualquer fase da gestação?",
@@ -133,7 +133,7 @@ export default function ImersoesMassixaPage() {
         },
         {
           q: "Como agendo?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+          a: "Clique no botão QUERO AGENDAR A MINHA IMERSÃO e fale com Ilana pelo WhatsApp para combinar data e horário.",
         },
       ]}
 

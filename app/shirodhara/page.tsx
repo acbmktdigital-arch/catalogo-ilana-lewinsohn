@@ -6,7 +6,7 @@ export default function ShirodharaPage() {
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · Shirodhara"
       heroTitle={<>Silencie a mente com <span style={{color:'var(--cor-destaque)'}}>Shirodhara</span></>}
-      heroSubtitle="Fluxo contínuo de óleo sobre o terceiro olho, para conduzir corpo e mente a um relaxamento profundo."
+      heroSubtitle="Fluxo contínuo de óleo aquecido e medicado sobre o terceiro olho, para conduzir corpo e mente a um relaxamento profundo."
       /* Recorte da foto original, de 4000x6000, que a Vera encontrou no Drive.
          Nela o vasilhame de cobre aparece inteiro, com as rosas e as correntes
          — no arquivo antigo, de 500x400, ele encostava na borda de cima e não
@@ -22,7 +22,7 @@ export default function ShirodharaPage() {
 
       whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Shirodhara</span>?</>}
       whatIsTexts={[
-        "É um fluxo contínuo de óleo medicado derramado sobre a região do terceiro olho, conduzindo corpo e mente a um estado profundo de relaxamento.",
+        "É um fluxo contínuo de óleo aquecido medicado derramado sobre a região do terceiro olho, conduzindo corpo e mente a um estado profundo de relaxamento.",
         "Auxilia na redução de ansiedade, estresse e agitação mental, favorecendo o equilíbrio dos doshas Vata e Pitta.",
       ]}
       whatIsQuote="Quando a mente silencia, o corpo finalmente descansa."
@@ -39,7 +39,8 @@ export default function ShirodharaPage() {
       ]}
 
       includedItems={[
-        "Fluxo contínuo de óleo medicado sobre o terceiro olho",
+        "10 a 20 minutos de escuta prévia; 30 minutos de carregamento de óleo; 10 minutos para toque craniano e fechamento",
+        "Fluxo contínuo de óleo aquecido medicado sobre o terceiro olho",
         "Óleo escolhido conforme seu equilíbrio dos doshas",
         "Ambiente silencioso e propício ao relaxamento",
         "Espaço acolhedor no Instituto Canto da Floresta",
@@ -53,7 +54,7 @@ export default function ShirodharaPage() {
         {
           label: "Sessão de 60 minutos",
           valor: "R$ 350,00",
-          descricao: "Fluxo contínuo de óleo sobre o terceiro olho",
+          descricao: "Fluxo contínuo de óleo aquecido sobre o terceiro olho",
         },
       ]}
       priceNote="Sessão de 60 minutos · Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
@@ -66,7 +67,7 @@ export default function ShirodharaPage() {
         },
         {
           q: "O óleo suja o cabelo?",
-          a: "Sim, é recomendável lavar o cabelo após a sessão; traga uma touca ou lenço se preferir.",
+          a: "Sim, é recomendável lavar o cabelo antes da sessão e levar uma touca ou lenço para ir embora com o cabelo cuidado pelo óleo.",
         },
         {
           q: "É indicado para quem tem enxaqueca?",
@@ -78,11 +79,11 @@ export default function ShirodharaPage() {
         },
         {
           q: "Quanto tempo dura?",
-          a: "A sessão tem duração de 60 minutos.",
+          a: "O atendimento completo tem duração de 60 minutos, incluindo abertura do campo, escuta inicial, carreamento de óleo por 30 minutos e toque craniano com fechamento nos 10 minutos finais.",
         },
         {
           q: "Como agendo?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+          a: "Clique no botão QUERO AGENDAR A MINHA SESSÃO e fale com Ilana pelo WhatsApp para combinar data e horário.",
         },
       ]}
 

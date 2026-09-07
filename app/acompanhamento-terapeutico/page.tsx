@@ -88,6 +88,12 @@ export default function AcompanhamentoTerapeuticoPage() {
       ]}
 
       modalEtiqueta="Acompanhamento"
+      /* Online e também à noite: não pode herdar o aviso padrão, que diz
+         "exclusivamente no período da tarde". */
+      modalAvisoAgenda="⚠️ ATENÇÃO: Os atendimentos são realizados nos períodos da tarde e da noite. O seu atendimento será agendado para as próximas 4 semanas e, em até 4 dias úteis, entraremos em contato para confirmar a data e o horário definitivos."
+      /* O "Investimento total" mostrava um valor só, mas o preço depende da
+         frequência. A tabela completa fica na seção de preços, acima. */
+      modalMostrarValor={false}
       modalTitulo="Seu acompanhamento contínuo"
       modalSubtitulo="Sessões de 60 minutos, online, na frequência que fizer sentido para o seu momento."
       modalLocal="no formato online"

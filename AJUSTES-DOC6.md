@@ -36,53 +36,69 @@ documento só citava o cartão; corrigi os dois.
 
 ---
 
-## ⬅️ Página 2 em diante — pendente
+## ✅ Página 2 até o fim — feita
 
-### Cuidados Plenamente Ayurvédicos
-Valores para **R$ 300** (60 min) e **R$ 400** (90 min). Lembrar de trocar também
-nas modalidades do modal, como aconteceu na Madalena.
+Inclui o setor de Perguntas Frequentes. Só ficou de fora o questionário da
+Travessia da Semente, que depende da Ilana.
 
-### Shirodhara
-- Subtítulo ganha "óleo **aquecido** e medicado"
-- Texto principal idem
-- Lista do que está incluído ganha um item novo com a divisão do tempo:
-  10 a 20 min de escuta prévia; 30 min de carregamento de óleo; 10 min de toque
-  craniano e fechamento
+| Página | O que mudou |
+|---|---|
+| Cuidados Ayurvédicos | R$ 300 (60 min) e R$ 400 (90 min), no cartão e no modal |
+| Shirodhara | "óleo **aquecido** e medicado"; item novo com a divisão do tempo |
+| Bússola | "orientação **integrativa** xamânica"; "**Ilana constrói**"; aviso próprio |
+| Acompanhamento | aviso próprio; "Investimento total" fora do modal |
+| Rodas Celta-Baianas | título, subtítulo, "Roda no Canto da Floresta" |
+| Travessia da Semente | título do card, título da página, frase no subtítulo |
+| Vem Pra Roda | "Aprenda **elementos para** conduzir…" |
+| Biblioteca Viva | campo de e-mail no modal |
+| FAQ | 6 páginas ajustadas — ver abaixo |
 
-### Bússola
-- Subtítulo: "escuta e orientação **integrativa** xamânica"
-- 3º parágrafo passa a dizer "**Ilana constrói** um roteiro personalizado"
-- ⚠️ **Períodos disponíveis: tarde/noite.** Conflita com o aviso global que diz
-  "exclusivamente no período da tarde" — a Bússola é online e aceita noite.
-  Vai precisar de um aviso próprio nessa página (a prop `modalAvisoAgenda` já existe).
+### O aviso de agenda deixou de ser único
 
-### Acompanhamento Contínuo
-- Mesma questão: tarde/noite, sem manhãs
-- ⚠️ **Tirar o "Investimento total" do modal**: mostra R$ 134,00 fixo, mas o valor
-  depende da frequência. Basta `modalMostrarValor={false}`.
+O texto padrão diz "exclusivamente no período da tarde". A **Bússola** e o
+**Acompanhamento** são online e a Ilana também atende à noite, então as duas
+passaram a ter aviso próprio, via `modalAvisoAgenda`:
 
-### Rodas Celta-Baianas
-- Título: "Fortalecimento feminino nas Rodas Celta-Baianas"
-- Subtítulo: "fortalecimento e **deleite**" (hoje está "desfrute")
-- No modal, a modalidade "Roda no Instituto" vira **"Roda no Canto da Floresta"**
+> ⚠️ ATENÇÃO: Os atendimentos são realizados nos períodos da tarde e da noite.
+> O seu atendimento será agendado para as próximas 4 semanas e, em até 4 dias
+> úteis, entraremos em contato para confirmar a data e o horário definitivos.
 
-### Travessia da Semente (Mentoria Cuidado Autoral)
-- Título do card: "Mentoria Cuidado Autoral: Travessia da Semente"
-- Título da página: "Fortaleça sua identidade terapêutica na Travessia da Semente:
-  Mentoria Cuidado Autoral"
-- Subtítulo ganha: "Sair do básico, do comum, do igual. Tomar um prumo mais
-  autêntico, aprimorando seu cuidado e sua comunicação."
-- ⏸️ O questionário do botão ela vai enviar em separado
+**Qualquer serviço novo herda o texto da tarde.** Se aceitar outro horário,
+precisa do aviso próprio.
 
-### Mentoria Vem Pra Roda, Mulher!
-- Título: "Aprenda **elementos para** conduzir Rodas Celta-Baianas em Vem Pra Roda, Mulher!"
+### Campo de e-mail
 
-### Biblioteca Viva
-- Incluir **campo de e-mail** no formulário de contato (o modal hoje só tem nome
-  e WhatsApp)
+`modalMostrarEmail` nasceu desligado e só a **Biblioteca Viva** liga. Lá o
+cadastro é lista de espera, não agendamento — o e-mail é o canal do aviso de
+lançamento. Nas páginas de sessão o WhatsApp basta, e um campo a mais só
+aumentaria o atrito.
 
-### Perguntas Frequentes
-Bloco final do documento, a partir da linha 118. Ela diz: *"mantemos como está lá
-se eu não citei nada aqui"*. Traz ajustes por serviço — MASSIXA Essencial, Toque
-da Jurema, Anahata Terra, Cuidados Ayurvédicos, Shirodhara, Vem Pra Roda,
-Biblioteca Viva. **Ainda não lido em detalhe.**
+### FAQ
+
+A Ilana escreveu *"mantemos como está lá se eu não citei nada aqui"*, então só
+mexemos no que ela citou:
+
+- **"e em locais distintos quando em viagem"** entrou em MASSIXA Essencial,
+  Toque da Jurema e Madalena. A Anahata **não** — ela marcou isso explicitamente.
+- **"Como agendo?"** passou a nomear o botão em 7 páginas.
+- Respostas reescritas: toque da Jurema, público da Madalena, roupa nos
+  Ayurvédicos, cabelo e duração no Shirodhara, diferença Reconecta/Colo da Terra
+  e preparo nas Imersões, preparo na Bússola, público na Vem Pra Roda,
+  promoção na Biblioteca.
+
+⚠️ Ela escreveu **"QUERO MINHA SESSÃO"**, mas os botões foram padronizados antes
+para **"Quero agendar a minha sessão"**. Usamos o rótulo real — citar um botão que
+não existe confundiria mais do que ajudaria. Nas Imersões o botão diz "imersão", e
+a resposta acompanha.
+
+⚠️ O documento diz que o Shirodhara ficaria dentro dos Cuidados Ayurvédicos, mas a
+Vera decidiu depois **restabelecer a página própria**. Vale confirmar com a Ilana.
+
+---
+
+## ⏸️ Pendente
+
+- **Questionário da Travessia da Semente** — a Ilana disse que envia em separado.
+  Enquanto não chega, o botão "quero aplicar para a mentoria" abre o WhatsApp.
+- Mesma pendência vale para a **Vem Pra Roda**: as duas mentorias prometem um
+  "Formulário de Aplicação" que ainda não existe. **Resolver antes de divulgar.**

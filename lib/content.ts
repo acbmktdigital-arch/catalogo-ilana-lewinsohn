@@ -163,7 +163,7 @@ export const services: Service[] = [
   {
     id: 'mentoria-cuidado-autoral',
     slug: 'mentoria-cuidado-autoral',
-    title: 'Travessia da Semente: Mentoria Cuidado Autoral',
+    title: 'Mentoria Cuidado Autoral: Travessia da Semente',
     description: 'Mentoria para terapeutas que querem fortalecer sua identidade profissional e linguagem própria de cuidado.',
     image: '/images/mentoria-cuidado-autoral-aula.jpg',
     ctaLabel: 'Saber mais',

@@ -77,11 +77,11 @@ export default function ToqueDaJuremaPage() {
       faqItems={[
         {
           q: "Onde acontece o atendimento?",
-          a: "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia.",
+          a: "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia, e em locais distintos quando em viagem.",
         },
         {
           q: "O toque é muito forte?",
-          a: "É mais vigoroso que uma massagem convencional, sempre respeitando o limite do seu corpo.",
+          a: "Não necessariamente. Depende do seu momento e respeita seu limite, sempre.",
         },
         {
           q: "Preciso ter alguma vivência espiritual prévia?",
@@ -97,7 +97,7 @@ export default function ToqueDaJuremaPage() {
         },
         {
           q: "Como agendo?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+          a: "Clique no botão QUERO AGENDAR A MINHA SESSÃO e fale com Ilana pelo WhatsApp para combinar data e horário.",
         },
       ]}
 

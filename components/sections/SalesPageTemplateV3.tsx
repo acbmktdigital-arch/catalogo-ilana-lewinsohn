@@ -118,6 +118,9 @@ type SalesPageTemplateV3Props = {
      pergunta sobre urgência. Some onde agendar sessão não faz sentido. */
   modalMostrarAgenda?: boolean
   modalAvisoAgenda?: string
+  /* Campo de e-mail no modal, para as páginas de cadastro em lista. */
+  modalMostrarEmail?: boolean
+  modalEmailObrigatorio?: boolean
   modalLabelModalidade?: string
   modalMostrarValor?: boolean
   modalFraseInicial?: string
@@ -354,6 +357,8 @@ export default function SalesPageTemplateV3({
   modalLocal,
   modalMostrarAgenda = true,
   modalAvisoAgenda,
+  modalMostrarEmail = false,
+  modalEmailObrigatorio = false,
   modalLabelModalidade,
   modalMostrarValor = true,
   modalFraseInicial,
@@ -837,6 +842,8 @@ export default function SalesPageTemplateV3({
         local={modalLocal}
         mostrarAgenda={modalMostrarAgenda}
         avisoAgenda={modalAvisoAgenda}
+        mostrarEmail={modalMostrarEmail}
+        emailObrigatorio={modalEmailObrigatorio}
         labelModalidade={modalLabelModalidade}
         mostrarValor={modalMostrarValor}
         fraseInicial={modalFraseInicial}

@@ -7,7 +7,7 @@ export default function MentoriaVemPraRodaMulherPage() {
       serviceLabel="Ilana Lewinsohn · Mentoria Vem Pra Roda, Mulher!"
       /* "Celta-Baianas" sem o s em Celta, como no resto do site e no nome da
          própria página das Rodas. No documento ela escreveu das duas formas. */
-      heroTitle={<>Aprenda a conduzir Rodas Celta-Baianas em <span style={{color:'var(--cor-destaque)'}}>Vem Pra Roda, Mulher!</span></>}
+      heroTitle={<>Aprenda elementos para conduzir Rodas Celta-Baianas em <span style={{color:'var(--cor-destaque)'}}>Vem Pra Roda, Mulher!</span></>}
       heroSubtitle="Mentoria para mulheres que desejam criar e conduzir Rodas de Mulheres, com mais de duas décadas de experiência da facilitadora."
       heroImageWide="/images/mentoria-vem-pra-roda-mulher.jpg"
       heroCTALabel="Quero aplicar para a Mentoria"
@@ -91,7 +91,7 @@ export default function MentoriaVemPraRodaMulherPage() {
       faqItems={[
         {
           q: "Para quem é essa mentoria?",
-          a: "Para mulheres que sentem o chamado de criar e facilitar suas próprias Rodas de Mulheres.",
+          a: "Para mulheres que já trabalham com grupo, facilitam círculos ou sentem o chamado para criar e facilitar suas próprias Rodas de Mulheres.",
         },
         {
           q: "Preciso já ter experiência facilitando grupos?",

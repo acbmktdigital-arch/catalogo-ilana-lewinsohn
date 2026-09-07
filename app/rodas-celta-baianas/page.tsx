@@ -5,8 +5,8 @@ export default function RodasCeltaBaianasPage() {
     <SalesPageTemplateV3
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · Rodas Celta-Baianas: Feminino Sagrado"
-      heroTitle={<>Fortalecimento coletivo nas <span style={{color:'var(--cor-destaque)'}}>Rodas Celta-Baianas</span></>}
-      heroSubtitle="Vivências em grupo de mulheres para fortalecimento e desfrute femininos. Aqui a medicina é o círculo, a ritualística, e pode incluir cacau cerimonial e partilha em ambiente seguro e acolhedor."
+      heroTitle={<>Fortalecimento feminino nas <span style={{color:'var(--cor-destaque)'}}>Rodas Celta-Baianas</span></>}
+      heroSubtitle="Vivências em grupo de mulheres para fortalecimento e deleite. Aqui a medicina é o círculo, a ritualística, e pode incluir cacau cerimonial e partilha em ambiente seguro e acolhedor."
       heroImageWide="/images/rodas-celta-baianas.jpg"
       heroCTALabel="Quero participar de uma Roda"
 
@@ -109,7 +109,7 @@ export default function RodasCeltaBaianasPage() {
       modalidades={[
         {
           id: 'instituto',
-          titulo: 'Roda no Instituto',
+          titulo: 'Roda no Canto da Floresta',
           descricao: "Arraial d'Ajuda · passa por entrevista",
           nomeNaMensagem: 'participar de uma Roda Celta-Baiana no Instituto Canto da Floresta',
         },

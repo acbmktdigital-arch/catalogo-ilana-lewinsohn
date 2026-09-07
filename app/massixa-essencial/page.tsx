@@ -66,7 +66,7 @@ export default function MassixaEssencialPage() {
       faqItems={[
         {
           q: "Onde acontece o atendimento?",
-          a: "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia.",
+          a: "No Instituto Canto da Floresta, em Arraial d'Ajuda, Bahia, e em locais distintos quando em viagem.",
         },
         {
           q: "Preciso escolher o que vai ser usado na sessão?",
@@ -86,7 +86,7 @@ export default function MassixaEssencialPage() {
         },
         {
           q: "Como agendo?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+          a: "Clique no botão QUERO AGENDAR A MINHA SESSÃO e fale com Ilana pelo WhatsApp para combinar data e horário.",
         },
       ]}
 

@@ -47,6 +47,12 @@ type BookingModalV3Props = {
   mostrarAgenda?: boolean
   avisoAgenda?: string
 
+  /* Campo de e-mail. Fica desligado por padrão: para agendar uma sessão, o
+     WhatsApp basta. Serve para a Biblioteca Viva, onde o cadastro é uma lista
+     de espera e o e-mail é o canal de aviso. */
+  mostrarEmail?: boolean
+  emailObrigatorio?: boolean
+
   labelMensagem?: string
   placeholderMensagem?: string
   mensagemObrigatoria?: boolean
@@ -100,6 +106,8 @@ export default function BookingModalV3({
   fraseInicial = 'Gostaria de agendar a minha',
   mostrarAgenda = true,
   avisoAgenda = '⚠️ ATENÇÃO: As sessões são realizadas exclusivamente no período da tarde. O seu atendimento será agendado para as próximas 4 semanas e, em até 4 dias úteis, entraremos em contato para confirmar a data e o horário definitivos.',
+  mostrarEmail = false,
+  emailObrigatorio = false,
   labelMensagem = 'Algo sobre o seu momento',
   placeholderMensagem = 'O que te trouxe até aqui?',
   mensagemObrigatoria = false,
@@ -111,6 +119,7 @@ export default function BookingModalV3({
   )
   const [nome, setNome] = useState('')
   const [telefone, setTelefone] = useState('')
+  const [email, setEmail] = useState('')
   const [urgencia, setUrgencia] = useState('')
   const [mensagem, setMensagem] = useState('')
 
@@ -130,6 +139,7 @@ export default function BookingModalV3({
 
     if (nome.trim()) texto += `\n\nMeu nome: ${nome.trim()}`
     if (telefone.trim()) texto += `\nTelefone: ${telefone.trim()}`
+    if (mostrarEmail && email.trim()) texto += `\nE-mail: ${email.trim()}`
     if (mostrarAgenda && urgencia.trim()) texto += `\nUrgência: ${urgencia.trim()}`
     if (mostrarMensagem && mensagem.trim()) texto += `\n${labelMensagem}: ${mensagem.trim()}`
 
@@ -273,6 +283,30 @@ export default function BookingModalV3({
               style={campoStyle}
             />
           </div>
+
+          {/* E-mail — só onde o cadastro é uma lista, não um agendamento */}
+          {mostrarEmail && (
+            <div>
+              <label
+                htmlFor="v3-email"
+                className="block font-body text-xs mb-1"
+                style={{ color: 'rgba(255,255,255,0.75)' }}
+              >
+                E-mail{' '}
+                {!emailObrigatorio && <span style={{ opacity: 0.6 }}>(opcional)</span>}
+              </label>
+              <input
+                id="v3-email"
+                type="email"
+                required={emailObrigatorio}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="seunome@email.com"
+                className={campo}
+                style={campoStyle}
+              />
+            </div>
+          )}
 
           {/* Agenda: o aviso de como a data é combinada, e a pergunta sobre
               urgência. Entrou no lugar do seletor de turno — a Ilana só atende

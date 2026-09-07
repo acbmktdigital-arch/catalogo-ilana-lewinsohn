@@ -5,8 +5,8 @@ export default function MentoriaCuidadoAutoralPage() {
     <SalesPageTemplateV3
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · Travessia da Semente"
-      heroTitle={<>Fortaleça sua identidade na <span style={{color:'var(--cor-destaque)'}}>Travessia da Semente</span></>}
-      heroSubtitle="Para terapeutas que desejam desenvolver uma linguagem própria de cuidado e ampliar presença, confiança e valor percebido."
+      heroTitle={<>Fortaleça sua identidade terapêutica na <span style={{color:'var(--cor-destaque)'}}>Travessia da Semente</span>: Mentoria Cuidado Autoral</>}
+      heroSubtitle="Para terapeutas que desejam desenvolver uma linguagem própria de cuidado e ampliar presença, confiança e valor percebido. Sair do básico, do comum, do igual. Tomar um prumo mais autêntico, aprimorando seu cuidado e sua comunicação."
       /* Recortada em 4:3 a partir de y=850 da original, para reduzir a lona da
          tenda como a Ilana pediu: no celular sobra uma faixa fina no topo e no
          desktop, onde a moldura vira 16/10 e apara mais, ela some por completo. */

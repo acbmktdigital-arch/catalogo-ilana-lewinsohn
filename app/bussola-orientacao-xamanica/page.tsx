@@ -6,7 +6,7 @@ export default function BussolaOrientacaoXamanicaPage() {
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · Bússola: Orientação Integrativa Xamânica"
       heroTitle={<>Reencontre seu rumo com a <span style={{color:'var(--cor-destaque)'}}>Bússola</span></>}
-      heroSubtitle="Escuta e orientação xamânica, no formato online, para reencontrar o rumo em questões físicas, energéticas ou emocionais."
+      heroSubtitle="Escuta e orientação integrativa xamânica, no formato online, para reencontrar o rumo em questões físicas, energéticas ou emocionais."
       heroImageWide="/images/bussola-orientacao-xamanica.jpg"
       heroCTALabel="Quero minha orientação"
 
@@ -31,7 +31,7 @@ export default function BussolaOrientacaoXamanicaPage() {
 
           <span className="block mb-2.5">
             A partir de referências do Ayurveda, do Xamanismo, da Alquimia, do Yoga e da
-            Ervaria, construímos um roteiro personalizado, entregue por escrito, com
+            Ervaria, Ilana constrói um roteiro personalizado, entregue por escrito, com
             orientações e sugestões práticas para favorecer o equilíbrio da saúde física,
             mental, emocional e energética.
           </span>
@@ -123,7 +123,7 @@ export default function BussolaOrientacaoXamanicaPage() {
         },
         {
           q: "É necessário algum preparo antes?",
-          a: "Não é necessário nenhum preparo especial, apenas disponibilidade para se conectar com o momento.",
+          a: "Ilana solicitará que você prepare o ambiente e reserve alguns itens, como um copo d'água e possivelmente uma vela. Fora isso, não é necessário nenhum preparo especial, apenas disponibilidade para se conectar com o momento.",
         },
         {
           q: "Como agendo?",
@@ -132,6 +132,9 @@ export default function BussolaOrientacaoXamanicaPage() {
       ]}
 
       modalEtiqueta="Agendamento"
+      /* A Bússola é online e a Ilana atende também à noite, então ela não pode
+         herdar o aviso padrão, que diz "exclusivamente no período da tarde". */
+      modalAvisoAgenda="⚠️ ATENÇÃO: Os atendimentos são realizados nos períodos da tarde e da noite. O seu atendimento será agendado para as próximas 4 semanas e, em até 4 dias úteis, entraremos em contato para confirmar a data e o horário definitivos."
       modalTitulo="Sua Bússola"
       modalSubtitulo="90 minutos online de escuta e orientação, com plano de reorientação por escrito."
       modalLocal="no formato online"

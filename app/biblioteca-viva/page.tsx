@@ -58,7 +58,7 @@ export default function BibliotecaVivaPage() {
         },
         {
           q: "Vai ter algum valor promocional para quem entrar na lista?",
-          a: "Detalhes sobre condições especiais serão compartilhados com quem já estiver cadastrado.",
+          a: "Sim! Detalhes sobre condições especiais serão compartilhados com quem já estiver cadastrado.",
         },
         {
           q: "Como entro na lista de espera?",
@@ -72,6 +72,9 @@ export default function BibliotecaVivaPage() {
       modalFraseInicial="Gostaria de entrar na lista de espera da"
       modalMostrarValor={false}
       modalMostrarAgenda={false}
+      /* Aqui o cadastro é lista de espera, não agendamento: o e-mail é o canal
+         para avisar do lançamento. É a única página que pede o campo. */
+      modalMostrarEmail
       modalMostrarMensagem={false}
       modalLabelEnviar="Entrar na lista pelo WhatsApp"
       modalidades={[
