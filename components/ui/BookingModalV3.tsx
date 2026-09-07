@@ -99,7 +99,7 @@ export default function BookingModalV3({
   local,
   fraseInicial = 'Gostaria de agendar a minha',
   mostrarAgenda = true,
-  avisoAgenda = 'Sua sessão será agendada por Ilana para alguma tarde dentro das próximas 4 semanas, a combinar.',
+  avisoAgenda = '⚠️ ATENÇÃO: As sessões são realizadas exclusivamente no período da tarde. O seu atendimento será agendado para as próximas 4 semanas e, em até 4 dias úteis, entraremos em contato para confirmar a data e o horário definitivos.',
   labelMensagem = 'Algo sobre o seu momento',
   placeholderMensagem = 'O que te trouxe até aqui?',
   mensagemObrigatoria = false,
