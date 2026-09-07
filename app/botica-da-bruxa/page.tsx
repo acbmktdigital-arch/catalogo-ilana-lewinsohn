@@ -106,7 +106,7 @@ export default function BoticaDaBruxaPage() {
       modalFraseInicial="Gostaria de consultar a disponibilidade de"
       modalLabelModalidade="Qual preparado te interessa?"
       modalMostrarValor={false}
-      modalMostrarPeriodo={false}
+      modalMostrarAgenda={false}
       modalLabelMensagem="O que você está buscando"
       modalPlaceholderMensagem="Se estiver em dúvida, conte o que procura e Ilana te orienta."
       modalLabelEnviar="Consultar no WhatsApp"

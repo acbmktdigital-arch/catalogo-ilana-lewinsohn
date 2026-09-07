@@ -5,8 +5,8 @@ export default function ImersoesMassixaPage() {
     <SalesPageTemplateV3
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · Imersões MASSIXA"
-      heroTitle={<>Três horas só suas nas Imersões <span style={{color:'var(--cor-destaque)'}}>MASSIXA</span></>}
-      heroSubtitle="Um convite a reconectar corpo, coração e propósito — com o recorte Colo da Terra para quem está gestando."
+      heroTitle={<>Força selvagem. <span style={{color:'var(--cor-destaque)'}}>Beleza livre.</span></>}
+      heroSubtitle="Três horas de cuidados personalizados especialmente para você, nas Imersões MASSIXA. Para atender às suas necessidades do momento e abrir caminho para reconectar corpo, coração e propósito — com o recorte especial Colo da Terra para quem está gestando."
       heroImageA="/images/imersoes-ninho-terra.jpg"
       heroImageB="/images/imersao-colo-da-terra.jpg"
       heroImageWide="/images/reconecta-gongo-v3.jpg"
@@ -15,16 +15,17 @@ export default function ImersoesMassixaPage() {
 
       whatIsTitle={<>O que é a Imersão <span style={{color:'var(--cor-destaque)'}}>Reconecta</span>?</>}
       whatIsTexts={[
-        "São três horas dedicadas exclusivamente a você, podendo incluir escuta, ritual, massagem, ervas, defumação, banho de ervas e sons curadores.",
+        "Tempo para você se reconectar com o chão, a mata, o coração da Terra. Tempo para lembrar de si naquele lugar mais livre e profundo do seu ser. Acessar seu saber selvagem. Abrir espaço para a liberdade de ser quem é.",
+        "São três horas dedicadas exclusivamente a você, podendo incluir escuta, oráculos, rituais personalizados, massagem, ervas, defumação, banho de ervas e sons curadores.",
         "Tudo é construído de acordo com o que o seu momento pede — um convite a reconectar corpo, coração e propósito.",
       ]}
-      whatIsQuote="Às vezes, reconectar é só parar tempo suficiente para se ouvir."
+      whatIsQuote="Receber cuidado para se reconectar é abrir espaço para si, permitir-se fluir em amor."
       subSecao={{
         titulo: (
           <>Cuidando da mulher gestante em <span style={{color:'var(--cor-destaque)'}}>Colo da Terra</span></>
         ),
         subtitulo:
-          'Uma imersão de cuidado criada para mulheres gestantes, focada em olhar para suas necessidades mais profundas e respeitando cada fase da gravidez.',
+          'Uma imersão de cuidado criada para mulheres gestantes, focada em olhar para suas necessidades mais profundas e respeitando cada fase da gravidez. Ativar La Loba, força selvagem feminina.',
         textos: [
           'Uma travessia de cuidado para quem também está gerando uma nova vida.',
           'Enquanto todos olham para o bebê, este é um convite para cuidar de quem o acolhe.',
@@ -39,6 +40,7 @@ export default function ImersoesMassixaPage() {
       transformationTitle="A Transformação que Você Busca"
       transformationSubtitle="Na Imersão Reconecta — de onde você está para onde a imersão leva."
       transformations={[
+        { antes: "Desejo forte por um intenso cuidado de bruxa (amiga, amorosa e forte)", depois: "Você terá" },
         { antes: "Sensação de estar perdida", depois: "Mais clareza" },
         { antes: "Distância do próprio propósito", depois: "Reconexão com o próprio propósito" },
         { antes: "Coração pedindo espaço", depois: "Coração mais leve" },
@@ -50,6 +52,7 @@ export default function ImersoesMassixaPage() {
         titulo: "A Transformação no Colo da Terra",
         subtitulo: "Para quem também está gerando uma nova vida.",
         itens: [
+          { antes: "Desejo de um cuidado de bruxa (amiga, amorosa e forte)", depois: "Você terá" },
           { antes: "Falta de espaço só para si", depois: "Pausa, acolhimento e fortalecimento na gestação" },
           { antes: "Sentimento de invisibilidade enquanto mulher", depois: "Cuidado profundo para você, a mulher gestando" },
           { antes: "Falta de fôlego para a grande mudança pela frente", depois: "Fortalecimento para o parto" },
@@ -136,19 +139,19 @@ export default function ImersoesMassixaPage() {
 
       modalEtiqueta="Agendamento exclusivo"
       modalTitulo="Sua Imersão MASSIXA"
-      modalSubtitulo="3 horas dedicadas ao seu silêncio, cuidado e reconexão no Instituto Canto da Floresta."
+      modalSubtitulo="3 horas dedicadas a cuidar de você, com rituais específicos e sessão de massagem. No Instituto Canto da Floresta, em Arraial d'Ajuda."
       modalLocal="no Instituto Canto da Floresta, em Arraial d'Ajuda"
       modalidades={[
         {
           id: 'reconecta',
           titulo: 'Reconecta',
-          descricao: 'Base para renovação e escuta profunda',
+          descricao: 'Escuta, rituais personalizados e massagem',
           nomeNaMensagem: 'Imersão Reconecta',
         },
         {
           id: 'colo-da-terra',
           titulo: 'Colo da Terra',
-          descricao: 'Toque adaptado para gestantes',
+          descricao: 'Tudo adaptado para gestantes',
           nomeNaMensagem: 'Imersão Colo da Terra (gestantes)',
         },
       ]}

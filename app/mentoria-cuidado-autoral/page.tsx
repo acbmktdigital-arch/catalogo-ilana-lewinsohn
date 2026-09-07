@@ -119,7 +119,7 @@ export default function MentoriaCuidadoAutoralPage() {
       modalSubtitulo="Deixe seu contato e conte um pouco da sua trajetória. Ilana retorna para agendarem uma conversa."
       modalFraseInicial="Gostaria de aplicar para a"
       modalMostrarValor={false}
-      modalMostrarPeriodo={false}
+      modalMostrarAgenda={false}
       modalLabelMensagem="Sobre você e seu trabalho"
       modalPlaceholderMensagem="Há quanto tempo atua? O que te trouxe a esta mentoria?"
       modalLabelEnviar="Enviar minha aplicação no WhatsApp"

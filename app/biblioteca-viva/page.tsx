@@ -71,7 +71,7 @@ export default function BibliotecaVivaPage() {
       modalSubtitulo="Deixe seu contato e você é avisada em primeira mão quando os materiais saírem."
       modalFraseInicial="Gostaria de entrar na lista de espera da"
       modalMostrarValor={false}
-      modalMostrarPeriodo={false}
+      modalMostrarAgenda={false}
       modalMostrarMensagem={false}
       modalLabelEnviar="Entrar na lista pelo WhatsApp"
       modalidades={[

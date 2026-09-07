@@ -85,7 +85,7 @@ export default function VivenciasImersoesRetirosPage() {
       modalSubtitulo="Conte sobre o grupo e Ilana desenha uma proposta sob medida."
       modalFraseInicial="Gostaria de um orçamento para"
       modalMostrarValor={false}
-      modalMostrarPeriodo={false}
+      modalMostrarAgenda={false}
       modalLabelMensagem="Sobre o seu grupo"
       modalPlaceholderMensagem="Quantas pessoas, que tipo de grupo, quando e onde seria?"
       modalMensagemObrigatoria

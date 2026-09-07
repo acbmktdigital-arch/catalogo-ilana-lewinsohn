@@ -41,10 +41,10 @@ export default function AnahataTerraPage() {
       ]}
 
       includedItems={[
-        "Aplicação de argila em pontos específicos do corpo",
-        "Uso de pedras quentes para aquecimento e relaxamento",
-        "Ervas selecionadas para enraizamento",
-        "Ambiente acolhedor no Instituto Canto da Floresta",
+        "Aplicação de argila preparada com chá de ervas em áreas específicas do corpo",
+        "Uso de pedras quentes para enraizamento, aquecimento, relaxamento e equilíbrio energético",
+        "Chá e óleos essenciais selecionados para trazer centramento e enraizamento",
+        "Ambiente acolhedor no Instituto Canto da Floresta (ou nos diferentes locais em viagem, sempre amorosamente preparados para receber você em Presença).",
       ]}
       includedCTALabel="Quero agendar minha sessão"
 

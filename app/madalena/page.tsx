@@ -6,7 +6,7 @@ export default function MadalenaPage() {
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · MASSIXA Temática | Madalena"
       heroTitle={<>Cacau, rosas e o coração aberto em <span style={{color:'var(--cor-destaque)'}}>Madalena</span></>}
-      heroSubtitle="Sessão que une cacau cerimonial ao toque das rosas vermelhas, para relaxar e reconectar com sua potência feminina."
+      heroSubtitle="Mais que relaxante, é inesquecível. Sessão que une cacau cerimonial ao toque das rosas vermelhas, com encantamento e profundidade, para você se conectar com sua potência feminina, em beleza e prazer."
       heroImageWide="/images/madalena.jpg"
       heroCTALabel="Quero minha sessão"
 
@@ -58,12 +58,12 @@ export default function MadalenaPage() {
       precos={[
         {
           label: "60 minutos",
-          valor: "R$ 300,00",
+          valor: "R$ 350,00",
           descricao: "Cacau cerimonial e toque das rosas",
         },
         {
           label: "90 minutos",
-          valor: "R$ 400,00",
+          valor: "R$ 440,00",
           descricao: "Mais tempo de acolhimento e abertura",
         },
       ]}
@@ -107,14 +107,14 @@ export default function MadalenaPage() {
           titulo: '60 minutos',
           descricao: 'Cacau cerimonial e toque das rosas',
           nomeNaMensagem: 'sessão Madalena de 60 minutos',
-          valor: 'R$ 300,00',
+          valor: 'R$ 350,00',
         },
         {
           id: '90min',
           titulo: '90 minutos',
           descricao: 'Mais tempo de acolhimento e abertura',
           nomeNaMensagem: 'sessão Madalena de 90 minutos',
-          valor: 'R$ 400,00',
+          valor: 'R$ 440,00',
         },
       ]}
 

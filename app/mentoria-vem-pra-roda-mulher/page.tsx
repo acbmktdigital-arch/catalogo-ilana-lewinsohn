@@ -116,7 +116,7 @@ export default function MentoriaVemPraRodaMulherPage() {
       modalSubtitulo="Deixe seu contato e conte um pouco do seu chamado. Ilana retorna para agendarem uma conversa."
       modalFraseInicial="Gostaria de aplicar para a"
       modalMostrarValor={false}
-      modalMostrarPeriodo={false}
+      modalMostrarAgenda={false}
       modalLabelMensagem="Sobre o seu chamado"
       modalPlaceholderMensagem="Já facilita Rodas? O que te trouxe até aqui?"
       modalLabelEnviar="Enviar minha aplicação no WhatsApp"

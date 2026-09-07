@@ -114,8 +114,10 @@ type SalesPageTemplateV3Props = {
   modalTitulo: string
   modalSubtitulo: string
   modalLocal?: string
-  /* Some quando escolher turno não faz sentido (ex.: eventos coletivos) */
-  modalMostrarPeriodo?: boolean
+  /* Bloco de agenda no modal: o aviso de que a Ilana atende à tarde e a
+     pergunta sobre urgência. Some onde agendar sessão não faz sentido. */
+  modalMostrarAgenda?: boolean
+  modalAvisoAgenda?: string
   modalLabelModalidade?: string
   modalMostrarValor?: boolean
   modalFraseInicial?: string
@@ -350,7 +352,8 @@ export default function SalesPageTemplateV3({
   modalTitulo,
   modalSubtitulo,
   modalLocal,
-  modalMostrarPeriodo = true,
+  modalMostrarAgenda = true,
+  modalAvisoAgenda,
   modalLabelModalidade,
   modalMostrarValor = true,
   modalFraseInicial,
@@ -832,7 +835,8 @@ export default function SalesPageTemplateV3({
         modalidades={modalidades}
         valor={precos?.[0]?.valor}
         local={modalLocal}
-        mostrarPeriodo={modalMostrarPeriodo}
+        mostrarAgenda={modalMostrarAgenda}
+        avisoAgenda={modalAvisoAgenda}
         labelModalidade={modalLabelModalidade}
         mostrarValor={modalMostrarValor}
         fraseInicial={modalFraseInicial}

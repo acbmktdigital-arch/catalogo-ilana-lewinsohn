@@ -39,8 +39,13 @@ type BookingModalV3Props = {
   /* Início da frase do WhatsApp, antes do nome da modalidade. */
   fraseInicial?: string
 
-  /* Some em serviços onde escolher turno não faz sentido (ex.: eventos coletivos) */
-  mostrarPeriodo?: boolean
+  /* Bloco de agenda: o aviso de que a Ilana atende à tarde, mais a pergunta
+     sobre urgência. Substituiu o seletor "qual período prefere?", que ela
+     pediu para tirar — ela só atende de tarde, então perguntar o turno dava
+     a entender uma escolha que não existe. Some onde agendar sessão não faz
+     sentido (eventos coletivos, lista de espera, produtos). */
+  mostrarAgenda?: boolean
+  avisoAgenda?: string
 
   labelMensagem?: string
   placeholderMensagem?: string
@@ -50,14 +55,6 @@ type BookingModalV3Props = {
 
   labelEnviar?: string
 }
-
-const PERIODOS = [
-  { id: 'manha', label: 'Manhã' },
-  { id: 'tarde', label: 'Tarde' },
-  { id: 'flexivel', label: 'Flexível' },
-] as const
-
-type PeriodoId = (typeof PERIODOS)[number]['id']
 
 function IconeFechar() {
   return (
@@ -101,7 +98,8 @@ export default function BookingModalV3({
   mostrarValor = true,
   local,
   fraseInicial = 'Gostaria de agendar a minha',
-  mostrarPeriodo = true,
+  mostrarAgenda = true,
+  avisoAgenda = 'Sua sessão será agendada por Ilana para alguma tarde dentro das próximas 4 semanas, a combinar.',
   labelMensagem = 'Algo sobre o seu momento',
   placeholderMensagem = 'O que te trouxe até aqui?',
   mensagemObrigatoria = false,
@@ -113,7 +111,7 @@ export default function BookingModalV3({
   )
   const [nome, setNome] = useState('')
   const [telefone, setTelefone] = useState('')
-  const [periodo, setPeriodo] = useState<PeriodoId>('flexivel')
+  const [urgencia, setUrgencia] = useState('')
   const [mensagem, setMensagem] = useState('')
 
   if (!aberto) return null
@@ -125,8 +123,6 @@ export default function BookingModalV3({
   const enviar = (e: React.FormEvent) => {
     e.preventDefault()
 
-    const periodoLabel = PERIODOS.find((p) => p.id === periodo)?.label ?? 'Flexível'
-
     let texto = `Olá, Ilana! ${fraseInicial} ${escolhida.nomeNaMensagem}`
     if (mostrarValor && valorExibido) texto += ` (${valorExibido})`
     if (local) texto += ` ${local}`
@@ -134,7 +130,7 @@ export default function BookingModalV3({
 
     if (nome.trim()) texto += `\n\nMeu nome: ${nome.trim()}`
     if (telefone.trim()) texto += `\nTelefone: ${telefone.trim()}`
-    if (mostrarPeriodo) texto += `\nPreferência de período: ${periodoLabel}`
+    if (mostrarAgenda && urgencia.trim()) texto += `\nUrgência: ${urgencia.trim()}`
     if (mostrarMensagem && mensagem.trim()) texto += `\n${labelMensagem}: ${mensagem.trim()}`
 
     window.open(
@@ -278,34 +274,40 @@ export default function BookingModalV3({
             />
           </div>
 
-          {/* Período */}
-          {mostrarPeriodo && (
+          {/* Agenda: o aviso de como a data é combinada, e a pergunta sobre
+              urgência. Entrou no lugar do seletor de turno — a Ilana só atende
+              de tarde, então oferecer manhã ou noite prometia uma escolha que
+              não existe. */}
+          {mostrarAgenda && (
             <div>
-              <label className="block font-body text-xs mb-1.5" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                Período de preferência:
+              <p
+                className="font-body text-xs leading-relaxed rounded-xl px-3.5 py-2.5 mb-4"
+                style={{
+                  color: 'rgba(255,255,255,0.75)',
+                  background: 'rgba(201,162,39,0.08)',
+                  border: '1px solid rgba(201,162,39,0.22)',
+                }}
+              >
+                {avisoAgenda}
+              </p>
+
+              <label
+                htmlFor="v3-urgencia"
+                className="block font-body text-xs mb-1"
+                style={{ color: 'rgba(255,255,255,0.75)' }}
+              >
+                Há alguma urgência? Se sim, qual seria?{' '}
+                <span style={{ opacity: 0.6 }}>(opcional)</span>
               </label>
-              <div className="grid grid-cols-3 gap-2">
-                {PERIODOS.map((p) => {
-                  const ativo = p.id === periodo
-                  return (
-                    <button
-                      type="button"
-                      key={p.id}
-                      onClick={() => setPeriodo(p.id)}
-                      className="py-2 px-1 text-center rounded-xl font-body text-xs transition-all cursor-pointer"
-                      style={{
-                        border: ativo
-                          ? '1px solid var(--cor-destaque)'
-                          : '1px solid rgba(201,162,39,0.22)',
-                        background: ativo ? 'rgba(84,95,55,0.45)' : '#1B190D',
-                        color: ativo ? '#FFFFFF' : 'rgba(255,255,255,0.55)',
-                      }}
-                    >
-                      {p.label}
-                    </button>
-                  )
-                })}
-              </div>
+              <textarea
+                id="v3-urgencia"
+                rows={2}
+                value={urgencia}
+                onChange={(e) => setUrgencia(e.target.value)}
+                placeholder="Por favor, especifique."
+                className={campo + ' resize-none leading-relaxed'}
+                style={campoStyle}
+              />
             </div>
           )}
 

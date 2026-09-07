@@ -6,7 +6,7 @@ export default function MassixaEssencialPage() {
       whatsappNumero="557399855339"
       serviceLabel="Ilana Lewinsohn · MASSIXA Essencial"
       heroTitle={<>Reorganização multidimensional e relaxamento profundo com <span style={{color:'var(--cor-destaque)'}}>MASSIXA Essencial</span></>}
-      heroSubtitle="Toque em presença, escuta e elementos da natureza para o seu corpo respirar e descansar de verdade."
+      heroSubtitle="Reorganização em diversas camadas e relaxamento profundo através da combinação intuitiva de elementos naturais."
       heroImageWide="/images/massixa-essencial.jpg"
       heroCTALabel="Quero minha sessão"
 

@@ -102,7 +102,7 @@ export default function RodasCeltaBaianasPage() {
       modalEtiqueta="Rodas Celta-Baianas"
       modalTitulo="Participar de uma Roda"
       modalSubtitulo="Deixe seu contato e conte um pouco de você. Ilana retorna para conversar."
-      modalMostrarPeriodo={false}
+      modalMostrarAgenda={false}
       modalMostrarValor={false}
       modalFraseInicial="Tenho interesse em"
       modalLabelModalidade="Qual é o seu interesse?"
