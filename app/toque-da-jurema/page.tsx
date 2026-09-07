@@ -12,7 +12,7 @@ export default function ToqueDaJuremaPage() {
          que dá nome à terapia. Recorte também quadrado, então nada é cortado. */
       heroImageWide="/images/toque-da-jurema-cama-de-ervas.jpg"
       heroAspecto="alto"
-      heroCTALabel="Quero minha sessão"
+      heroCTALabel="Quero agendar a minha sessão"
 
       whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Toque da Jurema</span>?</>}
       whatIsTexts={[
@@ -54,7 +54,7 @@ export default function ToqueDaJuremaPage() {
         "Possibilidade de limpeza energética profunda",
         "Ambiente ritualístico no Instituto Canto da Floresta",
       ]}
-      includedCTALabel="Quero agendar minha sessão"
+      includedCTALabel="Quero agendar a minha sessão"
 
       pricingImage="/images/toque-da-jurema-cama-de-ervas.jpg"
       pricingTitle="Toque da Jurema"
@@ -72,7 +72,7 @@ export default function ToqueDaJuremaPage() {
         },
       ]}
       priceNote="Atendimento no Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
-      pricingCTALabel="Quero agendar minha sessão"
+      pricingCTALabel="Quero agendar a minha sessão"
 
       faqItems={[
         {

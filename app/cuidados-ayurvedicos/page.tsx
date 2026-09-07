@@ -11,7 +11,7 @@ export default function CuidadosAyurvedicosPage() {
          frasco e a mão que recebe o óleo sobrevivam também ao 16/10 que a
          moldura assume no desktop. */
       heroImageWide="/images/ayurvedica-oleo-morno.jpg"
-      heroCTALabel="Quero minha sessão"
+      heroCTALabel="Quero agendar a minha sessão"
 
       /* "Massagens Ayurvédicas" no lugar de "O que são os Cuidados
          Ayurvédicos?", como o doc 5 pediu. O titulo segue certo mesmo com o
@@ -45,7 +45,7 @@ export default function CuidadosAyurvedicosPage() {
         "Óleos e toques selecionados conforme seu dosha e seu momento",
         "Ambiente acolhedor no Instituto Canto da Floresta",
       ]}
-      includedCTALabel="Quero agendar minha sessão"
+      includedCTALabel="Quero agendar a minha sessão"
 
       pricingImage="/images/garshana.jpg"
       pricingTitle="Cuidados Plenamente Ayurvédicos"
@@ -63,7 +63,7 @@ export default function CuidadosAyurvedicosPage() {
         },
       ]}
       priceNote="Atendimento no Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
-      pricingCTALabel="Quero agendar minha sessão"
+      pricingCTALabel="Quero agendar a minha sessão"
 
       faqItems={[
         {

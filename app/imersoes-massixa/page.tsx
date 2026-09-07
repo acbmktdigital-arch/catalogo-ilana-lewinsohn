@@ -11,7 +11,7 @@ export default function ImersoesMassixaPage() {
       heroImageB="/images/imersao-colo-da-terra.jpg"
       heroImageWide="/images/reconecta-gongo-v3.jpg"
       heroAspecto="alto"
-      heroCTALabel="Quero minha imersão"
+      heroCTALabel="Quero agendar a minha imersão"
 
       whatIsTitle={<>O que é a Imersão <span style={{color:'var(--cor-destaque)'}}>Reconecta</span>?</>}
       whatIsTexts={[
@@ -71,7 +71,7 @@ export default function ImersoesMassixaPage() {
         "Recorte Colo da Terra: toque seguro e adaptado à sua fase gestacional",
         "Ambiente acolhedor no Instituto Canto da Floresta",
       ]}
-      includedCTALabel="Quero agendar minha imersão"
+      includedCTALabel="Quero agendar a minha imersão"
 
       pricingImage="/images/hero.jpg"
       pricingTitle="Imersões MASSIXA"
@@ -92,7 +92,7 @@ export default function ImersoesMassixaPage() {
         },
       ]}
       priceNote="Imersão de 3 horas · Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
-      pricingCTALabel="Quero agendar minha imersão"
+      pricingCTALabel="Quero agendar a minha imersão"
 
       faqItems={[
         {

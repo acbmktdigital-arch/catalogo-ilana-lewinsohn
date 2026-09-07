@@ -8,7 +8,7 @@ export default function MassixaEssencialPage() {
       heroTitle={<>Reorganização multidimensional e relaxamento profundo com <span style={{color:'var(--cor-destaque)'}}>MASSIXA Essencial</span></>}
       heroSubtitle="Reorganização em diversas camadas e relaxamento profundo através da combinação intuitiva de elementos naturais."
       heroImageWide="/images/massixa-essencial.jpg"
-      heroCTALabel="Quero minha sessão"
+      heroCTALabel="Quero agendar a minha sessão"
 
       whatIsTitle={<>O que é a <span style={{color:'var(--cor-destaque)'}}>MASSIXA Essencial</span>?</>}
       whatIsTexts={[
@@ -43,7 +43,7 @@ export default function MassixaEssencialPage() {
         "Escuta antes e depois da sessão",
         "Ambiente acolhedor no Instituto Canto da Floresta",
       ]}
-      includedCTALabel="Quero agendar minha sessão"
+      includedCTALabel="Quero agendar a minha sessão"
 
       pricingImage="/images/massixa-essencial.jpg"
       pricingTitle="MASSIXA Essencial"
@@ -61,7 +61,7 @@ export default function MassixaEssencialPage() {
         },
       ]}
       priceNote="Atendimento no Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
-      pricingCTALabel="Quero agendar minha sessão"
+      pricingCTALabel="Quero agendar a minha sessão"
 
       faqItems={[
         {

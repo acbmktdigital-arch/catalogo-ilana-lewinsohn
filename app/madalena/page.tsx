@@ -8,7 +8,7 @@ export default function MadalenaPage() {
       heroTitle={<>Cacau, rosas e o coração aberto em <span style={{color:'var(--cor-destaque)'}}>Madalena</span></>}
       heroSubtitle="Mais que relaxante, é inesquecível. Sessão que une cacau cerimonial ao toque das rosas vermelhas, com encantamento e profundidade, para você se conectar com sua potência feminina, em beleza e prazer."
       heroImageWide="/images/madalena.jpg"
-      heroCTALabel="Quero minha sessão"
+      heroCTALabel="Quero agendar a minha sessão"
 
       whatIsTitle={<>O que é a sessão <span style={{color:'var(--cor-destaque)'}}>Madalena</span>?</>}
       whatIsTexts={[
@@ -50,7 +50,7 @@ export default function MadalenaPage() {
         "Escuta antes e depois da sessão",
         "Ambiente acolhedor e sensível no Instituto Canto da Floresta",
       ]}
-      includedCTALabel="Quero agendar minha sessão"
+      includedCTALabel="Quero agendar a minha sessão"
 
       pricingImage="/images/madalena.jpg"
       pricingTitle="Madalena"
@@ -68,7 +68,7 @@ export default function MadalenaPage() {
         },
       ]}
       priceNote="Atendimento no Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
-      pricingCTALabel="Quero agendar minha sessão"
+      pricingCTALabel="Quero agendar a minha sessão"
 
       faqItems={[
         {

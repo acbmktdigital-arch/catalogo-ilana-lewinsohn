@@ -8,7 +8,7 @@ export default function AnahataTerraPage() {
       heroTitle={<>Enraizamento profundo em <span style={{color:'var(--cor-destaque)'}}>Anahata Terra</span></>}
       heroSubtitle="Argila, pedras quentes e ervas para assentar a energia do corpo e desacelerar a mente."
       heroImageWide="/images/anahata-terra.jpg"
-      heroCTALabel="Quero minha sessão"
+      heroCTALabel="Quero agendar a minha sessão"
 
       whatIsTitle={<>O que é <span style={{color:'var(--cor-destaque)'}}>Anahata Terra</span>?</>}
       whatIsTexts={[
@@ -46,7 +46,7 @@ export default function AnahataTerraPage() {
         "Chá e óleos essenciais selecionados para trazer centramento e enraizamento",
         "Ambiente acolhedor no Instituto Canto da Floresta (ou nos diferentes locais em viagem, sempre amorosamente preparados para receber você em Presença).",
       ]}
-      includedCTALabel="Quero agendar minha sessão"
+      includedCTALabel="Quero agendar a minha sessão"
 
       pricingImage="/images/anahata-terra.jpg"
       pricingTitle="Anahata Terra"
@@ -64,7 +64,7 @@ export default function AnahataTerraPage() {
         },
       ]}
       priceNote="Atendimento no Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
-      pricingCTALabel="Quero agendar minha sessão"
+      pricingCTALabel="Quero agendar a minha sessão"
 
       faqItems={[
         {

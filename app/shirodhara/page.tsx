@@ -18,7 +18,7 @@ export default function ShirodharaPage() {
          recebe a 68%, acima da faixa onde o degradê do topo escurece demais. */
       heroImageWide="/images/shirodhara-vasilhame-de-cobre.jpg"
       heroAspecto="alto"
-      heroCTALabel="Quero minha sessão"
+      heroCTALabel="Quero agendar a minha sessão"
 
       whatIsTitle={<>O que é o <span style={{color:'var(--cor-destaque)'}}>Shirodhara</span>?</>}
       whatIsTexts={[
@@ -44,7 +44,7 @@ export default function ShirodharaPage() {
         "Ambiente silencioso e propício ao relaxamento",
         "Espaço acolhedor no Instituto Canto da Floresta",
       ]}
-      includedCTALabel="Quero agendar minha sessão"
+      includedCTALabel="Quero agendar a minha sessão"
 
       pricingImage="/images/shirodhara-vasilhame-de-cobre.jpg"
       pricingTitle="Shirodhara"
@@ -57,7 +57,7 @@ export default function ShirodharaPage() {
         },
       ]}
       priceNote="Sessão de 60 minutos · Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
-      pricingCTALabel="Quero agendar minha sessão"
+      pricingCTALabel="Quero agendar a minha sessão"
 
       faqItems={[
         {
