@@ -3,7 +3,9 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { siteConfig, ambientePresencial } from '@/lib/content'
+import { categorias } from '@/lib/categorias'
 import BookingModalV3, { ModalidadeAgendamento } from '@/components/ui/BookingModalV3'
 import AmbientSoundToggleV3 from '@/components/ui/AmbientSoundToggleV3'
 
@@ -152,6 +154,23 @@ function Chevron() {
       <path d="m6 9 6 6 6-6" />
     </svg>
   )
+}
+
+/* Descobre para onde o rodapé deve voltar: o nível anterior de uma página de
+   serviço é o bloco a que ela pertence, e não a home.
+
+   É calculado a partir do caminho da URL, e não passado como prop, para não
+   depender de alguém lembrar de configurar em cada uma das 14 páginas — e
+   para não sair errado quando um serviço mudar de bloco.
+
+   Quando o bloco aponta direto para a página (Biblioteca e Botica, que têm um
+   serviço só), aí o nível anterior é mesmo a home. */
+function destinoDeVolta(pathname: string | null) {
+  const slug = (pathname ?? '').split('/').filter(Boolean)[0]
+  const bloco = categorias.find((c) => !c.hrefDireto && c.servicos.includes(slug))
+  return bloco
+    ? { href: `/${bloco.slug}`, label: `← Voltar para ${bloco.titulo}` }
+    : { href: '/', label: '← Voltar à página principal' }
 }
 
 /* Painel de "antes → depois". Vira componente porque a página das Imersões
@@ -343,6 +362,8 @@ export default function SalesPageTemplateV3({
   ambiente,
   somAmbiente = true,
 }: SalesPageTemplateV3Props) {
+  const volta = destinoDeVolta(usePathname())
+
   const [agendamentoAberto, setAgendamentoAberto] = useState(false)
   /* Qual intenção o modal deve abrir marcada. Só muda quando a página tem
      mais de um botão levando a modalidades diferentes. */
@@ -778,11 +799,11 @@ export default function SalesPageTemplateV3({
               dourado sobre o fundo escuro dá 6,7:1. */}
           <div className="mb-4">
             <Link
-              href="/"
+              href={volta.href}
               className="font-sans text-sm sm:text-base font-medium py-2 transition-opacity hover:opacity-80 inline-flex items-center gap-1.5"
               style={{ color: 'var(--cor-destaque)' }}
             >
-              ← Voltar à página principal
+              {volta.label}
             </Link>
           </div>
 
