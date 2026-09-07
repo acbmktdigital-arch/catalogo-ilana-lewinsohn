@@ -111,6 +111,15 @@ export const services: Service[] = [
     ctaHref: '/cuidados-ayurvedicos',
   },
   {
+    id: 'shirodhara',
+    slug: 'shirodhara',
+    title: 'Shirodhara',
+    description: 'Fluxo contínuo de óleo sobre o terceiro olho para acalmar profundamente corpo e mente.',
+    image: '/images/shirodhara-fio-de-oleo.jpg',
+    ctaLabel: 'Saber mais',
+    ctaHref: '/shirodhara',
+  },
+  {
     id: 'bussola-orientacao-xamanica',
     slug: 'bussola-orientacao-xamanica',
     title: 'Bússola: Orientação Integrativa Xamânica',

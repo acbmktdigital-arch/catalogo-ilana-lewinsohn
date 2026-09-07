@@ -62,6 +62,7 @@ export const categorias: Categoria[] = [
       'madalena',
       'anahata-terra',
       'cuidados-ayurvedicos',
+      'shirodhara',
       'imersoes-massixa',
     ],
   },
