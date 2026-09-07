@@ -93,7 +93,11 @@ export const services: Service[] = [
     slug: 'imersoes-massixa',
     title: 'Imersões MASSIXA (inclui especial gestantes)',
     description: 'Três horas dedicadas só a você — escuta, ritual, toque e ervas. Com o recorte Colo da Terra para gestantes.',
-    image: '/images/imersao-reconecta.jpg',
+    /* A mesma foto que abre a página. É quadrada e o card é uma faixa
+       horizontal, então ele mostra a parte central: o gongo, o macete e o
+       rosto de quem recebe — a cabeça da Ilana fica de fora, que é o corte
+       inevitável numa faixa dessa altura. */
+    image: '/images/reconecta-gongo-v3.jpg',
     ctaLabel: 'Saber mais',
     ctaHref: '/imersoes-massixa',
   },
