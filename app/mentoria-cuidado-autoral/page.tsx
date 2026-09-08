@@ -83,10 +83,19 @@ export default function MentoriaCuidadoAutoralPage() {
          saber o que vai acontecer antes de clicar. */
       pricingSubtitle="Esta travessia é construída para pessoas comprometidas com seu próprio caminho. Os grupos são pequenos, para assegurar a proximidade entre nós e favorecer a profundidade do processo. Se esta mentoria fez sentido para você, preencha o Formulário de Aplicação. Leva cerca de 3 minutos e me permitirá conhecer um pouco da sua trajetória antes da nossa conversa."
       precoAviso="Próxima turma em formação."
-      /* Os três botões levam ao Formulário de Aplicação, como o texto acima
-         promete. As respostas caem na mesma planilha do Google que a Ilana já
-         usa — ver lib/formulario-mentoria.ts. */
-      ctaHref="/mentoria-cuidado-autoral/aplicacao"
+      /* Os três botões abrem o Formulário de Aplicação da Ilana, no Google, em
+         outra aba.
+
+         Chegamos a desenhar esse formulário dentro do catálogo, mas o Google
+         recusa envio vindo de fora — responde 401 a qualquer POST que não venha
+         da página dele. Havia como contornar, com um script intermediário, e
+         ficaria mais bonito; a Vera preferiu simplificar. Assim a Ilana
+         administra as perguntas sozinha e mantém o resumo e os gráficos que já
+         conhece, sem nada no meio para quebrar.
+
+         O caminho de dentro do catálogo está no commit 832909a, se um dia fizer
+         falta. */
+      ctaHref="https://docs.google.com/forms/d/e/1FAIpQLSeU-T9FWL0inTxbKw32eN67HcqBd-Clw1Ds6qXaQxCr__D_lQ/viewform"
       priceNote="A partir das suas respostas, entrarei em contato pelo WhatsApp para agendarmos uma conversa e avaliarmos, juntas, se este é o momento certo para seguirmos."
       pricingCTALabel="Quero aplicar para a Mentoria"
 

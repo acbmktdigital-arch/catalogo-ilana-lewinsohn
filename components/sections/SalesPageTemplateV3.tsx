@@ -343,6 +343,22 @@ function BotaoV3({ children, onClick }: { children: React.ReactNode; onClick: ()
 }
 
 function BotaoLinkV3({ children, href }: { children: React.ReactNode; href: string }) {
+  /* Endereço de fora abre em outra aba: quem sai para preencher um formulário
+     precisa achar o catálogo de volta ao terminar. */
+  if (/^https?:\/\//.test(href)) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={BOTAO_CLASSE}
+        style={BOTAO_ESTILO}
+      >
+        {children}
+      </a>
+    )
+  }
+
   return (
     <Link href={href} className={BOTAO_CLASSE} style={BOTAO_ESTILO}>
       {children}
