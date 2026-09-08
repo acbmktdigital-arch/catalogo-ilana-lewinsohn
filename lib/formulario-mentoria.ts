@@ -300,11 +300,25 @@ export const camposOcultos: Record<string, string> = {
  * Trocar de planilha depois — a dela, em vez da nossa — é mudar só o valor
  * dessa variável na Vercel.
  */
-const endpointProprio = process.env.NEXT_PUBLIC_APLICACAO_ENDPOINT?.trim()
+/**
+ * ⚠️ O envio direto para o Google Forms NÃO FUNCIONA mais para este formulário.
+ *
+ * Testado em 08/09/2026: o `formResponse` responde **401** a qualquer POST de
+ * fora, com ou sem cookies de sessão, com ou sem o token `fbzx`, e com qualquer
+ * `Origin`. O endereço está certo — é o mesmo que o próprio formulário usa —
+ * mas o Google recusa submissões que não venham da página dele.
+ *
+ * Por isso o padrão passou a ser a nossa planilha, que é o caminho testado e
+ * funcionando. Os `entry.XXXX` seguem aqui porque são a tradução das perguntas
+ * para o formulário dela, útil se um dia esse caminho reabrir.
+ */
+const ENDPOINT_PADRAO =
+  'https://script.google.com/macros/s/AKfycbywjiau5fSUmAh7eUVZg8fMDpdhow-PbNOj55kdB6DgpGokHV1WL70UN1BAB1e3UqXDzQ/exec'
 
-export const destino = endpointProprio
-  ? { url: endpointProprio, usaChave: true }
-  : { url: FORM_ACTION, usaChave: false }
+const endpointProprio =
+  process.env.NEXT_PUBLIC_APLICACAO_ENDPOINT?.trim() || ENDPOINT_PADRAO
+
+export const destino = { url: endpointProprio, usaChave: true }
 
 /** O nome com que cada pergunta viaja, conforme o destino. */
 export const nomeDoCampo = (campo: CampoFormulario) =>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import {
   campos,
@@ -50,9 +50,8 @@ export default function FormularioAplicacao() {
   const [outroTexto, setOutroTexto] = useState<Record<string, string>>({})
   const [erro, setErro] = useState<string | null>(null)
   const [enviado, setEnviado] = useState(false)
-
-  const enviando = useRef(false)
-  const formRef = useRef<HTMLFormElement>(null)
+  const [enviando, setEnviando] = useState(false)
+  const [falhou, setFalhou] = useState(false)
 
   const campo = passo > 0 ? campos[passo - 1] : null
   const ultimo = passo === TOTAL
@@ -106,13 +105,50 @@ export default function FormularioAplicacao() {
     window.setTimeout(() => setPasso((p) => (p === passo ? p + 1 : p)), 260)
   }
 
-  const aoEnviar = (evento: React.FormEvent<HTMLFormElement>) => {
+  /* O envio espera a resposta do recebedor e só comemora se ele confirmar.
+     Antes isso era um POST para um iframe escondido, cujo `onLoad` dispara do
+     mesmo jeito quando dá errado — e uma aplicação recusada mostrava
+     "Recebido, gratidão!" para quem preencheu, sem chegar em lugar nenhum.
+
+     Dá para ler a resposta porque o recebedor devolve `Access-Control-Allow-
+     Origin: *`. O tipo de conteúdo é o de formulário de propósito: é um dos que
+     o navegador manda sem pedir licença antes. */
+  const aoEnviar = async (evento: React.FormEvent<HTMLFormElement>) => {
+    evento.preventDefault()
+
     if (campo && campo.obrigatorio && !respondido(campo)) {
-      evento.preventDefault()
       setErro('Escreva sua resposta para enviar.')
       return
     }
-    enviando.current = true
+
+    setErro(null)
+    setFalhou(false)
+    setEnviando(true)
+
+    const corpo = new URLSearchParams()
+    for (const item of paraEnvio()) corpo.append(item.nome, item.valor)
+    if (!destino.usaChave) {
+      for (const [nome, valor] of Object.entries(camposOcultos)) corpo.append(nome, valor)
+    }
+
+    try {
+      const resposta = await fetch(destino.url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: corpo.toString(),
+      })
+
+      if (!resposta.ok) throw new Error(`resposta ${resposta.status}`)
+
+      const texto = await resposta.text()
+      if (!texto.includes('"ok":true')) throw new Error('recebedor não confirmou')
+
+      setEnviado(true)
+    } catch {
+      setFalhou(true)
+    } finally {
+      setEnviando(false)
+    }
   }
 
   /* Os campos escondidos que de fato viajam. Só existem no envio, então o que
@@ -179,23 +215,7 @@ export default function FormularioAplicacao() {
 
   return (
     <>
-      <iframe
-        name="destino-aplicacao"
-        title="Envio da aplicação"
-        className="hidden"
-        aria-hidden="true"
-        onLoad={() => {
-          /* Dispara uma vez sozinho, quando o iframe nasce vazio. Só vale como
-             confirmação depois que a pessoa enviou. */
-          if (enviando.current) setEnviado(true)
-        }}
-      />
-
       <form
-        ref={formRef}
-        action={destino.url}
-        method="POST"
-        target="destino-aplicacao"
         onSubmit={aoEnviar}
         /* Enter no meio do formulário não pode enviar: só a última pergunta
            envia, e pelo botão. */
@@ -206,15 +226,9 @@ export default function FormularioAplicacao() {
           }
         }}
       >
-        {!destino.usaChave &&
-          Object.entries(camposOcultos).map(([nome, valor]) => (
-            <input key={nome} type="hidden" name={nome} value={valor} readOnly />
-          ))}
-
-        {paraEnvio().map((item, i) => (
-          <input key={`${item.nome}-${i}`} type="hidden" name={item.nome} value={item.valor} readOnly />
-        ))}
-
+        {/* As respostas não moram em campos escondidos: são montadas no envio,
+            a partir do estado. Assim a tela mostra uma pergunta de cada vez sem
+            que isso tenha qualquer relação com o que é enviado. */}
         <div
           className="w-full rounded-2xl p-6 sm:p-8"
           style={{ background: 'var(--cor-card)', border: `1px solid ${FIO_OLIVA}` }}
@@ -476,6 +490,38 @@ export default function FormularioAplicacao() {
                 </p>
               )}
 
+              {/* Falha de envio nunca pode ser silenciosa: quem preencheu 18
+                  perguntas precisa saber que não chegou, e ter uma saída. */}
+              {falhou && (
+                <div
+                  className="rounded-xl px-4 py-3.5 mt-5"
+                  style={{
+                    background: 'rgba(180,60,40,0.22)',
+                    border: '1px solid rgba(180,60,40,0.5)',
+                  }}
+                  role="alert"
+                >
+                  <p
+                    className="font-body text-xs leading-relaxed mb-3"
+                    style={{ color: '#FFFFFF' }}
+                  >
+                    Não consegui enviar sua aplicação agora. Suas respostas continuam
+                    aqui na tela — tente de novo em instantes. Se persistir, fale com
+                    Ilana pelo WhatsApp que ela recebe sua aplicação por lá.
+                  </p>
+
+                  <a
+                    href="https://wa.me/557399855339?text=Ol%C3%A1%2C%20Ilana!%20Tentei%20enviar%20minha%20aplica%C3%A7%C3%A3o%20para%20a%20Travessia%20da%20Semente%20pelo%20site%2C%20mas%20n%C3%A3o%20consegui."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-xs font-semibold underline"
+                    style={{ color: 'var(--cor-destaque)' }}
+                  >
+                    Falar com Ilana no WhatsApp
+                  </a>
+                </div>
+              )}
+
               {/* ── Navegação ───────────────────────────── */}
               <div className="flex items-center justify-between gap-4 mt-8">
                 <button
@@ -488,8 +534,13 @@ export default function FormularioAplicacao() {
                 </button>
 
                 {ultimo ? (
-                  <button type="submit" className={botaoClasse} style={botaoEstilo}>
-                    Enviar minha aplicação
+                  <button
+                    type="submit"
+                    disabled={enviando}
+                    className={botaoClasse}
+                    style={botaoEstilo}
+                  >
+                    {enviando ? 'Enviando…' : 'Enviar minha aplicação'}
                   </button>
                 ) : (
                   <button
