@@ -37,7 +37,10 @@ export type TipoCampo =
   | 'multipla'
 
 export type CampoFormulario = {
-  /* Nome do campo no POST. É o que amarra esta pergunta à coluna da planilha. */
+  /* Nome do campo quando o destino é a nossa planilha. É o que amarra esta
+     pergunta à coluna, e o mesmo nome está em scripts/planilha-aplicacao.gs. */
+  chave: string
+  /* Nome do campo quando o destino é o Google Forms da Ilana. */
   entry: string
   pergunta: string
   tipo: TipoCampo
@@ -61,12 +64,14 @@ export const aberturaFormulario = [
 
 export const campos: CampoFormulario[] = [
   {
+    chave: 'nome',
     entry: 'entry.2005620554',
     pergunta: 'Nome',
     tipo: 'texto',
     obrigatorio: true,
   },
   {
+    chave: 'email',
     entry: 'entry.1045781291',
     pergunta: 'E-mail',
     tipo: 'texto',
@@ -74,12 +79,14 @@ export const campos: CampoFormulario[] = [
     exemplo: 'seunome@email.com',
   },
   {
+    chave: 'cidade',
     entry: 'entry.1065046570',
     pergunta: 'Cidade / Estado / País',
     tipo: 'texto',
     obrigatorio: true,
   },
   {
+    chave: 'telefone',
     entry: 'entry.1166974658',
     pergunta: 'Número de telefone',
     tipo: 'texto',
@@ -87,6 +94,7 @@ export const campos: CampoFormulario[] = [
     exemplo: '(DDD) 99999-9999',
   },
   {
+    chave: 'como_soube',
     entry: 'entry.839337160',
     pergunta: 'Como soube do programa Travessia Cuidado Autoral?',
     tipo: 'escolha',
@@ -100,6 +108,7 @@ export const campos: CampoFormulario[] = [
   },
 
   {
+    chave: 'ja_atua',
     entry: 'entry.817638281',
     secao: 'Sobre sua atuação terapêutica',
     pergunta: 'Você já atua como terapeuta?',
@@ -114,12 +123,14 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'linha_atuacao',
     entry: 'entry.1525384387',
     pergunta: 'Qual sua linha de atuação terapêutica? Sua profissão?',
     tipo: 'texto',
     obrigatorio: true,
   },
   {
+    chave: 'individual_ou_grupo',
     entry: 'entry.65533938',
     pergunta: 'Atende individualmente ou em grupos?',
     tipo: 'multipla',
@@ -127,6 +138,7 @@ export const campos: CampoFormulario[] = [
     opcoes: ['Individualmente', 'Pequenos grupos', 'Grupos grandes'],
   },
   {
+    chave: 'protocolos',
     entry: 'entry.595421949',
     pergunta:
       'Você sente que seus atendimentos atuais estão baseados em técnicas e protocolos?',
@@ -140,6 +152,7 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'elementos_natureza',
     entry: 'entry.229604598',
     pergunta:
       'Com que frequência você utiliza elementos da natureza (ervas, argila, pedras etc.) para cuidar de você e/ou das pessoas que atende?',
@@ -154,6 +167,7 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'como_se_sente',
     entry: 'entry.1496155206',
     pergunta:
       'Como você se sente em relação ao seu servir como terapeuta hoje? O que poderia melhorar?',
@@ -161,6 +175,7 @@ export const campos: CampoFormulario[] = [
     obrigatorio: true,
   },
   {
+    chave: 'o_quanto_incomoda',
     entry: 'entry.2136440475',
     pergunta:
       'Sobre esse aspecto que poderia melhorar (ou aspectos): o quanto isso incomoda você, a ponto de ser uma prioridade olhar para isso agora?',
@@ -174,6 +189,7 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'o_que_cuidar',
     entry: 'entry.1704251948',
     pergunta:
       'Se você pudesse escolher algo na sua prática para cuidar de perto, com apoio, pelos próximos 3 meses, o que seria?',
@@ -192,6 +208,7 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'investe_em_si',
     entry: 'entry.677055095',
     pergunta:
       'Você costuma investir tempo e recursos financeiros para cuidar de si? Retiros, cursos, práticas especiais?',
@@ -206,6 +223,7 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'algo_mais',
     entry: 'entry.1871025548',
     pergunta:
       'O quanto você sente que há algo mais para trazer ao seu servir, para que ele ganhe em força, sentido, profundidade, beleza, clareza?',
@@ -218,6 +236,7 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'quer_programa',
     entry: 'entry.1540126530',
     pergunta:
       'Você gostaria de atravessar um programa online que te apoie no desenvolvimento de um cuidado mais autoral, nutritivo e libertador da sua expressão plena como terapeuta? Com alguém que passou por isso te levando pela mão?',
@@ -226,6 +245,7 @@ export const campos: CampoFormulario[] = [
     opcoes: ['Sim, quero!', 'Não, estou de boa', 'Ainda tenho dúvidas'],
   },
   {
+    chave: 'quer_retiro',
     entry: 'entry.2051088130',
     pergunta:
       'Você gostaria de participar de um retiro presencial de 3 dias no Extremo Sul da Bahia (Arraial, Caraíva ou Santo André), ao final do programa online, para vivenciar uma imersão sensorial e viva de cuidado?',
@@ -238,6 +258,7 @@ export const campos: CampoFormulario[] = [
     ],
   },
   {
+    chave: 'indicacao',
     entry: 'entry.2119404360',
     pergunta:
       'Mesmo sem (ainda) saber dos detalhes da Travessia Cuidado Autoral, você sente que pode caber a alguém? Gostaria de indicar algum contato?',
@@ -264,3 +285,27 @@ export const camposOcultos: Record<string, string> = {
   fvv: '1',
   pageHistory: '0,1',
 }
+
+/**
+ * Para onde as respostas vão.
+ *
+ * Com `NEXT_PUBLIC_APLICACAO_ENDPOINT` definido, o formulário manda para a
+ * nossa planilha, pelo Apps Script de `scripts/planilha-aplicacao.gs`, e os
+ * campos viajam com nome legível (`nome`, `email`…).
+ *
+ * Sem a variável, cai no Google Forms da Ilana, com os `entry.XXXX`. É o que
+ * vale enquanto a planilha nova não estiver de pé, e a rede de segurança se
+ * alguém publicar sem configurar a variável.
+ *
+ * Trocar de planilha depois — a dela, em vez da nossa — é mudar só o valor
+ * dessa variável na Vercel.
+ */
+const endpointProprio = process.env.NEXT_PUBLIC_APLICACAO_ENDPOINT?.trim()
+
+export const destino = endpointProprio
+  ? { url: endpointProprio, usaChave: true }
+  : { url: FORM_ACTION, usaChave: false }
+
+/** O nome com que cada pergunta viaja, conforme o destino. */
+export const nomeDoCampo = (campo: CampoFormulario) =>
+  destino.usaChave ? campo.chave : campo.entry

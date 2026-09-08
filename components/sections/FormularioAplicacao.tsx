@@ -7,7 +7,8 @@ import {
   camposOcultos,
   tituloFormulario,
   aberturaFormulario,
-  FORM_ACTION,
+  destino,
+  nomeDoCampo,
   VALOR_OUTRO,
   sufixoOutro,
   type CampoFormulario,
@@ -41,6 +42,7 @@ function Pergunta({
   aoMarcarOutro: (marcado: boolean) => void
 }) {
   const id = `campo-${indice}`
+  const nome = nomeDoCampo(campo)
 
   return (
     <div className="mb-7">
@@ -63,7 +65,7 @@ function Pergunta({
       {campo.tipo === 'texto' && (
         <input
           id={id}
-          name={campo.entry}
+          name={nome}
           type={campo.pergunta === 'E-mail' ? 'email' : 'text'}
           required={campo.obrigatorio}
           placeholder={campo.exemplo}
@@ -75,7 +77,7 @@ function Pergunta({
       {campo.tipo === 'paragrafo' && (
         <textarea
           id={id}
-          name={campo.entry}
+          name={nome}
           rows={4}
           required={campo.obrigatorio}
           className={campoClasse + ' resize-none leading-relaxed'}
@@ -93,7 +95,7 @@ function Pergunta({
             >
               <input
                 type={campo.tipo === 'escolha' ? 'radio' : 'checkbox'}
-                name={campo.entry}
+                name={nome}
                 value={opcao}
                 /* Em rádio o próprio navegador cobra o grupo inteiro. Em caixas
                    de seleção o `required` valeria só para a caixa marcada, então
@@ -116,9 +118,13 @@ function Pergunta({
                 className="flex items-start gap-2.5 rounded-xl px-3.5 py-2.5 cursor-pointer transition-colors"
                 style={{ background: 'rgba(0,0,0,0.22)', border: `1px solid ${FIO_CLARO}` }}
               >
+                {/* Indo para a nossa planilha, esta caixa é só o interruptor
+                    que revela o campo aberto — quem viaja é o texto digitado,
+                    com o mesmo nome das outras opções. No Google Forms ela
+                    precisa viajar, com o valor que ele espera. */}
                 <input
                   type={campo.tipo === 'escolha' ? 'radio' : 'checkbox'}
-                  name={campo.entry}
+                  name={destino.usaChave ? undefined : nome}
                   value={VALOR_OUTRO}
                   checked={outroMarcado}
                   onChange={(e) => aoMarcarOutro(e.target.checked)}
@@ -134,7 +140,7 @@ function Pergunta({
 
               {outroMarcado && (
                 <input
-                  name={sufixoOutro(campo.entry)}
+                  name={destino.usaChave ? nome : sufixoOutro(campo.entry)}
                   type="text"
                   placeholder="O que seria?"
                   className={campoClasse + ' mt-1'}
@@ -167,14 +173,23 @@ export default function FormularioAplicacao() {
       (campo) =>
         campo.tipo === 'multipla' &&
         campo.obrigatorio &&
-        formulario.querySelectorAll(`input[name="${campo.entry}"]:checked`).length === 0
+        formulario.querySelectorAll(`input[name="${nomeDoCampo(campo)}"]:checked`).length === 0 &&
+        /* A caixa "Outro" pode não ter nome, quando o destino é a nossa
+           planilha; aí quem conta é o campo aberto ter texto. */
+        !(
+          campo.aceitaOutro &&
+          outros[campo.entry] &&
+          (formulario.querySelector(
+            `input[type="text"][name="${nomeDoCampo(campo)}"]`
+          ) as HTMLInputElement | null)?.value.trim()
+        )
     )
 
     if (faltando) {
       evento.preventDefault()
       setErro(`Escolha ao menos uma opção em: "${faltando.pergunta}"`)
       document
-        .querySelector(`input[name="${faltando.entry}"]`)
+        .querySelector(`input[name="${nomeDoCampo(faltando)}"]`)
         ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       return
     }
@@ -236,17 +251,19 @@ export default function FormularioAplicacao() {
       />
 
       <form
-        action={FORM_ACTION}
+        action={destino.url}
         method="POST"
         target="destino-aplicacao"
         onSubmit={aoEnviar}
         noValidate={false}
       >
-        {/* O Google precisa saber que a pessoa passou pelas duas páginas do
-            formulário dela, já que aqui tudo aparece de uma vez só. */}
-        {Object.entries(camposOcultos).map(([nome, valor]) => (
-          <input key={nome} type="hidden" name={nome} value={valor} readOnly />
-        ))}
+        {/* Só quando o destino é o Google: ele precisa saber que a pessoa
+            passou pelas duas páginas do formulário dela, já que aqui tudo
+            aparece de uma vez só. */}
+        {!destino.usaChave &&
+          Object.entries(camposOcultos).map(([nome, valor]) => (
+            <input key={nome} type="hidden" name={nome} value={valor} readOnly />
+          ))}
 
         <div
           className="w-full rounded-2xl p-6 sm:p-8"
