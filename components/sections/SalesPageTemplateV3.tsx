@@ -72,6 +72,21 @@ type SalesPageTemplateV3Props = {
     label: string
     modalidadeId: string
   }
+
+  /* Um serviço da mesma família, que tem página própria. Nasceu para o
+     Shirodhara: a Ilana queria que ele aparecesse como item dos Cuidados
+     Plenamente Ayurvédicos, mas fundir as duas páginas custaria o card na home
+     e, sobretudo, o link direto — ela manda link por WhatsApp, e quem pergunta
+     pelo Shirodhara cairia numa página sobre abhyanga. Aqui o parentesco fica
+     dito, e o caminho curto continua existindo. */
+  servicoRelacionado?: {
+    etiqueta: string
+    titulo: string
+    texto: string
+    imagem: string
+    label: string
+    href: string
+  }
   /* Segundo painel de transformação, para quando a página abriga dois
      assuntos com dores distintas (ex.: Colo da Terra dentro das Imersões).
      A Ilana escreveu conjuntos separados; misturar num painel só apagaria
@@ -301,21 +316,31 @@ function PainelLista({
 }
 
 /* Pílula dourada de largura automática, como no layout de origem */
+/* Aparência única dos botões, para o que abre o modal e o que leva a outra
+   página ficarem idênticos aos olhos de quem lê. */
+const BOTAO_CLASSE =
+  'inline-flex items-center justify-center px-8 sm:px-10 py-3.5 rounded-full font-sans text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0'
+
+const BOTAO_ESTILO: React.CSSProperties = {
+  background: '#6E7B47',
+  color: '#FFFFFF',
+  border: '2px solid rgba(201,162,39,0.75)',
+  boxShadow: '0 4px 18px rgba(0,0,0,0.25)',
+}
+
 function BotaoV3({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 rounded-full font-sans text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
-      style={{
-        background: '#6E7B47',
-        color: '#FFFFFF',
-        border: '2px solid rgba(201,162,39,0.75)',
-        boxShadow: '0 4px 18px rgba(0,0,0,0.25)',
-      }}
-    >
+    <button type="button" onClick={onClick} className={BOTAO_CLASSE} style={BOTAO_ESTILO}>
       {children}
     </button>
+  )
+}
+
+function BotaoLinkV3({ children, href }: { children: React.ReactNode; href: string }) {
+  return (
+    <Link href={href} className={BOTAO_CLASSE} style={BOTAO_ESTILO}>
+      {children}
+    </Link>
   )
 }
 
@@ -338,6 +363,7 @@ export default function SalesPageTemplateV3({
   transformacaoSecundaria,
   paineisDeLista,
   convitePosPreco,
+  servicoRelacionado,
   includedItems,
   includedCTALabel,
   includedTitle = 'O que está incluído na sua sessão',
@@ -747,6 +773,53 @@ export default function SalesPageTemplateV3({
               <BotaoV3 onClick={abrirCom(convitePosPreco.modalidadeId)}>
                 {convitePosPreco.label}
               </BotaoV3>
+            </div>
+          </section>
+        )}
+
+        {/* ── 5c. SERVIÇO DA MESMA FAMÍLIA ────────────────── */}
+        {/* Depois do preço de propósito: quem chegou até aqui já sabe o que
+            custa a massagem e está decidindo. É o momento em que saber de um
+            cuidado vizinho ajuda, não atrapalha. */}
+        {servicoRelacionado && (
+          <section className="w-full pb-4 px-2 sm:px-4">
+            <div
+              className="w-full rounded-2xl overflow-hidden flex flex-col sm:flex-row items-stretch"
+              style={{ background: PAINEL, border: `1px solid ${FIO_CLARO}` }}
+            >
+              <div className="relative w-full h-40 sm:h-auto sm:w-[38%] shrink-0">
+                <Image
+                  src={servicoRelacionado.imagem}
+                  alt={servicoRelacionado.titulo}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 38vw"
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="flex-1 p-6 sm:p-7 flex flex-col items-start text-left">
+                <p
+                  className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold mb-2"
+                  style={{ color: 'var(--cor-destaque)' }}
+                >
+                  {servicoRelacionado.etiqueta}
+                </p>
+
+                <h2 className="font-heading text-xl sm:text-2xl mb-2" style={{ color: '#FFFFFF' }}>
+                  {servicoRelacionado.titulo}
+                </h2>
+
+                <p
+                  className="font-body text-xs sm:text-sm leading-relaxed mb-6"
+                  style={{ color: 'rgba(255,255,255,0.75)' }}
+                >
+                  {servicoRelacionado.texto}
+                </p>
+
+                <BotaoLinkV3 href={servicoRelacionado.href}>
+                  {servicoRelacionado.label}
+                </BotaoLinkV3>
+              </div>
             </div>
           </section>
         )}

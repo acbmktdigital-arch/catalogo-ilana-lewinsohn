@@ -65,6 +65,20 @@ export default function CuidadosAyurvedicosPage() {
       priceNote="Atendimento no Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
       pricingCTALabel="Quero agendar a minha sessão"
 
+      /* A Ilana pediu que o Shirodhara aparecesse como item dos Cuidados
+         Plenamente Ayurvédicos. O parentesco fica dito aqui, mas ele mantém a
+         página própria: é a que ela manda por WhatsApp para quem pergunta pelo
+         Shirodhara, e tem foto, duração e preço só dele. */
+      servicoRelacionado={{
+        etiqueta: 'Também é um cuidado ayurvédico',
+        titulo: 'Shirodhara',
+        texto:
+          'Fluxo contínuo de óleo aquecido e medicado sobre o terceiro olho, para silenciar a mente e conduzir corpo e mente a um relaxamento profundo. Sessão de 60 minutos, com página e agendamento próprios.',
+        imagem: '/images/shirodhara-vasilhame-de-cobre.jpg',
+        label: 'Conhecer o Shirodhara',
+        href: '/shirodhara',
+      }}
+
       faqItems={[
         {
           q: "Onde acontece o atendimento?",

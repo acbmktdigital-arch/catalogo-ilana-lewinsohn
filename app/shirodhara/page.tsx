@@ -60,6 +60,18 @@ export default function ShirodharaPage() {
       priceNote="Sessão de 60 minutos · Instituto Canto da Floresta, em Arraial d'Ajuda — Porto Seguro"
       pricingCTALabel="Quero agendar a minha sessão"
 
+      /* O caminho de volta. O Shirodhara é um cuidado ayurvédico, e quem chega
+         aqui procurando relaxamento pode querer a massagem. */
+      servicoRelacionado={{
+        etiqueta: 'Faz parte dos',
+        titulo: 'Cuidados Plenamente Ayurvédicos',
+        texto:
+          'Abhyangas ou Garshana específicos para cada dosha, com óleos aquecidos e toques próprios para cada situação. Sessões de 60 ou 90 minutos.',
+        imagem: '/images/ayurvedica-oleo-morno.jpg',
+        label: 'Ver os cuidados ayurvédicos',
+        href: '/cuidados-ayurvedicos',
+      }}
+
       faqItems={[
         {
           q: "Onde acontece o atendimento?",
