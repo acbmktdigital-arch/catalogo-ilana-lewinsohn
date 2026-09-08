@@ -18,8 +18,10 @@ const FIO_CLARO = 'rgba(201,162,39,0.20)'
 const FIO_OLIVA = 'rgba(201,162,39,0.30)'
 const PAINEL = 'rgba(255,255,255,0.055)'
 
+const TOTAL = campos.length
+
 const campoClasse =
-  'w-full rounded-xl px-3.5 py-2.5 text-sm font-body transition-colors focus:outline-none'
+  'w-full rounded-xl px-3.5 py-3 text-sm font-body transition-colors focus:outline-none'
 
 const campoEstilo: React.CSSProperties = {
   background: 'rgba(0,0,0,0.28)',
@@ -27,176 +29,115 @@ const campoEstilo: React.CSSProperties = {
   color: '#FFFFFF',
 }
 
-/* Uma pergunta e as suas opções. Sai daqui de propósito: o corpo do formulário
-   é longo, e com a pergunta inteira inline ficaria difícil achar a lógica de
-   envio no meio dela. */
-function Pergunta({
-  campo,
-  indice,
-  outroMarcado,
-  aoMarcarOutro,
-}: {
-  campo: CampoFormulario
-  indice: number
-  outroMarcado: boolean
-  aoMarcarOutro: (marcado: boolean) => void
-}) {
-  const id = `campo-${indice}`
-  const nome = nomeDoCampo(campo)
+const botaoClasse =
+  'inline-flex items-center justify-center px-8 py-3.5 rounded-full font-sans text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0'
 
-  return (
-    <div className="mb-7">
-      <label
-        htmlFor={campo.tipo === 'texto' || campo.tipo === 'paragrafo' ? id : undefined}
-        className="block font-body text-sm leading-relaxed mb-2.5"
-        style={{ color: 'rgba(255,255,255,0.88)' }}
-      >
-        {campo.pergunta}
-        {campo.obrigatorio ? (
-          <span style={{ color: 'var(--cor-destaque)' }} aria-hidden="true">
-            {' '}
-            *
-          </span>
-        ) : (
-          <span style={{ opacity: 0.5 }}> (opcional)</span>
-        )}
-      </label>
-
-      {campo.tipo === 'texto' && (
-        <input
-          id={id}
-          name={nome}
-          type={campo.pergunta === 'E-mail' ? 'email' : 'text'}
-          required={campo.obrigatorio}
-          placeholder={campo.exemplo}
-          className={campoClasse}
-          style={campoEstilo}
-        />
-      )}
-
-      {campo.tipo === 'paragrafo' && (
-        <textarea
-          id={id}
-          name={nome}
-          rows={4}
-          required={campo.obrigatorio}
-          className={campoClasse + ' resize-none leading-relaxed'}
-          style={campoEstilo}
-        />
-      )}
-
-      {(campo.tipo === 'escolha' || campo.tipo === 'multipla') && (
-        <div className="flex flex-col gap-2">
-          {(campo.opcoes ?? []).map((opcao) => (
-            <label
-              key={opcao}
-              className="flex items-start gap-2.5 rounded-xl px-3.5 py-2.5 cursor-pointer transition-colors"
-              style={{ background: 'rgba(0,0,0,0.22)', border: `1px solid ${FIO_CLARO}` }}
-            >
-              <input
-                type={campo.tipo === 'escolha' ? 'radio' : 'checkbox'}
-                name={nome}
-                value={opcao}
-                /* Em rádio o próprio navegador cobra o grupo inteiro. Em caixas
-                   de seleção o `required` valeria só para a caixa marcada, então
-                   esse grupo é conferido no envio. */
-                required={campo.tipo === 'escolha' && campo.obrigatorio}
-                className="mt-0.5 shrink-0 accent-[#C9A227]"
-              />
-              <span
-                className="font-body text-xs leading-relaxed"
-                style={{ color: 'rgba(255,255,255,0.78)' }}
-              >
-                {opcao}
-              </span>
-            </label>
-          ))}
-
-          {campo.aceitaOutro && (
-            <>
-              <label
-                className="flex items-start gap-2.5 rounded-xl px-3.5 py-2.5 cursor-pointer transition-colors"
-                style={{ background: 'rgba(0,0,0,0.22)', border: `1px solid ${FIO_CLARO}` }}
-              >
-                {/* Indo para a nossa planilha, esta caixa é só o interruptor
-                    que revela o campo aberto — quem viaja é o texto digitado,
-                    com o mesmo nome das outras opções. No Google Forms ela
-                    precisa viajar, com o valor que ele espera. */}
-                <input
-                  type={campo.tipo === 'escolha' ? 'radio' : 'checkbox'}
-                  name={destino.usaChave ? undefined : nome}
-                  value={VALOR_OUTRO}
-                  checked={outroMarcado}
-                  onChange={(e) => aoMarcarOutro(e.target.checked)}
-                  className="mt-0.5 shrink-0 accent-[#C9A227]"
-                />
-                <span
-                  className="font-body text-xs leading-relaxed"
-                  style={{ color: 'rgba(255,255,255,0.78)' }}
-                >
-                  Outro
-                </span>
-              </label>
-
-              {outroMarcado && (
-                <input
-                  name={destino.usaChave ? nome : sufixoOutro(campo.entry)}
-                  type="text"
-                  placeholder="O que seria?"
-                  className={campoClasse + ' mt-1'}
-                  style={campoEstilo}
-                />
-              )}
-            </>
-          )}
-        </div>
-      )}
-    </div>
-  )
+const botaoEstilo: React.CSSProperties = {
+  background: '#6E7B47',
+  color: '#FFFFFF',
+  border: '2px solid rgba(201,162,39,0.75)',
+  boxShadow: '0 4px 18px rgba(0,0,0,0.25)',
 }
 
+/* Uma pergunta por vez. A Ilana pediu assim: vendo o questionário inteiro, a
+   pessoa mede o tamanho da tarefa e desiste no meio; uma de cada vez fica leve,
+   e a curiosidade pela próxima puxa para a frente. */
 export default function FormularioAplicacao() {
-  /* O envio vai para um iframe escondido. É o jeito de mandar para o Google sem
-     tirar a pessoa do site: o navegador faz um POST comum, e a resposta — que
-     não podemos ler, por ser de outro domínio — cai ali dentro em vez de
-     substituir a página. */
-  const [enviado, setEnviado] = useState(false)
+  /* 0 é a abertura; de 1 a TOTAL são as perguntas. */
+  const [passo, setPasso] = useState(0)
+  const [respostas, setRespostas] = useState<Record<string, string[]>>({})
+  const [outroMarcado, setOutroMarcado] = useState<Record<string, boolean>>({})
+  const [outroTexto, setOutroTexto] = useState<Record<string, string>>({})
   const [erro, setErro] = useState<string | null>(null)
-  const [outros, setOutros] = useState<Record<string, boolean>>({})
+  const [enviado, setEnviado] = useState(false)
+
   const enviando = useRef(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
-  const aoEnviar = (evento: React.FormEvent<HTMLFormElement>) => {
-    const formulario = evento.currentTarget
+  const campo = passo > 0 ? campos[passo - 1] : null
+  const ultimo = passo === TOTAL
 
-    /* Grupos de caixas obrigatórios: pelo menos uma marcada. */
-    const faltando = campos.find(
-      (campo) =>
-        campo.tipo === 'multipla' &&
-        campo.obrigatorio &&
-        formulario.querySelectorAll(`input[name="${nomeDoCampo(campo)}"]:checked`).length === 0 &&
-        /* A caixa "Outro" pode não ter nome, quando o destino é a nossa
-           planilha; aí quem conta é o campo aberto ter texto. */
-        !(
-          campo.aceitaOutro &&
-          outros[campo.entry] &&
-          (formulario.querySelector(
-            `input[type="text"][name="${nomeDoCampo(campo)}"]`
-          ) as HTMLInputElement | null)?.value.trim()
-        )
+  const valores = (c: CampoFormulario) => respostas[c.entry] ?? []
+
+  const respondido = (c: CampoFormulario) => {
+    if (c.tipo === 'texto' || c.tipo === 'paragrafo') {
+      return (valores(c)[0] ?? '').trim().length > 0
+    }
+    if (outroMarcado[c.entry] && (outroTexto[c.entry] ?? '').trim()) return true
+    return valores(c).length > 0
+  }
+
+  const guardar = (c: CampoFormulario, novos: string[]) => {
+    setErro(null)
+    setRespostas((atual) => ({ ...atual, [c.entry]: novos }))
+  }
+
+  const alternar = (c: CampoFormulario, opcao: string) => {
+    const atuais = valores(c)
+    guardar(
+      c,
+      atuais.includes(opcao) ? atuais.filter((v) => v !== opcao) : [...atuais, opcao]
     )
+  }
 
-    if (faltando) {
-      evento.preventDefault()
-      setErro(`Escolha ao menos uma opção em: "${faltando.pergunta}"`)
-      document
-        .querySelector(`input[name="${nomeDoCampo(faltando)}"]`)
-        ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  const avancar = () => {
+    if (campo && campo.obrigatorio && !respondido(campo)) {
+      setErro(
+        campo.tipo === 'texto' || campo.tipo === 'paragrafo'
+          ? 'Escreva sua resposta para seguir.'
+          : 'Escolha uma opção para seguir.'
+      )
       return
     }
-
     setErro(null)
+    setPasso((p) => Math.min(p + 1, TOTAL))
+  }
+
+  const voltar = () => {
+    setErro(null)
+    setPasso((p) => Math.max(p - 1, 0))
+  }
+
+  /* Escolha única fecha a pergunta sozinha. É o que dá a sensação de leveza —
+     escolheu, virou a página. Na última fica quieto: ninguém deve ser enviado
+     por um clique que não pediu. */
+  const avancarSozinho = (c: CampoFormulario) => {
+    if (c.tipo !== 'escolha' || ultimo) return
+    window.setTimeout(() => setPasso((p) => (p === passo ? p + 1 : p)), 260)
+  }
+
+  const aoEnviar = (evento: React.FormEvent<HTMLFormElement>) => {
+    if (campo && campo.obrigatorio && !respondido(campo)) {
+      evento.preventDefault()
+      setErro('Escreva sua resposta para enviar.')
+      return
+    }
     enviando.current = true
-    /* O POST nativo segue daqui; quem confirma é o onLoad do iframe. */
+  }
+
+  /* Os campos escondidos que de fato viajam. Só existem no envio, então o que
+     aparece na tela fica livre para ser uma pergunta de cada vez. */
+  const paraEnvio = () => {
+    const saida: { nome: string; valor: string }[] = []
+
+    for (const c of campos) {
+      const nome = nomeDoCampo(c)
+      for (const v of valores(c)) saida.push({ nome, valor: v })
+
+      if (c.aceitaOutro && outroMarcado[c.entry]) {
+        const texto = (outroTexto[c.entry] ?? '').trim()
+        if (destino.usaChave) {
+          /* Na nossa planilha o texto entra como mais um valor da pergunta. */
+          if (texto) saida.push({ nome, valor: texto })
+        } else {
+          /* O Google espera a marca do "Outro" e o texto num campo à parte. */
+          saida.push({ nome, valor: VALOR_OUTRO })
+          if (texto) saida.push({ nome: sufixoOutro(c.entry), valor: texto })
+        }
+      }
+    }
+
+    return saida
   }
 
   if (enviado) {
@@ -251,101 +192,318 @@ export default function FormularioAplicacao() {
       />
 
       <form
+        ref={formRef}
         action={destino.url}
         method="POST"
         target="destino-aplicacao"
         onSubmit={aoEnviar}
-        noValidate={false}
+        /* Enter no meio do formulário não pode enviar: só a última pergunta
+           envia, e pelo botão. */
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !ultimo && (e.target as HTMLElement).tagName !== 'TEXTAREA') {
+            e.preventDefault()
+            avancar()
+          }
+        }}
       >
-        {/* Só quando o destino é o Google: ele precisa saber que a pessoa
-            passou pelas duas páginas do formulário dela, já que aqui tudo
-            aparece de uma vez só. */}
         {!destino.usaChave &&
           Object.entries(camposOcultos).map(([nome, valor]) => (
             <input key={nome} type="hidden" name={nome} value={valor} readOnly />
           ))}
 
+        {paraEnvio().map((item, i) => (
+          <input key={`${item.nome}-${i}`} type="hidden" name={item.nome} value={item.valor} readOnly />
+        ))}
+
         <div
           className="w-full rounded-2xl p-6 sm:p-8"
           style={{ background: 'var(--cor-card)', border: `1px solid ${FIO_OLIVA}` }}
         >
-          <p
-            className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold mb-3"
-            style={{ color: 'var(--cor-destaque)' }}
-          >
-            {tituloFormulario}
-          </p>
+          {/* ── Progresso ─────────────────────────────────── */}
+          {passo > 0 && (
+            <div className="mb-7">
+              <div className="flex items-baseline justify-between mb-2">
+                <p
+                  className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold"
+                  style={{ color: 'var(--cor-destaque)' }}
+                >
+                  {campo?.secao ?? tituloFormulario}
+                </p>
+                <p
+                  className="font-sans text-[10px] tracking-[0.1em] font-semibold"
+                  style={{ color: 'rgba(255,255,255,0.45)' }}
+                >
+                  {passo} de {TOTAL}
+                </p>
+              </div>
 
-          {aberturaFormulario.map((paragrafo) => (
-            <p
-              key={paragrafo.slice(0, 24)}
-              className="font-body text-xs sm:text-sm leading-relaxed mb-3"
-              style={{ color: 'rgba(255,255,255,0.72)' }}
-            >
-              {paragrafo}
-            </p>
-          ))}
-
-          <div className="mt-8">
-            {campos.map((campo, i) => (
-              <div key={campo.entry}>
-                {campo.secao && (
-                  <h2
-                    className="font-heading text-lg sm:text-xl mb-5 mt-2 pt-6"
-                    style={{ color: '#FFFFFF', borderTop: `1px solid ${FIO_CLARO}` }}
-                  >
-                    {campo.secao}
-                  </h2>
-                )}
-
-                <Pergunta
-                  campo={campo}
-                  indice={i}
-                  outroMarcado={Boolean(outros[campo.entry])}
-                  aoMarcarOutro={(marcado) =>
-                    setOutros((atual) => ({ ...atual, [campo.entry]: marcado }))
-                  }
+              <div
+                className="w-full h-[3px] rounded-full overflow-hidden"
+                style={{ background: 'rgba(255,255,255,0.10)' }}
+              >
+                <div
+                  className="h-full rounded-full transition-all duration-500"
+                  style={{
+                    width: `${(passo / TOTAL) * 100}%`,
+                    background: 'var(--cor-destaque)',
+                  }}
                 />
               </div>
-            ))}
-          </div>
-
-          {erro && (
-            <p
-              className="font-body text-xs leading-relaxed rounded-xl px-3.5 py-2.5 mb-4"
-              style={{
-                color: '#FFFFFF',
-                background: 'rgba(180,60,40,0.22)',
-                border: '1px solid rgba(180,60,40,0.5)',
-              }}
-              role="alert"
-            >
-              {erro}
-            </p>
+            </div>
           )}
 
-          <div className="flex flex-col items-center">
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center px-8 sm:px-10 py-3.5 rounded-full font-sans text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
-              style={{
-                background: '#6E7B47',
-                color: '#FFFFFF',
-                border: '2px solid rgba(201,162,39,0.75)',
-                boxShadow: '0 4px 18px rgba(0,0,0,0.25)',
-              }}
-            >
-              Enviar minha aplicação
-            </button>
+          {/* ── Abertura ──────────────────────────────────── */}
+          {passo === 0 && (
+            <div>
+              <p
+                className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold mb-4"
+                style={{ color: 'var(--cor-destaque)' }}
+              >
+                {tituloFormulario}
+              </p>
 
-            <p
-              className="font-body text-[11px] leading-relaxed text-center mt-4 max-w-[320px]"
-              style={{ color: 'rgba(255,255,255,0.5)' }}
-            >
-              Os campos com <span style={{ color: 'var(--cor-destaque)' }}>*</span> são
-              obrigatórios.
-            </p>
-          </div>
+              {aberturaFormulario.map((paragrafo) => (
+                <p
+                  key={paragrafo.slice(0, 24)}
+                  className="font-body text-xs sm:text-sm leading-relaxed mb-3"
+                  style={{ color: 'rgba(255,255,255,0.72)' }}
+                >
+                  {paragrafo}
+                </p>
+              ))}
+
+              <div className="flex flex-col items-center mt-8">
+                <button
+                  type="button"
+                  onClick={avancar}
+                  className={botaoClasse}
+                  style={botaoEstilo}
+                >
+                  Começar
+                </button>
+
+                <p
+                  className="font-body text-[11px] text-center mt-4"
+                  style={{ color: 'rgba(255,255,255,0.45)' }}
+                >
+                  {TOTAL} perguntas, uma de cada vez.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* ── A pergunta da vez ─────────────────────────── */}
+          {campo && (
+            <div aria-live="polite">
+              <p
+                className="font-heading text-xl sm:text-2xl leading-snug mb-1"
+                style={{ color: '#FFFFFF' }}
+              >
+                {campo.pergunta}
+              </p>
+
+              <p
+                className="font-body text-[11px] mb-5"
+                style={{ color: 'rgba(255,255,255,0.45)' }}
+              >
+                {campo.obrigatorio
+                  ? 'Obrigatória'
+                  : 'Opcional — pode seguir sem responder'}
+                {campo.tipo === 'multipla' && ' · pode escolher mais de uma'}
+              </p>
+
+              {campo.tipo === 'texto' && (
+                <input
+                  autoFocus
+                  type={campo.pergunta === 'E-mail' ? 'email' : 'text'}
+                  value={valores(campo)[0] ?? ''}
+                  onChange={(e) => guardar(campo, [e.target.value])}
+                  placeholder={campo.exemplo}
+                  className={campoClasse}
+                  style={campoEstilo}
+                />
+              )}
+
+              {campo.tipo === 'paragrafo' && (
+                <textarea
+                  autoFocus
+                  rows={5}
+                  value={valores(campo)[0] ?? ''}
+                  onChange={(e) => guardar(campo, [e.target.value])}
+                  className={campoClasse + ' resize-none leading-relaxed'}
+                  style={campoEstilo}
+                />
+              )}
+
+              {(campo.tipo === 'escolha' || campo.tipo === 'multipla') && (
+                <div className="flex flex-col gap-2">
+                  {(campo.opcoes ?? []).map((opcao) => {
+                    const marcada = valores(campo).includes(opcao)
+                    return (
+                      <button
+                        key={opcao}
+                        type="button"
+                        onClick={() => {
+                          if (campo.tipo === 'escolha') {
+                            setOutroMarcado((a) => ({ ...a, [campo.entry]: false }))
+                            guardar(campo, [opcao])
+                            avancarSozinho(campo)
+                          } else {
+                            alternar(campo, opcao)
+                          }
+                        }}
+                        className="flex items-start gap-3 rounded-xl px-4 py-3 text-left transition-colors"
+                        style={{
+                          background: marcada
+                            ? 'rgba(201,162,39,0.14)'
+                            : 'rgba(0,0,0,0.22)',
+                          border: `1px solid ${marcada ? 'rgba(201,162,39,0.55)' : FIO_CLARO}`,
+                        }}
+                        aria-pressed={marcada}
+                      >
+                        <span
+                          className="mt-[3px] shrink-0 inline-flex items-center justify-center"
+                          style={{
+                            width: 14,
+                            height: 14,
+                            borderRadius: campo.tipo === 'escolha' ? '50%' : 4,
+                            border: `1.5px solid ${marcada ? 'var(--cor-destaque)' : 'rgba(255,255,255,0.35)'}`,
+                            background: marcada ? 'var(--cor-destaque)' : 'transparent',
+                          }}
+                        >
+                          {marcada && (
+                            <span
+                              style={{
+                                width: 5,
+                                height: 5,
+                                borderRadius: '50%',
+                                background: '#232112',
+                              }}
+                            />
+                          )}
+                        </span>
+
+                        <span
+                          className="font-body text-xs sm:text-sm leading-relaxed"
+                          style={{ color: 'rgba(255,255,255,0.85)' }}
+                        >
+                          {opcao}
+                        </span>
+                      </button>
+                    )
+                  })}
+
+                  {campo.aceitaOutro && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOutroMarcado((a) => ({
+                            ...a,
+                            [campo.entry]: !a[campo.entry],
+                          }))
+                        }
+                        className="flex items-start gap-3 rounded-xl px-4 py-3 text-left transition-colors"
+                        style={{
+                          background: outroMarcado[campo.entry]
+                            ? 'rgba(201,162,39,0.14)'
+                            : 'rgba(0,0,0,0.22)',
+                          border: `1px solid ${
+                            outroMarcado[campo.entry]
+                              ? 'rgba(201,162,39,0.55)'
+                              : FIO_CLARO
+                          }`,
+                        }}
+                        aria-pressed={Boolean(outroMarcado[campo.entry])}
+                      >
+                        <span
+                          className="mt-[3px] shrink-0"
+                          style={{
+                            width: 14,
+                            height: 14,
+                            borderRadius: 4,
+                            border: `1.5px solid ${
+                              outroMarcado[campo.entry]
+                                ? 'var(--cor-destaque)'
+                                : 'rgba(255,255,255,0.35)'
+                            }`,
+                            background: outroMarcado[campo.entry]
+                              ? 'var(--cor-destaque)'
+                              : 'transparent',
+                          }}
+                        />
+                        <span
+                          className="font-body text-xs sm:text-sm"
+                          style={{ color: 'rgba(255,255,255,0.85)' }}
+                        >
+                          Outro
+                        </span>
+                      </button>
+
+                      {outroMarcado[campo.entry] && (
+                        <input
+                          autoFocus
+                          type="text"
+                          value={outroTexto[campo.entry] ?? ''}
+                          onChange={(e) => {
+                            setErro(null)
+                            setOutroTexto((a) => ({
+                              ...a,
+                              [campo.entry]: e.target.value,
+                            }))
+                          }}
+                          placeholder="O que seria?"
+                          className={campoClasse}
+                          style={campoEstilo}
+                        />
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
+
+              {erro && (
+                <p
+                  className="font-body text-xs leading-relaxed rounded-xl px-3.5 py-2.5 mt-5"
+                  style={{
+                    color: '#FFFFFF',
+                    background: 'rgba(180,60,40,0.22)',
+                    border: '1px solid rgba(180,60,40,0.5)',
+                  }}
+                  role="alert"
+                >
+                  {erro}
+                </p>
+              )}
+
+              {/* ── Navegação ───────────────────────────── */}
+              <div className="flex items-center justify-between gap-4 mt-8">
+                <button
+                  type="button"
+                  onClick={voltar}
+                  className="font-sans text-xs font-medium py-2 transition-opacity hover:opacity-70"
+                  style={{ color: 'rgba(255,255,255,0.55)' }}
+                >
+                  ← Voltar
+                </button>
+
+                {ultimo ? (
+                  <button type="submit" className={botaoClasse} style={botaoEstilo}>
+                    Enviar minha aplicação
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={avancar}
+                    className={botaoClasse}
+                    style={botaoEstilo}
+                  >
+                    {campo.obrigatorio || respondido(campo) ? 'Continuar' : 'Pular'}
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </form>
     </>
