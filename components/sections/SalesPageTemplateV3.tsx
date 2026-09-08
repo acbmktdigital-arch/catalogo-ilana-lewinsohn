@@ -73,6 +73,12 @@ type SalesPageTemplateV3Props = {
     modalidadeId: string
   }
 
+  /* Manda os três botões principais para uma página em vez de abrir o modal do
+     WhatsApp. Serve para a Mentoria Cuidado Autoral, onde a aplicação passa por
+     um formulário. O modal continua existindo para quem for chamado por outro
+     caminho (o convite depois do preço, por exemplo). */
+  ctaHref?: string
+
   /* Um serviço da mesma família, que tem página própria. Nasceu para o
      Shirodhara: a Ilana queria que ele aparecesse como item dos Cuidados
      Plenamente Ayurvédicos, mas fundir as duas páginas custaria o card na home
@@ -363,6 +369,7 @@ export default function SalesPageTemplateV3({
   transformacaoSecundaria,
   paineisDeLista,
   convitePosPreco,
+  ctaHref,
   servicoRelacionado,
   includedItems,
   includedCTALabel,
@@ -414,6 +421,16 @@ export default function SalesPageTemplateV3({
     setModalidadeAlvo(modalidadeId)
     setAgendamentoAberto(true)
   }
+
+  /* Os três botões principais da página. Com `ctaHref` viram link; sem ele,
+     abrem o modal. Função, não componente, para o botão não ser remontado a
+     cada render. */
+  const botaoPrincipal = (rotulo: React.ReactNode) =>
+    ctaHref ? (
+      <BotaoLinkV3 href={ctaHref}>{rotulo}</BotaoLinkV3>
+    ) : (
+      <BotaoV3 onClick={abrir}>{rotulo}</BotaoV3>
+    )
 
   const temArcos = Boolean(heroImageA && heroImageB)
 
@@ -496,7 +513,7 @@ export default function SalesPageTemplateV3({
             </div>
           )}
 
-          <BotaoV3 onClick={abrir}>{heroCTALabel}</BotaoV3>
+          {botaoPrincipal(heroCTALabel)}
         </section>
 
         {/* ── 2. O QUE É ──────────────────────────────────── */}
@@ -670,7 +687,7 @@ export default function SalesPageTemplateV3({
               </>
             )}
 
-            <BotaoV3 onClick={abrir}>{includedCTALabel}</BotaoV3>
+            {botaoPrincipal(includedCTALabel)}
           </div>
         </section>
         )}
@@ -742,7 +759,7 @@ export default function SalesPageTemplateV3({
               </div>
 
               <div className="mb-6">
-                <BotaoV3 onClick={abrir}>{pricingCTALabel}</BotaoV3>
+                {botaoPrincipal(pricingCTALabel)}
               </div>
 
               <p

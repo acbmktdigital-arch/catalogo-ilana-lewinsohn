@@ -83,11 +83,10 @@ export default function MentoriaCuidadoAutoralPage() {
          saber o que vai acontecer antes de clicar. */
       pricingSubtitle="Esta travessia é construída para pessoas comprometidas com seu próprio caminho. Os grupos são pequenos, para assegurar a proximidade entre nós e favorecer a profundidade do processo. Se esta mentoria fez sentido para você, preencha o Formulário de Aplicação. Leva cerca de 3 minutos e me permitirá conhecer um pouco da sua trajetória antes da nossa conversa."
       precoAviso="Próxima turma em formação."
-      /* ⚠️ PENDENTE ANTES DE DIVULGAR: o texto acima promete um Formulário de
-         Aplicação, mas o botão ainda abre o WhatsApp. A Vera confirmou que
-         pode ficar assim por ora, porque o site não foi divulgado a ninguém.
-         Antes de compartilhar, o botão precisa apontar para o formulário —
-         senão a pessoa clica esperando o quest e cai no zap. */
+      /* Os três botões levam ao Formulário de Aplicação, como o texto acima
+         promete. As respostas caem na mesma planilha do Google que a Ilana já
+         usa — ver lib/formulario-mentoria.ts. */
+      ctaHref="/mentoria-cuidado-autoral/aplicacao"
       priceNote="A partir das suas respostas, entrarei em contato pelo WhatsApp para agendarmos uma conversa e avaliarmos, juntas, se este é o momento certo para seguirmos."
       pricingCTALabel="Quero aplicar para a Mentoria"
 
