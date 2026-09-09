@@ -10,7 +10,7 @@ export default function MentoriaVemPraRodaMulherPage() {
       heroTitle={<>Aprenda elementos para conduzir Rodas Celta-Baianas em <span style={{color:'var(--cor-destaque)'}}>Vem Pra Roda, Mulher!</span></>}
       heroSubtitle="Mentoria para mulheres que desejam criar e conduzir Rodas de Mulheres, com mais de duas décadas de experiência da facilitadora."
       heroImageWide="/images/mentoria-vem-pra-roda-mulher.jpg"
-      heroCTALabel="Quero aplicar para a Mentoria"
+      heroCTALabel="Quero ser avisada"
 
       whatIsTitle={<>O que é a Mentoria <span style={{color:'var(--cor-destaque)'}}>Vem Pra Roda, Mulher!</span>?</>}
       whatIsTexts={[
@@ -74,19 +74,16 @@ export default function MentoriaVemPraRodaMulherPage() {
         "Compartilhamento de mais de 20 anos de experiência",
         "Processo seletivo por formulário de aplicação",
       ]}
-      includedCTALabel="Quero aplicar para a Mentoria"
+      includedCTALabel="Quero ser avisada"
 
       pricingImage="/images/mentoria-vem-pra-roda-mulher.jpg"
       pricingTitle="Mentoria Vem Pra Roda, Mulher!"
       /* As instruções vêm antes do botão: quem clica precisa saber o que vai
          acontecer antes de clicar. */
-      pricingSubtitle="Esta travessia é construída para mulheres comprometidas com seu próprio caminho e com o cuidado de outras mulheres. Os grupos são pequenos, favorecendo proximidade, trocas verdadeiras e acompanhamento atento. Se esta mentoria fez sentido para você, preencha o Formulário de Aplicação. Leva cerca de 3 minutos e me permitirá conhecer um pouco da sua trajetória antes da nossa conversa."
+      pricingSubtitle="Esta travessia é construída para mulheres comprometidas com seu próprio caminho e com o cuidado de outras mulheres. Os grupos são pequenos, favorecendo proximidade, trocas verdadeiras e acompanhamento atento. Se esta mentoria fez sentido para você, deixe seu contato: o Formulário de Aplicação está sendo preparado, e aviso você em primeira mão quando as inscrições abrirem."
       precoAviso="Próxima turma em formação."
-      /* ⚠️ PENDENTE ANTES DE DIVULGAR: o texto acima promete um Formulário de
-         Aplicação, mas o botão ainda abre o WhatsApp. Mesma situação da
-         Mentoria Cuidado Autoral — ver AJUSTES-DOC4.md. */
-      priceNote="A partir das suas respostas, entrarei em contato pelo WhatsApp para agendarmos uma conversa e avaliarmos, juntas, se este é o momento certo para seguirmos."
-      pricingCTALabel="Quero aplicar para a Mentoria"
+      priceNote="Assim que o formulário abrir, entro em contato para conversarmos e avaliarmos, juntas, se este é o momento certo para seguirmos."
+      pricingCTALabel="Quero ser avisada"
 
       faqItems={[
         {
@@ -99,7 +96,7 @@ export default function MentoriaVemPraRodaMulherPage() {
         },
         {
           q: "Como funciona o processo seletivo?",
-          a: "Começa pelo Formulário de Aplicação, que leva cerca de 3 minutos. A partir das suas respostas, Ilana entra em contato pelo WhatsApp para agendarem uma conversa.",
+          a: "Vai começar pelo Formulário de Aplicação, que está sendo preparado. Deixando seu contato agora, você é avisada assim que ele abrir.",
         },
         {
           q: "Quando começa a próxima turma?",
@@ -107,19 +104,31 @@ export default function MentoriaVemPraRodaMulherPage() {
         },
         {
           q: "Como faço para aplicar?",
-          a: "Clique no botão e preencha o Formulário de Aplicação, contando um pouco do seu chamado. Ilana retorna pelo WhatsApp para agendarem uma conversa.",
+          a: "Por enquanto, clique no botão e deixe seu contato. O Formulário de Aplicação abre em breve, e Ilana avisa você em primeira mão.",
         },
       ]}
 
-      modalEtiqueta="Aplicação"
-      modalTitulo="Aplicar para a mentoria"
-      modalSubtitulo="Deixe seu contato e conte um pouco do seu chamado. Ilana retorna para agendarem uma conversa."
-      modalFraseInicial="Gostaria de aplicar para a"
+      /* O Formulário de Aplicação desta mentoria ainda não existe — a Ilana não
+         enviou o questionário. Em vez de prometer o que não há, o modal diz
+         isso e recolhe o contato de quem quiser ser avisada. Os dados vão para
+         a planilha, não para o WhatsApp.
+
+         Quando o formulário dela ficar pronto, é só trocar tudo isto por
+         `ctaHref` com o endereço, como está na Travessia da Semente. */
+      modalEtiqueta="Lista de espera"
+      modalTitulo="Quero ser avisada"
+      modalSubtitulo="Deixe seu contato e você é avisada em primeira mão quando as inscrições abrirem."
+      modalAviso="O Formulário de Aplicação desta mentoria está sendo preparado e abre em breve. Enquanto isso, deixe seus dados que Ilana entra em contato assim que ele estiver no ar."
+      modalEndpoint={process.env.NEXT_PUBLIC_LISTA_ESPERA_ENDPOINT}
+      modalTipoRegistro="lista-espera-vem-pra-roda"
+      modalTituloSucesso="Contato guardado!"
+      modalTextoSucesso="Assim que o Formulário de Aplicação abrir, Ilana avisa você em primeira mão."
       modalMostrarValor={false}
       modalMostrarAgenda={false}
+      modalMostrarEmail
       modalLabelMensagem="Sobre o seu chamado"
       modalPlaceholderMensagem="Já facilita Rodas? O que te trouxe até aqui?"
-      modalLabelEnviar="Enviar minha aplicação no WhatsApp"
+      modalLabelEnviar="Quero ser avisada"
       modalidades={[
         {
           id: 'mentoria',

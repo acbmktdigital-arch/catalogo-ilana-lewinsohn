@@ -142,6 +142,13 @@ type SalesPageTemplateV3Props = {
   /* Campo de e-mail no modal, para as páginas de cadastro em lista. */
   modalMostrarEmail?: boolean
   modalEmailObrigatorio?: boolean
+  /* Recado no topo do modal, e envio para planilha em vez do WhatsApp.
+     Ver components/ui/BookingModalV3.tsx. */
+  modalAviso?: string
+  modalEndpoint?: string
+  modalTipoRegistro?: string
+  modalTituloSucesso?: string
+  modalTextoSucesso?: string
   modalLabelModalidade?: string
   modalMostrarValor?: boolean
   modalFraseInicial?: string
@@ -408,6 +415,11 @@ export default function SalesPageTemplateV3({
   modalAvisoAgenda,
   modalMostrarEmail = false,
   modalEmailObrigatorio = false,
+  modalAviso,
+  modalEndpoint,
+  modalTipoRegistro,
+  modalTituloSucesso,
+  modalTextoSucesso,
   modalLabelModalidade,
   modalMostrarValor = true,
   modalFraseInicial,
@@ -950,6 +962,12 @@ export default function SalesPageTemplateV3({
         avisoAgenda={modalAvisoAgenda}
         mostrarEmail={modalMostrarEmail}
         emailObrigatorio={modalEmailObrigatorio}
+        aviso={modalAviso}
+        endpoint={modalEndpoint}
+        tipoRegistro={modalTipoRegistro}
+        origemRegistro={serviceLabel}
+        tituloSucesso={modalTituloSucesso}
+        textoSucesso={modalTextoSucesso}
         labelModalidade={modalLabelModalidade}
         mostrarValor={modalMostrarValor}
         fraseInicial={modalFraseInicial}
