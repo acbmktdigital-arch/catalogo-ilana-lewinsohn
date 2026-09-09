@@ -1,4 +1,5 @@
 import SalesPageTemplateV3 from '@/components/sections/SalesPageTemplateV3'
+import { listaEsperaEndpoint, listaEsperaTipo } from '@/lib/lista-espera'
 
 export default function MentoriaVemPraRodaMulherPage() {
   return (
@@ -119,8 +120,8 @@ export default function MentoriaVemPraRodaMulherPage() {
       modalTitulo="Quero ser avisada"
       modalSubtitulo="Deixe seu contato e você é avisada em primeira mão quando as inscrições abrirem."
       modalAviso="O Formulário de Aplicação desta mentoria está sendo preparado e abre em breve. Enquanto isso, deixe seus dados que Ilana entra em contato assim que ele estiver no ar."
-      modalEndpoint={process.env.NEXT_PUBLIC_LISTA_ESPERA_ENDPOINT}
-      modalTipoRegistro="lista-espera-vem-pra-roda"
+      modalEndpoint={listaEsperaEndpoint}
+      modalTipoRegistro={listaEsperaTipo}
       modalTituloSucesso="Contato guardado!"
       modalTextoSucesso="Assim que o Formulário de Aplicação abrir, Ilana avisa você em primeira mão."
       modalMostrarValor={false}
