@@ -18,7 +18,12 @@ export type PrecoOpcao = {
   /* Aceita JSX para casos com mais de uma linha (ex.: Reconecta / Colo da Terra) */
   label: React.ReactNode
   valor: string
-  descricao: string
+  descricao: React.ReactNode
+  /* Faixa em destaque, com borda dourada e uma etiqueta em cima — o texto da
+     etiqueta é este valor. Serve para apontar a opção que a Ilana quer que a
+     pessoa escolha, quando a tabela tem mais de uma e a diferença entre elas
+     não salta aos olhos. Só uma faixa por página deveria ter. */
+  destaque?: string
 }
 
 type SalesPageTemplateV3Props = {
@@ -761,13 +766,31 @@ export default function SalesPageTemplateV3({
                 {(precos ?? []).map((preco, i) => (
                   <div
                     key={i}
-                    className="w-full rounded-2xl p-6"
+                    className="w-full rounded-2xl p-6 relative"
                     style={{
                       background: 'rgba(27,25,14,0.82)',
-                      border: `1px solid ${FIO_OLIVA}`,
+                      /* A faixa em destaque ganha borda mais viva e um fio de
+                         luz em volta, para se separar das outras sem precisar
+                         mudar de tamanho — mudar de tamanho quebraria o ritmo
+                         da coluna. */
+                      border: preco.destaque
+                        ? '1.5px solid rgba(201,162,39,0.75)'
+                        : `1px solid ${FIO_OLIVA}`,
+                      boxShadow: preco.destaque
+                        ? '0 0 0 3px rgba(201,162,39,0.10)'
+                        : undefined,
                       backdropFilter: 'blur(6px)',
                     }}
                   >
+                    {preco.destaque && (
+                      <span
+                        className="absolute -top-2.5 left-6 inline-flex items-center rounded-full px-2.5 py-0.5 font-sans text-[9px] uppercase tracking-[0.16em] font-bold"
+                        style={{ background: 'var(--cor-destaque)', color: '#232112' }}
+                      >
+                        {preco.destaque}
+                      </span>
+                    )}
+
                     <p
                       className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold mb-2"
                       style={{ color: 'var(--cor-destaque)' }}

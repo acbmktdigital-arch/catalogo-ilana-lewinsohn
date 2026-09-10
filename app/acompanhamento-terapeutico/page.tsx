@@ -44,24 +44,41 @@ export default function AcompanhamentoTerapeuticoPage() {
       pricingImage="/images/acompanhamento-terapeutico.jpg"
       pricingTitle="Acompanhamento Contínuo"
       pricingSubtitle="Escolha a frequência que combina com o seu momento e fale com Ilana pelo WhatsApp."
+      /* A tabela dizia só "Semanal / Quinzenal / Mensal — por sessão de 60
+         minutos", e assim ninguém entendia a lógica: o valor por sessão cai
+         porque o compromisso cresce. Pior, "Mensal R$ 197,00" se lia como o
+         pacote do mês custando 197, o contrário do que é.
+
+         Agora cada faixa diz quantas sessões são e quanto fica o mês, e a
+         semanal — a que a Ilana quer que escolham — leva a etiqueta e a borda
+         de destaque. */
       precos={[
         {
-          label: "Semanal",
+          destaque: "Mais vantajosa",
+          label: "Semanal · 4 sessões no mês",
           valor: "R$ 134,00",
-          descricao: "Por sessão de 60 minutos",
+          descricao: (
+            <>
+              por sessão de 60 minutos · R$ 536,00 no mês
+              <br />
+              <span style={{ color: 'var(--cor-destaque)' }}>
+                economia de R$ 252,00 em relação a 4 sessões avulsas
+              </span>
+            </>
+          ),
         },
         {
-          label: "Quinzenal",
+          label: "Quinzenal · 2 sessões no mês",
           valor: "R$ 161,00",
-          descricao: "Por sessão de 60 minutos",
+          descricao: "por sessão de 60 minutos · R$ 322,00 no mês",
         },
         {
-          label: "Mensal",
+          label: "Avulsa · 1 sessão",
           valor: "R$ 197,00",
-          descricao: "Por sessão de 60 minutos",
+          descricao: "sessão de 60 minutos, sem compromisso de continuidade",
         },
       ]}
-      priceNote="Valores por sessão, conforme a frequência escolhida · Atendimento online"
+      priceNote="Quanto mais próximo o acompanhamento, menor o valor de cada sessão · Atendimento online"
       pricingCTALabel="Quero começar meu acompanhamento"
 
       faqItems={[
@@ -70,8 +87,8 @@ export default function AcompanhamentoTerapeuticoPage() {
           a: "É feito online, então você participa de onde estiver, no seu próprio espaço.",
         },
         {
-          q: "Qual a diferença entre as frequências semanal, quinzenal e mensal?",
-          a: "Elas se ajustam à intensidade do seu momento — quanto mais frequente, mais próximo o acompanhamento; a escolha é conversada com Ilana.",
+          q: "Por que o valor da sessão muda conforme a frequência?",
+          a: "Porque quem fecha um acompanhamento mais próximo paga menos por sessão. Uma sessão avulsa custa R$ 197,00; fechando 4 no mês, cada uma sai por R$ 134,00. A frequência também se ajusta à intensidade do seu momento, e a escolha é conversada com Ilana.",
         },
         {
           q: "Posso mudar a frequência ao longo do processo?",
@@ -101,22 +118,22 @@ export default function AcompanhamentoTerapeuticoPage() {
         {
           id: 'semanal',
           titulo: 'Semanal',
-          descricao: 'Acompanhamento mais próximo',
-          nomeNaMensagem: 'Acompanhamento Contínuo semanal',
+          descricao: '4 sessões no mês · R$ 134,00 cada',
+          nomeNaMensagem: 'Acompanhamento Contínuo semanal (4 sessões no mês)',
           valor: 'R$ 134,00',
         },
         {
           id: 'quinzenal',
           titulo: 'Quinzenal',
-          descricao: 'Um meio-termo de frequência',
-          nomeNaMensagem: 'Acompanhamento Contínuo quinzenal',
+          descricao: '2 sessões no mês · R$ 161,00 cada',
+          nomeNaMensagem: 'Acompanhamento Contínuo quinzenal (2 sessões no mês)',
           valor: 'R$ 161,00',
         },
         {
-          id: 'mensal',
-          titulo: 'Mensal',
-          descricao: 'Encontros mais espaçados',
-          nomeNaMensagem: 'Acompanhamento Contínuo mensal',
+          id: 'avulsa',
+          titulo: 'Avulsa',
+          descricao: '1 sessão · R$ 197,00',
+          nomeNaMensagem: 'uma sessão avulsa de Acompanhamento',
           valor: 'R$ 197,00',
         },
       ]}
