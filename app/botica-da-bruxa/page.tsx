@@ -1,5 +1,20 @@
 import SalesPageTemplateV3 from '@/components/sections/SalesPageTemplateV3'
 
+/* O ® vem ANTES do nome porque foi assim que a Ilana escreveu no doc 4, e a
+   Vera confirmou manter. Em corpo cheio ele pesaria mais que a palavra que
+   qualifica, então sai menor e elevado — o tratamento de sempre para símbolo
+   de marca. */
+function Marca() {
+  return (
+    <span
+      style={{ fontSize: '0.62em', verticalAlign: 'super', opacity: 0.8 }}
+      aria-label="marca registrada"
+    >
+      ®
+    </span>
+  )
+}
+
 export default function BoticaDaBruxaPage() {
   return (
     <SalesPageTemplateV3
@@ -33,11 +48,25 @@ export default function BoticaDaBruxaPage() {
           itens: [
             {
               nome: 'Pomada e Tintura de Erva-Baleeira',
-              descricao: 'Linha Maria Preta: anti-inflamatória, para alívio corporal',
+              descricao: (
+                <>
+                  <Marca />
+                  Linha Maria Preta: anti-inflamatória, para alívio corporal
+                </>
+              ),
             },
             {
               nome: 'Blends autorais de óleos essenciais',
-              descricao: 'Cabocla Serena, Lilith, Força de Oyá, Força Imune, Você é Linda',
+              descricao: (
+                <>
+                  <Marca />
+                  Cabocla Serena, <Marca />
+                  Lilith, <Marca />
+                  Força de Oyá, <Marca />
+                  Força Imune, <Marca />
+                  Você é Linda
+                </>
+              ),
             },
             {
               nome: 'Rapé de Juerana Vermelha',

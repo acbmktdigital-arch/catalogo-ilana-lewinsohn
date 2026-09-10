@@ -78,7 +78,7 @@ falar com o Fabrizio. Ficou como estava.
 |---|---|
 | **Mentoria Vem Pra Roda, Mulher** | texto inicial e texto principal novos, com etiquetas ("Escuta.Presença.Força da Mulher Selvagem.Ousadia...") |
 | **Biblioteca Viva** | eliminar dores e transformações **por completo**, e trocar o botão |
-| **Botica da Bruxa** | reescrita grande: vira catálogo de produtos, nova seção "Por que esses não são produtos ordinários?", botão "Quero saber a disponibilidade", eliminar "O que está incluído" |
+| **Botica da Bruxa** | reescrita grande: vira catálogo de produtos, nova seção "Por que esses não são produtos ordinários?", botão "Quero saber a disponibilidade", eliminar "O que está incluído", **®** nos preparados |
 | **Estrutura geral** | ⚠️ agrupar o catálogo inteiro em blocos — mexe na home |
 
 A parte de eliminar dores e transformações da Biblioteca Viva já é possível sem mexer no
