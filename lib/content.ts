@@ -1,7 +1,7 @@
 // ─── Site Configuration ────────────────────────────────────────────────────
 export const siteConfig = {
   name: 'Ilana Lewinsohn',
-  handle: '@ilana.lewinsohn',
+  handle: '@massixa',
   tagline: 'Seja bem-vinda!',
   description:
     'Mulher medicina (bruja), terapeuta integrativa xamânica, facilitadora de Rodas de Mulheres e criadora do método MASSIXA — Um Universo de Cuidado, unindo Ayurveda, Xamanismo, Alquimia, Yoga e a sabedoria da floresta.',
@@ -25,7 +25,7 @@ export const siteConfig = {
      apareceria só a árvore e o alto do arco, sem a Ilana nem o fogo. */
   aboutImage: '/images/bio-fogueira-noite.jpg',
   social: {
-    instagram: 'https://instagram.com/ilana.lewinsohn',
+    instagram: 'https://instagram.com/massixa',
     whatsapp: 'https://wa.me/557399855339',
   },
 }
