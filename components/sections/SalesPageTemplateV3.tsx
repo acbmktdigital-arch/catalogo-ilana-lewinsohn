@@ -151,6 +151,7 @@ type SalesPageTemplateV3Props = {
      Ver components/ui/BookingModalV3.tsx. */
   modalAviso?: string
   modalEndpoint?: string
+  modalEndpointModo?: 'planilha' | 'planilha-e-whatsapp'
   modalTipoRegistro?: string
   modalTituloSucesso?: string
   modalTextoSucesso?: string
@@ -422,6 +423,7 @@ export default function SalesPageTemplateV3({
   modalEmailObrigatorio = false,
   modalAviso,
   modalEndpoint,
+  modalEndpointModo,
   modalTipoRegistro,
   modalTituloSucesso,
   modalTextoSucesso,
@@ -987,6 +989,7 @@ export default function SalesPageTemplateV3({
         emailObrigatorio={modalEmailObrigatorio}
         aviso={modalAviso}
         endpoint={modalEndpoint}
+        endpointModo={modalEndpointModo}
         tipoRegistro={modalTipoRegistro}
         origemRegistro={serviceLabel}
         tituloSucesso={modalTituloSucesso}

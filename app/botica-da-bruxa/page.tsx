@@ -1,4 +1,5 @@
 import SalesPageTemplateV3 from '@/components/sections/SalesPageTemplateV3'
+import { planilhaEndpoint, tipos } from '@/lib/planilha'
 
 /* O ® vem ANTES do nome porque foi assim que a Ilana escreveu no doc 4, e a
    Vera confirmou manter. Em corpo cheio ele pesaria mais que a palavra que
@@ -129,6 +130,16 @@ export default function BoticaDaBruxaPage() {
         },
       ]}
 
+      /* Além de abrir o WhatsApp, guarda uma cópia da consulta na planilha —
+         assim fica o registro de qual preparado é mais procurado, coisa que a
+         conversa no zap não acumula.
+
+         A planilha aqui é cópia, não destino: o WhatsApp abre primeiro e uma
+         falha na gravação não custa nada a quem preencheu, porque a mensagem
+         já foi. */
+      modalEndpoint={planilhaEndpoint}
+      modalEndpointModo="planilha-e-whatsapp"
+      modalTipoRegistro={tipos.consultaBotica}
       modalEtiqueta="Disponibilidade"
       modalTitulo="Preparados da Botica"
       modalSubtitulo="Escolha o que te interessa e Ilana informa valor, disponibilidade e envio."
