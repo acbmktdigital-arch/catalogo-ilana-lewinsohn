@@ -41,11 +41,17 @@ export const categorias: Categoria[] = [
     slug: 'atendimentos-online',
     titulo: 'Atendimentos Individuais Online',
     descricao: 'Escuta e orientação de onde você estiver.',
-    /* Retrato da Ilana: online é conversar com ela, e nenhuma foto de
-       ambiente diria isso. A original é vertical e, na faixa de 200px do
-       topo, o corte central pegaria o tronco e cortaria o rosto — por isso
-       está recortada na proporção da própria faixa. */
-    imagem: '/images/ilana-retrato-faixa.jpg',
+    /* O cantinho preparado para a sessão: notebook, vela, copo d'água e ervas
+       — os mesmos itens que a Bússola pede no FAQ. Entrou no lugar do retrato
+       da Ilana, que a Ilana não gostou de ver ali: no card o corte deixava só
+       metade do rosto, e nada dizia "online".
+
+       Dois recortes do mesmo arquivo, porque as molduras pedem coisas
+       diferentes. O card mostra 38% da largura, e um corte central pegaria a
+       vela deixando o notebook de fora — e é o notebook que diz "online". A
+       faixa de 200px do topo é larga e cabe a mesa inteira. */
+    imagem: '/images/online-mesa-notebook-card.jpg',
+    imagemCapa: '/images/online-mesa-notebook-capa.jpg',
     servicos: ['bussola-orientacao-xamanica', 'acompanhamento-terapeutico'],
   },
   {
