@@ -153,6 +153,9 @@ type SalesPageTemplateV3Props = {
   modalEndpoint?: string
   modalEndpointModo?: 'planilha' | 'planilha-e-whatsapp'
   modalTipoRegistro?: string
+  /* Manda quem enviar o modal para outro lugar que nao o WhatsApp — o checkout
+     da Bussola. Ver components/ui/BookingModalV3.tsx. */
+  modalUrlAoEnviar?: string
   modalTituloSucesso?: string
   modalTextoSucesso?: string
   modalLabelModalidade?: string
@@ -425,6 +428,7 @@ export default function SalesPageTemplateV3({
   modalEndpoint,
   modalEndpointModo,
   modalTipoRegistro,
+  modalUrlAoEnviar,
   modalTituloSucesso,
   modalTextoSucesso,
   modalLabelModalidade,
@@ -991,6 +995,7 @@ export default function SalesPageTemplateV3({
         endpoint={modalEndpoint}
         endpointModo={modalEndpointModo}
         tipoRegistro={modalTipoRegistro}
+        urlAoEnviar={modalUrlAoEnviar}
         origemRegistro={serviceLabel}
         tituloSucesso={modalTituloSucesso}
         textoSucesso={modalTextoSucesso}

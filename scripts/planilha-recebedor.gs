@@ -59,8 +59,157 @@ var TIPOS = {
   },
 }
 
+/**
+ * ────────────────────────────────────────────────────────────────────────────
+ * PAGAMENTOS DA INFINITEPAY
+ *
+ * O app da InfinitePay **não avisa ninguém** quando entra uma venda pelo
+ * Checkout Integrado — testamos em 12/09/2026 e não chegou nem WhatsApp nem
+ * e-mail. Quem vende só descobre abrindo o aplicativo.
+ *
+ * Por isso o link de checkout é criado com um `webhook_url` apontando para cá.
+ * A cada compra a InfinitePay avisa este script, que grava na planilha e manda
+ * um e-mail. Como o aviso vai gravado dentro do link, vale para todas as
+ * compras dele — não é preciso gerar link por pessoa.
+ *
+ * O corpo chega em JSON, e não como formulário — daí a separação logo no começo
+ * do doPost.
+ */
+var ABA_PAGAMENTOS = 'Pagamentos — InfinitePay'
+
+/* Para quem vai o aviso de venda. Vazio = o dono do script, que é quem instalou
+   — assim, quando a Ilana instalar na planilha dela, o e-mail passa a ser o
+   dela sem precisar mexer aqui. */
+var AVISAR_EMAIL = ''
+
+var COLUNAS_PAGAMENTO = [
+  ['recebido_em', 'Recebido em'],
+  ['produtos', 'Produto'],
+  ['valor', 'Valor'],
+  ['valor_pago', 'Valor pago'],
+  ['capture_method', 'Meio'],
+  ['installments', 'Parcelas'],
+  ['order_nsu', 'Pedido'],
+  ['transaction_nsu', 'Transação'],
+  ['invoice_slug', 'Código'],
+  ['receipt_url', 'Comprovante'],
+]
+
+/** Centavos viram reais, para a planilha conseguir somar a coluna. */
+function emReais(centavos) {
+  var n = Number(centavos)
+  return isNaN(n) ? '' : n / 100
+}
+
+function registrarPagamento(dados) {
+  var planilha = SpreadsheetApp.getActiveSpreadsheet()
+  var aba = planilha.getSheetByName(ABA_PAGAMENTOS)
+
+  if (!aba) {
+    aba = planilha.insertSheet(ABA_PAGAMENTOS)
+  }
+
+  if (aba.getLastRow() === 0) {
+    var titulos = COLUNAS_PAGAMENTO.map(function (c) {
+      return c[1]
+    })
+    aba.appendRow(titulos)
+    aba.getRange(1, 1, 1, titulos.length).setFontWeight('bold')
+    aba.setFrozenRows(1)
+  }
+
+  /* A InfinitePay reenvia o aviso quando a resposta demora, e o Apps Script
+     costuma levar mais de um segundo. Sem esta conferência, a mesma venda
+     entraria duas vezes na planilha. */
+  var colunaTransacao = 0
+  for (var i = 0; i < COLUNAS_PAGAMENTO.length; i++) {
+    if (COLUNAS_PAGAMENTO[i][0] === 'transaction_nsu') colunaTransacao = i + 1
+  }
+
+  if (dados.transaction_nsu && aba.getLastRow() > 1) {
+    var jaVistas = aba
+      .getRange(2, colunaTransacao, aba.getLastRow() - 1, 1)
+      .getValues()
+    for (var j = 0; j < jaVistas.length; j++) {
+      if (String(jaVistas[j][0]) === String(dados.transaction_nsu)) {
+        return { novo: false }
+      }
+    }
+  }
+
+  var produtos = (dados.items || [])
+    .map(function (item) {
+      return item.description
+    })
+    .join(', ')
+
+  var linha = COLUNAS_PAGAMENTO.map(function (coluna) {
+    var chave = coluna[0]
+    if (chave === 'recebido_em') return new Date()
+    if (chave === 'produtos') return produtos
+    if (chave === 'valor') return emReais(dados.amount)
+    if (chave === 'valor_pago') return emReais(dados.paid_amount)
+    return dados[chave] !== undefined ? dados[chave] : ''
+  })
+
+  aba.appendRow(linha)
+
+  return { novo: true, produtos: produtos, valor: emReais(dados.amount) }
+}
+
+function avisarPorEmail(dados, resumo) {
+  var destino = AVISAR_EMAIL || Session.getEffectiveUser().getEmail()
+  if (!destino) return
+
+  var valor = resumo.valor
+    ? 'R$ ' + Number(resumo.valor).toFixed(2).replace('.', ',')
+    : ''
+
+  var corpo = [
+    'Entrou um pagamento pelo catálogo.',
+    '',
+    'Produto: ' + (resumo.produtos || '(sem descrição)'),
+    'Valor: ' + valor,
+    'Meio: ' + (dados.capture_method || ''),
+    'Parcelas: ' + (dados.installments || ''),
+    '',
+    dados.receipt_url ? 'Comprovante: ' + dados.receipt_url : '',
+    '',
+    'O nome e o telefone de quem pagou aparecem no aplicativo da InfinitePay.',
+    'A planilha guarda o histórico, na aba "' + ABA_PAGAMENTOS + '".',
+  ].join('\n')
+
+  MailApp.sendEmail(destino, 'Pagamento recebido — ' + valor, corpo)
+}
+
 function doPost(e) {
   try {
+    /* Webhook da InfinitePay: chega como JSON, sem o campo `tipo` que os
+       formulários do site mandam. */
+    if (e && e.postData && e.postData.contents) {
+      var json = null
+      try {
+        json = JSON.parse(e.postData.contents)
+      } catch (semJson) {
+        json = null
+      }
+
+      if (json && (json.transaction_nsu || json.invoice_slug)) {
+        var resumo = registrarPagamento(json)
+
+        if (resumo.novo) {
+          try {
+            avisarPorEmail(json, resumo)
+          } catch (erroEmail) {
+            /* O e-mail é o extra; a linha na planilha é o que não pode faltar. */
+            console.error(erroEmail)
+          }
+        }
+
+        return responder({ ok: true, tipo: 'pagamento', novo: resumo.novo })
+      }
+    }
+
     var recebido = (e && e.parameter) || {}
     var tipo = recebido.tipo
     var config = TIPOS[tipo]
@@ -146,4 +295,34 @@ function testar() {
 
   console.log(saida.join('\n'))
   return saida
+}
+
+/**
+ * Simula um aviso de pagamento, no formato que a InfinitePay manda. Roda por
+ * aqui mesmo, pelo ▷ Executar, sem gastar dinheiro.
+ *
+ * Roda duas vezes de propósito: a segunda tem que ser recusada como repetida,
+ * que é o que impede a mesma venda de entrar duas vezes quando a InfinitePay
+ * reenvia o aviso por achar a resposta lenta.
+ */
+function testarPagamento() {
+  var corpo = JSON.stringify({
+    invoice_slug: 'teste-' + new Date().getTime(),
+    amount: 500,
+    paid_amount: 500,
+    installments: 1,
+    capture_method: 'pix',
+    transaction_nsu: 'TESTE-FIXO-PARA-REPETIR',
+    order_nsu: 'pedido-de-teste',
+    receipt_url: 'https://exemplo.com/comprovante',
+    items: [{ quantity: 1, price: 500, description: 'Teste Compra Bússola' }],
+  })
+
+  var primeira = doPost({ postData: { contents: corpo } }).getContent()
+  var segunda = doPost({ postData: { contents: corpo } }).getContent()
+
+  console.log('1ª vez (deve gravar e mandar e-mail): ' + primeira)
+  console.log('2ª vez (deve dizer novo:false):       ' + segunda)
+
+  return [primeira, segunda]
 }
