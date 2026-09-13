@@ -47,7 +47,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 5
+var VERSAO = 6
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -180,8 +180,42 @@ function registrarPagamento(dados) {
   return { novo: true, produtos: produtos, valor: emReais(dados.amount) }
 }
 
+/**
+ * Descobre para quem mandar o aviso, dizendo em voz alta como chegou lá.
+ *
+ * `getEffectiveUser().getEmail()` devolve vazio em algumas situações, e antes
+ * isso fazia o envio desistir sem dizer nada — ficava igual a "não chegou
+ * e-mail" por falta de autorização, que é outro problema. Agora o registro de
+ * execução conta qual foi.
+ */
+function descobrirDestino() {
+  if (AVISAR_EMAIL) {
+    console.log('Destino do aviso: ' + AVISAR_EMAIL + ' (fixado em AVISAR_EMAIL)')
+    return AVISAR_EMAIL
+  }
+
+  var doDono = ''
+  try {
+    doDono = Session.getEffectiveUser().getEmail()
+  } catch (erro) {
+    console.error('Não consegui descobrir o e-mail de quem instalou: ' + erro)
+  }
+
+  if (doDono) {
+    console.log('Destino do aviso: ' + doDono + ' (conta que instalou o script)')
+  } else {
+    console.error(
+      'SEM DESTINO: o script não descobriu o e-mail da conta e AVISAR_EMAIL ' +
+        'está vazio. Preencha AVISAR_EMAIL, no topo do arquivo, com o endereço ' +
+        'que deve receber os avisos.'
+    )
+  }
+
+  return doDono
+}
+
 function avisarPorEmail(dados, resumo) {
-  var destino = AVISAR_EMAIL || Session.getEffectiveUser().getEmail()
+  var destino = descobrirDestino()
   if (!destino) return
 
   var valor = resumo.valor
@@ -220,6 +254,8 @@ function avisarPorEmail(dados, resumo) {
     'Pagamento recebido: ' + (resumo.produtos || '') + ' — ' + valor,
     corpo
   )
+
+  console.log('E-mail enviado para ' + destino + '.')
 }
 
 function doPost(e) {
@@ -382,6 +418,40 @@ function testar() {
 
   console.log(saida.join('\n'))
   return saida
+}
+
+/**
+ * Testa só o e-mail, sem planilha e sem pagamento no meio.
+ *
+ * Serve para separar as duas causas de "não chegou e-mail": falta de
+ * autorização, que aparece como erro vermelho no registro, e destino vazio, que
+ * antes passava em silêncio.
+ *
+ * Diz também quantos e-mails a conta ainda pode mandar hoje — a cota do Google
+ * é limitada, e uma conta comum tem umas 100 por dia.
+ */
+function testarEmail() {
+  var destino = descobrirDestino()
+
+  if (!destino) {
+    console.error('Parei aqui: sem destino não há o que testar.')
+    return 'sem destino'
+  }
+
+  console.log('E-mails restantes na cota de hoje: ' + MailApp.getRemainingDailyQuota())
+
+  MailApp.sendEmail(
+    destino,
+    'Teste do recebedor MASSIXA',
+    'Se você está lendo isto, o aviso de venda vai funcionar.\n\n' +
+      'Pode apagar esta mensagem.\n\n' +
+      '— Enviado pela função testarEmail, versão ' +
+      VERSAO +
+      '.'
+  )
+
+  console.log('Enviado. Confira a caixa de entrada de ' + destino + ' (e o spam).')
+  return destino
 }
 
 /**
