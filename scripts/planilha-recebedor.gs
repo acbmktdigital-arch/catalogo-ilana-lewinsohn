@@ -47,7 +47,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 7
+var VERSAO = 8
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -122,7 +122,7 @@ var AVISAR_EMAIL = ''
  *   docs.google.com/spreadsheets/d/ ESTE_PEDAÇO_AQUI /edit
  * ════════════════════════════════════════════════════════════════════════════
  */
-var PLANILHA_ID = ''
+var PLANILHA_ID = '1_4cbzssmgAXV8rrWG5s81MKudNRt7T3E7cUgYBd74n0'
 
 /** Abre a planilha, venha ela de onde vier. */
 function abrirPlanilha() {
