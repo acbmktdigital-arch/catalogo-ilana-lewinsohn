@@ -165,21 +165,38 @@ function avisarPorEmail(dados, resumo) {
     ? 'R$ ' + Number(resumo.valor).toFixed(2).replace('.', ',')
     : ''
 
+  /* Quem lê é a Ilana, não um programador: "credit_card" e "1" nao dizem
+     nada a ela. */
+  var meios = { pix: 'Pix', credit_card: 'Cartão de crédito' }
+  var meio = meios[dados.capture_method] || dados.capture_method || ''
+
+  var parcelas = Number(dados.installments)
+  var comoPagou = meio
+  if (meio && parcelas > 1) comoPagou = meio + ', em ' + parcelas + 'x'
+  else if (meio === 'Cartão de crédito') comoPagou = meio + ', à vista'
+
   var corpo = [
-    'Entrou um pagamento pelo catálogo.',
+    'Uma pessoa acabou de pagar pelo catálogo.',
     '',
-    'Produto: ' + (resumo.produtos || '(sem descrição)'),
-    'Valor: ' + valor,
-    'Meio: ' + (dados.capture_method || ''),
-    'Parcelas: ' + (dados.installments || ''),
+    (resumo.produtos || 'Pagamento') + ' — ' + valor,
+    comoPagou ? 'Pago com ' + comoPagou + '.' : '',
     '',
     dados.receipt_url ? 'Comprovante: ' + dados.receipt_url : '',
     '',
-    'O nome e o telefone de quem pagou aparecem no aplicativo da InfinitePay.',
-    'A planilha guarda o histórico, na aba "' + ABA_PAGAMENTOS + '".',
+    'Para saber quem é: o nome e o telefone de quem pagou aparecem no',
+    'aplicativo da InfinitePay — este aviso não os recebe.',
+    '',
+    'Lembre de entrar em contato para combinar a data do atendimento.',
+    '',
+    '—',
+    'Aviso automático. O histórico fica na planilha, na aba "' + ABA_PAGAMENTOS + '".',
   ].join('\n')
 
-  MailApp.sendEmail(destino, 'Pagamento recebido — ' + valor, corpo)
+  MailApp.sendEmail(
+    destino,
+    'Pagamento recebido: ' + (resumo.produtos || '') + ' — ' + valor,
+    corpo
+  )
 }
 
 function doPost(e) {
