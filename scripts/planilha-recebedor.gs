@@ -25,16 +25,19 @@
  * Para conferir sem passar pelo site: rodar a função  testar,  no fim do
  * arquivo, pelo botão ▷ Executar.
  *
- * ⚠️ AUTORIZAÇÕES. Este script escreve na planilha, manda e-mail e descobre o
- *    e-mail de quem instalou. Se o registro de execução acusar
- *    "You do not have permission to call MailApp.sendEmail", é porque a
- *    autorização foi dada antes de o código mandar e-mail. Para resolver:
+ * ⚠️ CRIE O PROJETO PELA PLANILHA, não em script.google.com. Um projeto solto
+ *    não enxerga "planilha ativa", e o Google reporta isso como falta de
+ *    permissão — mensagem que manda procurar no lugar errado.
  *
- *      Configurações do projeto (engrenagem) → marcar "Mostrar o arquivo de
- *      manifesto appsscript.json" → abrir o arquivo e substituir pelo que está
- *      em scripts/appsscript.json, no repositório do site.
+ * ⚠️ NÃO mexa em oauthScopes no appsscript.json. O Apps Script descobre sozinho
+ *    o que o código precisa e pede na hora certa. Nós tentamos declarar a lista
+ *    à mão e ela ficou diferente do que o código usava: a autorização era
+ *    concedida para um conjunto e o código pedia outro, com o erro sempre
+ *    falando de permissão. Deixe o Google decidir.
  *
- *    Na execução seguinte o Google pede a autorização que falta.
+ *    Se mesmo assim faltar autorização: myaccount.google.com/permissions →
+ *    achar o projeto pelo nome → Remover acesso → rodar de novo. Ele pergunta
+ *    tudo outra vez, agora conferindo com o código atual.
  */
 
 /**
@@ -47,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 8
+var VERSAO = 9
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
