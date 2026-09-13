@@ -47,7 +47,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 6
+var VERSAO = 7
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -105,6 +105,47 @@ var ABA_PAGAMENTOS = 'Pagamentos — InfinitePay'
    dela sem precisar mexer aqui. */
 var AVISAR_EMAIL = ''
 
+/**
+ * ════════════════════════════════════════════════════════════════════════════
+ * QUAL PLANILHA ESTE SCRIPT USA
+ *
+ * Deixe vazio se o projeto foi criado **pela planilha**, em Extensões → Apps
+ * Script: aí ele já sabe qual é.
+ *
+ * Preencha se o projeto foi criado solto, direto em script.google.com. Num
+ * projeto solto não existe "planilha ativa", e o script falha com uma mensagem
+ * enganosa — fala em falta de permissão, quando o problema é não haver planilha
+ * nenhuma para abrir.
+ *
+ * O código está no endereço da planilha, entre /d/ e /edit:
+ *
+ *   docs.google.com/spreadsheets/d/ ESTE_PEDAÇO_AQUI /edit
+ * ════════════════════════════════════════════════════════════════════════════
+ */
+var PLANILHA_ID = ''
+
+/** Abre a planilha, venha ela de onde vier. */
+function abrirPlanilha() {
+  if (PLANILHA_ID) {
+    return SpreadsheetApp.openById(PLANILHA_ID)
+  }
+
+  var ativa = null
+  try {
+    ativa = SpreadsheetApp.getActiveSpreadsheet()
+  } catch (erro) {
+    ativa = null
+  }
+
+  if (ativa) return ativa
+
+  throw new Error(
+    'Não achei a planilha. Este projeto não está preso a nenhuma — ' +
+      'preencha PLANILHA_ID, no topo do arquivo, com o código que aparece no ' +
+      'endereço da planilha entre /d/ e /edit.'
+  )
+}
+
 var COLUNAS_PAGAMENTO = [
   ['recebido_em', 'Recebido em'],
   ['produtos', 'Produto'],
@@ -125,7 +166,7 @@ function emReais(centavos) {
 }
 
 function registrarPagamento(dados) {
-  var planilha = SpreadsheetApp.getActiveSpreadsheet()
+  var planilha = abrirPlanilha()
   var aba = planilha.getSheetByName(ABA_PAGAMENTOS)
 
   if (!aba) {
@@ -294,7 +335,7 @@ function doPost(e) {
       return responder({ ok: false, erro: 'tipo desconhecido: ' + (tipo || '(vazio)') })
     }
 
-    var planilha = SpreadsheetApp.getActiveSpreadsheet()
+    var planilha = abrirPlanilha()
     var aba = planilha.getSheetByName(config.aba)
 
     if (!aba) {
@@ -354,7 +395,7 @@ function doGet() {
  * quem instala.
  */
 function prepararPlanilha() {
-  var planilha = SpreadsheetApp.getActiveSpreadsheet()
+  var planilha = abrirPlanilha()
   var criadas = []
 
   function garantir(nomeDaAba, colunas) {
