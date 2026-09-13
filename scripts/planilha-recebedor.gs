@@ -27,6 +27,18 @@
  */
 
 /**
+ * ════════════════════════════════════════════════════════════════════════════
+ * VERSÃO DESTE ARQUIVO — aumentar sempre que ele mudar de verdade.
+ *
+ * Existe porque "Salvar" no editor NÃO publica: sem uma Nova versão em
+ * Gerenciar implantações, o endereço /exec continua servindo o código velho, e
+ * nada na resposta denunciava isso. Agora o /exec, aberto no navegador, diz o
+ * número — então dá para conferir de olho se o que está no ar é o esperado.
+ * ════════════════════════════════════════════════════════════════════════════
+ */
+var VERSAO = 4
+
+/**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
  * que este script devolve para o site confirmar que chegou no lugar certo.
  *
@@ -271,15 +283,6 @@ function responder(objeto) {
     ContentService.MimeType.JSON
   )
 }
-
-/**
- * Marca da versão. **Aumentar sempre que este arquivo mudar de verdade.**
- *
- * Existe porque "Salvar" no editor não publica: sem uma Nova versão em
- * Gerenciar implantações, o endereço continua servindo o código velho — e
- * nada na resposta denunciava isso. Perdemos uma tarde nessa dúvida.
- */
-var VERSAO = 3
 
 /** Abrir o URL no navegador confirma que a implantação está de pé. */
 function doGet() {
