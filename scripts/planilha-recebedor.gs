@@ -272,12 +272,68 @@ function responder(objeto) {
   )
 }
 
+/**
+ * Marca da versão. **Aumentar sempre que este arquivo mudar de verdade.**
+ *
+ * Existe porque "Salvar" no editor não publica: sem uma Nova versão em
+ * Gerenciar implantações, o endereço continua servindo o código velho — e
+ * nada na resposta denunciava isso. Perdemos uma tarde nessa dúvida.
+ */
+var VERSAO = 3
+
 /** Abrir o URL no navegador confirma que a implantação está de pé. */
 function doGet() {
   var marcas = Object.keys(TIPOS).join(', ')
   return ContentService.createTextOutput(
-    'Recebedor do catálogo MASSIXA. Ativo — atende: ' + marcas
+    'Recebedor do catálogo MASSIXA — versão ' +
+      VERSAO +
+      '\nFormulários: ' +
+      marcas +
+      '\nPagamentos da InfinitePay: sim' +
+      '\nAvisa por e-mail: ' +
+      (AVISAR_EMAIL || Session.getEffectiveUser().getEmail() || '(não identificado)')
   )
+}
+
+/**
+ * Cria as abas e os cabeçalhos, sem escrever dado nenhum.
+ *
+ * Normalmente não é preciso: cada aba nasce sozinha quando chega o primeiro
+ * envio. Serve para ver a planilha montada antes de existir movimento — e
+ * porque "colei o script e não apareceu nada" é a primeira coisa que assusta
+ * quem instala.
+ */
+function prepararPlanilha() {
+  var planilha = SpreadsheetApp.getActiveSpreadsheet()
+  var criadas = []
+
+  function garantir(nomeDaAba, colunas) {
+    var aba = planilha.getSheetByName(nomeDaAba)
+    if (!aba) {
+      aba = planilha.insertSheet(nomeDaAba)
+      criadas.push(nomeDaAba)
+    }
+    if (aba.getLastRow() === 0) {
+      var titulos = colunas.map(function (c) {
+        return c[1]
+      })
+      aba.appendRow(titulos)
+      aba.getRange(1, 1, 1, titulos.length).setFontWeight('bold')
+      aba.setFrozenRows(1)
+    }
+  }
+
+  for (var marca in TIPOS) {
+    garantir(TIPOS[marca].aba, TIPOS[marca].colunas)
+  }
+  garantir(ABA_PAGAMENTOS, COLUNAS_PAGAMENTO)
+
+  var recado = criadas.length
+    ? 'Abas criadas: ' + criadas.join(', ')
+    : 'Todas as abas já existiam.'
+
+  console.log('Versão ' + VERSAO + '. ' + recado)
+  return recado
 }
 
 /** Teste de bancada: deixa uma linha em cada aba, para conferir e apagar. */
