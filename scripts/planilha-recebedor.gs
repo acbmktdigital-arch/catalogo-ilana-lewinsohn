@@ -24,6 +24,17 @@
  *
  * Para conferir sem passar pelo site: rodar a função  testar,  no fim do
  * arquivo, pelo botão ▷ Executar.
+ *
+ * ⚠️ AUTORIZAÇÕES. Este script escreve na planilha, manda e-mail e descobre o
+ *    e-mail de quem instalou. Se o registro de execução acusar
+ *    "You do not have permission to call MailApp.sendEmail", é porque a
+ *    autorização foi dada antes de o código mandar e-mail. Para resolver:
+ *
+ *      Configurações do projeto (engrenagem) → marcar "Mostrar o arquivo de
+ *      manifesto appsscript.json" → abrir o arquivo e substituir pelo que está
+ *      em scripts/appsscript.json, no repositório do site.
+ *
+ *    Na execução seguinte o Google pede a autorização que falta.
  */
 
 /**
@@ -36,7 +47,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 4
+var VERSAO = 5
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -382,13 +393,19 @@ function testar() {
  * reenvia o aviso por achar a resposta lenta.
  */
 function testarPagamento() {
+  /* Transação nova a cada execução. Antes era fixa, e a partir da segunda vez
+     a função recusava tudo como repetido e não mandava e-mail — parecia que o
+     envio tinha parado de funcionar. A conferência de repetidos continua
+     testada, porque o mesmo corpo é enviado duas vezes aqui dentro. */
+  var nsu = 'TESTE-' + new Date().getTime()
+
   var corpo = JSON.stringify({
     invoice_slug: 'teste-' + new Date().getTime(),
     amount: 500,
     paid_amount: 500,
     installments: 1,
     capture_method: 'pix',
-    transaction_nsu: 'TESTE-FIXO-PARA-REPETIR',
+    transaction_nsu: nsu,
     order_nsu: 'pedido-de-teste',
     receipt_url: 'https://exemplo.com/comprovante',
     items: [{ quantity: 1, price: 500, description: 'Teste Compra Bússola' }],
