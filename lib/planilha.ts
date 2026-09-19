@@ -45,4 +45,11 @@ export const tipos = {
   /* Quem consulta disponibilidade dos preparados. Aqui a planilha é só cópia —
      o WhatsApp continua sendo o canal. */
   consultaBotica: 'consulta-botica',
+
+  /* Quem preencheu o formulário da Bússola antes de ir para o checkout.
+     O pagamento chega depois, por outro caminho, e não traz quem pagou: o
+     aviso da InfinitePay manda valor e códigos, nunca o comprador. Esta aba é
+     a outra ponta — nome, telefone e urgência, com a hora. Cruzando as duas
+     pela hora, a Ilana sabe de quem é a venda. */
+  pedidoBussola: 'pedido-bussola',
 } as const

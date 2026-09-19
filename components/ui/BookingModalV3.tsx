@@ -69,12 +69,16 @@ type BookingModalV3Props = {
                               só vê a confirmação se o recebedor confirmar.
                               É a lista de espera da Vem Pra Roda.
 
-     'planilha-e-whatsapp'  — ela é uma cópia. O WhatsApp continua sendo o
-                              canal, e uma falha na gravação não custa nada a
-                              quem preencheu, porque a mensagem já foi. É a
-                              consulta da Botica. */
+     'planilha-e-saida'     — ela é uma cópia. A pessoa segue para a saída —
+                              WhatsApp, ou o endereço de `urlAoEnviar` — e uma
+                              falha na gravação não custa nada a quem
+                              preencheu, porque a saída já aconteceu. É a
+                              consulta da Botica e o checkout da Bússola.
+
+     O nome do modo era 'planilha-e-whatsapp' e passou a mentir quando a saída
+     virou o checkout. */
   endpoint?: string
-  endpointModo?: 'planilha' | 'planilha-e-whatsapp'
+  endpointModo?: 'planilha' | 'planilha-e-saida'
   tipoRegistro?: string
   origemRegistro?: string
 
@@ -185,6 +189,9 @@ export default function BookingModalV3({
       nome: nome.trim(),
       telefone: telefone.trim(),
       email: email.trim(),
+      /* Só existe quando o bloco de agenda aparece, e é onde a pessoa conta se
+         o caso é urgente — na Bússola, o dado mais útil depois do contato. */
+      urgencia: mostrarAgenda ? urgencia.trim() : '',
       mensagem: mensagem.trim(),
       origem: origemRegistro ?? '',
     })
@@ -255,7 +262,7 @@ export default function BookingModalV3({
     /* A cópia na planilha vai atrás, sem segurar ninguém. `keepalive` deixa o
        envio terminar mesmo que a página saia do ar no meio. Se falhar, nada se
        perde: a mensagem do WhatsApp já levou tudo. */
-    if (endpoint && endpointModo === 'planilha-e-whatsapp') {
+    if (endpoint && endpointModo === 'planilha-e-saida') {
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },

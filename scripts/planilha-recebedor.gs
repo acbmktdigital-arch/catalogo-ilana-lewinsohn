@@ -50,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 11
+var VERSAO = 12
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -80,6 +80,25 @@ var TIPOS = {
       ['nome', 'Nome'],
       ['telefone', 'WhatsApp'],
       ['mensagem', 'O que está buscando'],
+      ['origem', 'Origem'],
+    ],
+  },
+
+  /* Quem preencheu o formulário da Bússola antes de seguir para o checkout.
+     O pagamento chega depois, na aba de Pagamentos, e não diz quem pagou —
+     o aviso da InfinitePay manda valor e códigos, nunca o comprador. Esta aba
+     é a outra ponta: cruzando as duas pela hora, sabe-se de quem é a venda.
+
+     A linha entra mesmo quando a pessoa desiste de pagar. É informação, não
+     defeito: mostra quem chegou até o fim do formulário e não converteu. */
+  'pedido-bussola': {
+    aba: 'Pedidos — Bússola',
+    colunas: [
+      ['recebido_em', 'Recebido em'],
+      ['nome', 'Nome'],
+      ['telefone', 'WhatsApp'],
+      ['urgencia', 'Urgência'],
+      ['mensagem', 'Sobre o momento'],
       ['origem', 'Origem'],
     ],
   },

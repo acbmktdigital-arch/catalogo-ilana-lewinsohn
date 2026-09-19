@@ -151,7 +151,7 @@ type SalesPageTemplateV3Props = {
      Ver components/ui/BookingModalV3.tsx. */
   modalAviso?: string
   modalEndpoint?: string
-  modalEndpointModo?: 'planilha' | 'planilha-e-whatsapp'
+  modalEndpointModo?: 'planilha' | 'planilha-e-saida'
   modalTipoRegistro?: string
   /* Manda quem enviar o modal para outro lugar que nao o WhatsApp — o checkout
      da Bussola. Ver components/ui/BookingModalV3.tsx. */
