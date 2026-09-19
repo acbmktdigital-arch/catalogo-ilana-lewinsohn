@@ -15,9 +15,15 @@
  *
  * ⚠️ Ao editar o Apps Script, é preciso Implantar → Gerenciar implantações →
  *    editar → Nova versão. Só salvar não publica.
+ *
+ * ⚠️ Este endereço é o do projeto instalado na planilha da Ilana, criado em
+ *    18/09/2026. Havia um anterior, de um projeto solto na conta da Vera, que
+ *    **continua no ar servindo código velho** — ele recusa avisos de pagamento
+ *    sem dar erro visível. Para conferir qual é qual, abra o endereço no
+ *    navegador: o certo diz "versão 10" ou mais.
  */
 const PADRAO =
-  'https://script.google.com/macros/s/AKfycbywjiau5fSUmAh7eUVZg8fMDpdhow-PbNOj55kdB6DgpGokHV1WL70UN1BAB1e3UqXDzQ/exec'
+  'https://script.google.com/macros/s/AKfycbz8m-ARjAznphLS9geHUkD7xQhvczI93ejZzZ0nvCIiW1c7tNy9kJmAxmYXvKVWESvUKg/exec'
 
 export const planilhaEndpoint =
   process.env.NEXT_PUBLIC_APLICACAO_ENDPOINT?.trim() ||
