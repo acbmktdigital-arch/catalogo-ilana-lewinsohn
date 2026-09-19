@@ -22,13 +22,20 @@
  *    sem dar erro visível. Para conferir qual é qual, abra o endereço no
  *    navegador: o certo diz "versão 10" ou mais.
  */
-const PADRAO =
-  'https://script.google.com/macros/s/AKfycbz8m-ARjAznphLS9geHUkD7xQhvczI93ejZzZ0nvCIiW1c7tNy9kJmAxmYXvKVWESvUKg/exec'
-
+/**
+ * O endereço fica aqui e em nenhum outro lugar.
+ *
+ * Havia uma variável de ambiente por cima disto, para "dar flexibilidade".
+ * Em 18/09/2026 ela custou uma tarde: um `.env.local` de uma semana antes
+ * apontava para a instalação antiga, e o site gravava numa planilha velha que
+ * recusava as marcas novas — em silêncio, porque neste modo a falha não
+ * aparece. O código dizia uma coisa, a página fazia outra, e nada denunciava.
+ *
+ * Trocar de planilha é mudar esta linha, com o commit registrando quando e por
+ * quê. Configuração escondida que vence o código é pior que rigidez.
+ */
 export const planilhaEndpoint =
-  process.env.NEXT_PUBLIC_APLICACAO_ENDPOINT?.trim() ||
-  process.env.NEXT_PUBLIC_LISTA_ESPERA_ENDPOINT?.trim() ||
-  PADRAO
+  'https://script.google.com/macros/s/AKfycbz8m-ARjAznphLS9geHUkD7xQhvczI93ejZzZ0nvCIiW1c7tNy9kJmAxmYXvKVWESvUKg/exec'
 
 /**
  * As marcas que o site manda e espera de volta. Sem a marca na resposta, o

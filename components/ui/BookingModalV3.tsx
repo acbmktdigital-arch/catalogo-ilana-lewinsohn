@@ -198,7 +198,7 @@ export default function BookingModalV3({
 
   /* Envio para planilha. Espera a resposta e só confirma se o recebedor
      devolver a marca combinada — nada de dar por enviado o que não chegou. */
-  const registrarNaPlanilha = async () => {
+  const registrarNaPlanilha = async (aoTerminar?: () => void) => {
     setFalhou(false)
     setEnviando(true)
 
@@ -223,8 +223,11 @@ export default function BookingModalV3({
         throw new Error('recebedor desatualizado: nao conhece ' + tipoRegistro)
       }
 
-      setRegistrado(true)
-    } catch {
+      if (aoTerminar) aoTerminar()
+      else setRegistrado(true)
+    } catch (erro) {
+      /* No console fica o motivo; na tela, o recado e a saida pelo WhatsApp. */
+      console.error('Falha ao gravar na planilha:', erro)
       setFalhou(true)
     } finally {
       setEnviando(false)
@@ -259,19 +262,17 @@ export default function BookingModalV3({
       'noopener,noreferrer'
     )
 
-    /* A cópia na planilha vai atrás, sem segurar ninguém. `keepalive` deixa o
-       envio terminar mesmo que a página saia do ar no meio. Se falhar, nada se
-       perde: a mensagem do WhatsApp já levou tudo. */
+    /* A gravação vai atrás, com a saída já aberta — então não atrasa ninguém.
+       O modal só fecha quando ela termina, e se falhar fica na tela com o
+       recado e o caminho pelo WhatsApp.
+
+       Antes isto falhava em silêncio, com o argumento de que a mensagem do
+       WhatsApp já teria levado tudo. Deixou de valer quando a saída virou o
+       checkout: ali a planilha é a ÚNICA chance de saber quem é a pessoa, e
+       uma falha invisível vira pagamento sem dono. */
     if (endpoint && endpointModo === 'planilha-e-saida') {
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-        body: corpoDoRegistro().toString(),
-        keepalive: true,
-      }).catch(() => {
-        /* Silêncio de propósito: a pessoa já está no WhatsApp, e um aviso de
-           erro aqui falaria de um problema que não é dela. */
-      })
+      void registrarNaPlanilha(aoFechar)
+      return
     }
 
     aoFechar()
