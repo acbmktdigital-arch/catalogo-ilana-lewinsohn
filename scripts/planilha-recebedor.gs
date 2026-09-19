@@ -50,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 12
+var VERSAO = 13
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -191,6 +191,41 @@ function abrirPlanilha() {
   )
 }
 
+/**
+ * A ordem em que as abas aparecem na planilha.
+ *
+ * Sem isto elas ficam na ordem em que foram criadas — que é a ordem em que o
+ * sistema foi crescendo, e não diz nada a quem abre a planilha. Aqui a ordem
+ * segue o caminho real: o pedido da Bússola vem antes do pagamento, porque a
+ * pessoa preenche o formulário e só então paga.
+ *
+ * Aba que não estiver nesta lista vai para o fim, sem reclamar.
+ */
+var ORDEM_DAS_ABAS = [
+  'Pedidos — Bússola',
+  'Pagamentos — InfinitePay',
+  'Consultas — Botica da Bruxa',
+  'Interessadas — Vem Pra Roda',
+]
+
+/** Põe as abas na ordem de ORDEM_DAS_ABAS. */
+function ordenarAbas() {
+  var planilha = abrirPlanilha()
+  var posicao = 1
+
+  for (var i = 0; i < ORDEM_DAS_ABAS.length; i++) {
+    var aba = planilha.getSheetByName(ORDEM_DAS_ABAS[i])
+    if (!aba) continue
+    planilha.setActiveSheet(aba)
+    planilha.moveActiveSheet(posicao)
+    posicao++
+  }
+
+  /* Deixa a primeira aberta — senão a planilha abre na última que foi movida. */
+  var primeira = planilha.getSheetByName(ORDEM_DAS_ABAS[0])
+  if (primeira) planilha.setActiveSheet(primeira)
+}
+
 var COLUNAS_PAGAMENTO = [
   ['recebido_em', 'Recebido em'],
   ['produtos', 'Produto'],
@@ -216,6 +251,8 @@ function registrarPagamento(dados) {
 
   if (!aba) {
     aba = planilha.insertSheet(ABA_PAGAMENTOS)
+    /* Aba nova nasce no fim; põe de volta no lugar antes que alguém veja. */
+    ordenarAbas()
   }
 
   if (aba.getLastRow() === 0) {
@@ -385,6 +422,7 @@ function doPost(e) {
 
     if (!aba) {
       aba = planilha.insertSheet(config.aba)
+      ordenarAbas()
     }
 
     if (aba.getLastRow() === 0) {
@@ -463,6 +501,8 @@ function prepararPlanilha() {
     garantir(TIPOS[marca].aba, TIPOS[marca].colunas)
   }
   garantir(ABA_PAGAMENTOS, COLUNAS_PAGAMENTO)
+
+  ordenarAbas()
 
   var recado = criadas.length
     ? 'Abas criadas: ' + criadas.join(', ')
