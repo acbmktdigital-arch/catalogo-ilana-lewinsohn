@@ -50,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 9
+var VERSAO = 10
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -103,10 +103,16 @@ var TIPOS = {
  */
 var ABA_PAGAMENTOS = 'Pagamentos — InfinitePay'
 
-/* Para quem vai o aviso de venda. Vazio = o dono do script, que é quem instalou
-   — assim, quando a Ilana instalar na planilha dela, o e-mail passa a ser o
-   dela sem precisar mexer aqui. */
-var AVISAR_EMAIL = ''
+/**
+ * Para quem vai o aviso de venda. Vazio = o dono do script, que é quem
+ * instalou — assim, na planilha da Ilana o aviso vai para ela sozinho.
+ *
+ * ⚠️ PROVISÓRIO: está apontando para o e-mail de teste da Vera, porque durante
+ *    os testes ela não tem acesso à caixa da Ilana. **Esvaziar antes de entrar
+ *    no ar**, senão os avisos de venda de verdade vão para o lugar errado e a
+ *    Ilana não fica sabendo de nada.
+ */
+var AVISAR_EMAIL = 'acb.iaprimeiro@gmail.com'
 
 /**
  * ════════════════════════════════════════════════════════════════════════════
