@@ -138,7 +138,7 @@ export default function BoticaDaBruxaPage() {
          falha na gravação não custa nada a quem preencheu, porque a mensagem
          já foi. */
       modalEndpoint={planilhaEndpoint}
-      modalEndpointModo="planilha-e-whatsapp"
+      modalEndpointModo="planilha-e-saida"
       modalTipoRegistro={tipos.consultaBotica}
       modalEtiqueta="Disponibilidade"
       modalTitulo="Preparados da Botica"
