@@ -50,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 13
+var VERSAO = 14
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -62,6 +62,9 @@ var VERSAO = 13
 var TIPOS = {
   'lista-espera-vem-pra-roda': {
     aba: 'Interessadas — Vem Pra Roda',
+    /* Sem e-mail ninguém fica sabendo: este formulário não abre WhatsApp
+       nenhum, então a planilha seria o único lugar e só quem a abrisse veria. */
+    avisar: 'Nova inscrição na lista de espera',
     colunas: [
       ['recebido_em', 'Recebido em'],
       ['nome', 'Nome'],
@@ -74,6 +77,9 @@ var TIPOS = {
 
   'consulta-botica': {
     aba: 'Consultas — Botica da Bruxa',
+    /* Sem e-mail de propósito: aqui o WhatsApp abre com a mensagem pronta e a
+       Ilana vê na hora. Um aviso a mais seria repetição. */
+    avisar: '',
     colunas: [
       ['recebido_em', 'Recebido em'],
       ['modalidade', 'Preparado'],
@@ -93,6 +99,9 @@ var TIPOS = {
      defeito: mostra quem chegou até o fim do formulário e não converteu. */
   'pedido-bussola': {
     aba: 'Pedidos — Bússola',
+    /* O pagamento chega minutos depois, em outro e-mail. Os dois juntos, na
+       caixa de entrada, dizem quem comprou — sem abrir a planilha. */
+    avisar: 'Novo pedido da Bússola',
     colunas: [
       ['recebido_em', 'Recebido em'],
       ['nome', 'Nome'],
@@ -337,6 +346,71 @@ function descobrirDestino() {
   return doDono
 }
 
+/**
+ * O pé de todo aviso: de onde ele veio e o link para ver o resto.
+ *
+ * O link aponta para a **aba**, não só para a planilha — o `#gid` abre já na
+ * certa. A Ilana pediu isso: recebendo o aviso, ela quer poder olhar o
+ * panorama sem caçar a guia.
+ */
+function rodapeDoAviso(aba) {
+  var link = ''
+  try {
+    link = abrirPlanilha().getUrl() + '#gid=' + aba.getSheetId()
+  } catch (erro) {
+    console.error('Não consegui montar o link da planilha: ' + erro)
+  }
+
+  var linhas = [
+    '—',
+    'Aviso automático. O histórico fica na planilha, na aba "' + aba.getName() + '".',
+  ]
+  if (link) linhas.push(link)
+
+  return linhas.join('\n')
+}
+
+/**
+ * Avisa que um formulário do site foi preenchido.
+ *
+ * Monta o corpo a partir das próprias colunas, então um formulário novo passa a
+ * avisar sem código a mais — basta pôr `avisar` na entrada dele em TIPOS.
+ */
+function avisarFormulario(config, recebido, multiplos, aba) {
+  if (!config.avisar) return
+
+  var destino = descobrirDestino()
+  if (!destino) return
+
+  var corpo = ['Alguém preencheu um formulário no catálogo.', '']
+
+  for (var i = 0; i < config.colunas.length; i++) {
+    var chave = config.colunas[i][0]
+    var titulo = config.colunas[i][1]
+    if (chave === 'recebido_em' || chave === 'origem') continue
+
+    var valor = recebido[chave]
+    if (multiplos && multiplos[chave] && multiplos[chave].length > 1) {
+      valor = multiplos[chave].join(', ')
+    }
+    if (valor === undefined || String(valor).trim() === '') continue
+
+    corpo.push(titulo + ': ' + valor)
+  }
+
+  if (recebido.origem) {
+    corpo.push('')
+    corpo.push('Veio de: ' + recebido.origem)
+  }
+
+  corpo.push('')
+  corpo.push(rodapeDoAviso(aba))
+
+  var quem = recebido.nome ? ' — ' + recebido.nome : ''
+  MailApp.sendEmail(destino, config.avisar + quem, corpo.join('\n'))
+  console.log('Aviso de formulário enviado para ' + destino + '.')
+}
+
 function avisarPorEmail(dados, resumo) {
   var destino = descobrirDestino()
   if (!destino) return
@@ -368,8 +442,7 @@ function avisarPorEmail(dados, resumo) {
     '',
     'Lembre de entrar em contato para combinar a data do atendimento.',
     '',
-    '—',
-    'Aviso automático. O histórico fica na planilha, na aba "' + ABA_PAGAMENTOS + '".',
+    rodapeDoAviso(abrirPlanilha().getSheetByName(ABA_PAGAMENTOS)),
   ].join('\n')
 
   MailApp.sendEmail(
@@ -441,6 +514,14 @@ function doPost(e) {
     })
 
     aba.appendRow(linha)
+
+    /* O aviso vem depois da linha, e uma falha nele não derruba o recebimento:
+       a linha na planilha é o que não pode faltar. */
+    try {
+      avisarFormulario(config, recebido, e && e.parameters, aba)
+    } catch (erroAviso) {
+      console.error(erroAviso)
+    }
 
     return responder({ ok: true, tipo: tipo })
   } catch (erro) {
