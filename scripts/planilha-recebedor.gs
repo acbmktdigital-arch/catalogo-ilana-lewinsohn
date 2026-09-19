@@ -50,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 10
+var VERSAO = 11
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -119,7 +119,7 @@ var AVISAR_EMAIL = 'acb.iaprimeiro@gmail.com'
  * QUAL PLANILHA ESTE SCRIPT USA
  *
  * Deixe vazio se o projeto foi criado **pela planilha**, em Extensões → Apps
- * Script: aí ele já sabe qual é.
+ * Script: aí ele já sabe qual é. É o nosso caso, e por isso está vazio.
  *
  * Preencha se o projeto foi criado solto, direto em script.google.com. Num
  * projeto solto não existe "planilha ativa", e o script falha com uma mensagem
@@ -131,14 +131,17 @@ var AVISAR_EMAIL = 'acb.iaprimeiro@gmail.com'
  *   docs.google.com/spreadsheets/d/ ESTE_PEDAÇO_AQUI /edit
  * ════════════════════════════════════════════════════════════════════════════
  */
-var PLANILHA_ID = '1_4cbzssmgAXV8rrWG5s81MKudNRt7T3E7cUgYBd74n0'
+var PLANILHA_ID = ''
 
-/** Abre a planilha, venha ela de onde vier. */
+/**
+ * Abre a planilha, venha ela de onde vier.
+ *
+ * A planilha do próprio projeto vem primeiro, de propósito. Num projeto criado
+ * pela planilha ela é sempre a certa, e não exige permissão para abrir outro
+ * documento. O PLANILHA_ID só entra quando não há planilha própria — e um ID
+ * esquecido de outra instalação deixa de atrapalhar.
+ */
 function abrirPlanilha() {
-  if (PLANILHA_ID) {
-    return SpreadsheetApp.openById(PLANILHA_ID)
-  }
-
   var ativa = null
   try {
     ativa = SpreadsheetApp.getActiveSpreadsheet()
@@ -147,6 +150,20 @@ function abrirPlanilha() {
   }
 
   if (ativa) return ativa
+
+  if (PLANILHA_ID) {
+    try {
+      return SpreadsheetApp.openById(PLANILHA_ID)
+    } catch (erro) {
+      throw new Error(
+        'Não consegui abrir a planilha de código ' +
+          PLANILHA_ID +
+          '. Ou ela não existe, ou a conta que roda este script não tem acesso ' +
+          'a ela. Se o projeto foi criado pela própria planilha, o certo é ' +
+          'deixar PLANILHA_ID vazio.'
+      )
+    }
+  }
 
   throw new Error(
     'Não achei a planilha. Este projeto não está preso a nenhuma — ' +
