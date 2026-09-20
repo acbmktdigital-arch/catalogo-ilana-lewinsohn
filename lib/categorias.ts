@@ -47,17 +47,19 @@ export const categorias: Categoria[] = [
        depois no lugar da versão só com os objetos, que não tinha ninguém.
 
        Dois recortes do mesmo arquivo, porque as molduras pedem coisas
-       diferentes: o card é quase 3:2 e a faixa do topo é 2,4:1. Na faixa não
-       cabem a cabeça dela e a mesa inteira — preferimos cortar a mesa embaixo,
-       porque topo de cabeça cortado parece erro e mesa cortada parece
-       enquadramento.
+       diferentes: o card é quase 3:2 e a faixa do topo é 2,4:1. Nesta imagem
+       os dois cabem inteiros — a anterior obrigava a cortar a mesa embaixo
+       para não cortar a cabeça.
 
-       A imagem é gerada. Nada de tatuagem: a Ilana tem uma no ombro direito e
-       inventar uma seria pior que nenhuma — por isso o ombro direito fica
-       virado para longe da câmera. A tela do notebook está vazia e borrada
-       pelo mesmo motivo: interface inventada denuncia a geração. */
-    imagem: '/images/online-mulher-mesa-card.jpg',
-    imagemCapa: '/images/online-mulher-mesa-capa.jpg',
+       ⚠️ Esta versão, escolhida pela Vera em 20/09/2026, tem tatuagem visível
+       no ombro, cabelo preso e interface aparecendo na tela do notebook. As
+       versões anteriores evitavam as três de propósito: a Ilana tem uma
+       tatuagem no ombro direito e inventar um desenho que não é o dela é pior
+       que não ter nenhum, o pedido era cabelo solto, e interface inventada é o
+       que mais denuncia imagem gerada. Ficou assim por decisão dela — não é
+       descuido, e mudar de volta é trocar estas duas linhas. */
+    imagem: '/images/online-mulher-laptop-card.jpg',
+    imagemCapa: '/images/online-mulher-laptop-capa.jpg',
     servicos: ['bussola-orientacao-xamanica', 'acompanhamento-terapeutico'],
   },
   {
