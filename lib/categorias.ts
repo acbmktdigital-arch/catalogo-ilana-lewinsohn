@@ -41,17 +41,23 @@ export const categorias: Categoria[] = [
     slug: 'atendimentos-online',
     titulo: 'Atendimentos Individuais Online',
     descricao: 'Escuta e orientação de onde você estiver.',
-    /* O cantinho preparado para a sessão: notebook, vela, copo d'água e ervas
-       — os mesmos itens que a Bússola pede no FAQ. Entrou no lugar do retrato
-       da Ilana, que a Ilana não gostou de ver ali: no card o corte deixava só
-       metade do rosto, e nada dizia "online".
+    /* Uma mulher de costas à mesa na mata, no fim da tarde: notebook, vela,
+       copo d'água e ervas — os mesmos itens que a Bússola pede no FAQ. Entrou
+       no lugar do retrato da Ilana, que a Ilana não gostou de ver ali, e
+       depois no lugar da versão só com os objetos, que não tinha ninguém.
 
        Dois recortes do mesmo arquivo, porque as molduras pedem coisas
-       diferentes. O card mostra 38% da largura, e um corte central pegaria a
-       vela deixando o notebook de fora — e é o notebook que diz "online". A
-       faixa de 200px do topo é larga e cabe a mesa inteira. */
-    imagem: '/images/online-mesa-notebook-card.jpg',
-    imagemCapa: '/images/online-mesa-notebook-capa.jpg',
+       diferentes: o card é quase 3:2 e a faixa do topo é 2,4:1. Na faixa não
+       cabem a cabeça dela e a mesa inteira — preferimos cortar a mesa embaixo,
+       porque topo de cabeça cortado parece erro e mesa cortada parece
+       enquadramento.
+
+       A imagem é gerada. Nada de tatuagem: a Ilana tem uma no ombro direito e
+       inventar uma seria pior que nenhuma — por isso o ombro direito fica
+       virado para longe da câmera. A tela do notebook está vazia e borrada
+       pelo mesmo motivo: interface inventada denuncia a geração. */
+    imagem: '/images/online-mulher-mesa-card.jpg',
+    imagemCapa: '/images/online-mulher-mesa-capa.jpg',
     servicos: ['bussola-orientacao-xamanica', 'acompanhamento-terapeutico'],
   },
   {
