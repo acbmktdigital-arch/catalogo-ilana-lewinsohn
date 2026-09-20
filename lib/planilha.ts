@@ -64,9 +64,4 @@ export const tipos = {
      a outra ponta — nome, telefone e urgência, com a hora. Cruzando as duas
      pela hora, a Ilana sabe de quem é a venda. */
   pedidoBussola: 'pedido-bussola',
-
-  /* Quem pediu Acompanhamento Contínuo. Como na Botica, a saída é o WhatsApp e
-     a planilha é cópia — não há pagamento pelo site. A frequência escolhida vai
-     junto, porque é ela que define o preço por sessão. */
-  pedidoAcompanhamento: 'pedido-acompanhamento',
 } as const

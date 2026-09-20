@@ -50,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 16
+var VERSAO = 15
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -104,28 +104,6 @@ var TIPOS = {
     avisar: 'Novo pedido da Bússola',
     colunas: [
       ['recebido_em', 'Recebido em'],
-      ['nome', 'Nome'],
-      ['telefone', 'WhatsApp'],
-      ['urgencia', 'Urgência'],
-      ['mensagem', 'Sobre o momento'],
-      ['origem', 'Origem'],
-    ],
-  },
-
-  /* Quem pediu Acompanhamento Contínuo. Aqui não há pagamento pelo site: a
-     saída é o WhatsApp, como na Botica, e a planilha é cópia.
-
-     A frequência é a coluna que importa — ela é o preço. Semanal, quinzenal e
-     avulsa custam R$ 134,00, R$ 161,00 e R$ 197,00 por sessão, então saber
-     quem pediu o quê é saber quanto foi combinado. */
-  'pedido-acompanhamento': {
-    aba: 'Pedidos — Acompanhamento',
-    /* Sem e-mail, pelo mesmo motivo da Botica: o WhatsApp abre com a mensagem
-       pronta e a Ilana vê na hora. Um aviso a mais seria repetição. */
-    avisar: '',
-    colunas: [
-      ['recebido_em', 'Recebido em'],
-      ['modalidade', 'Frequência'],
       ['nome', 'Nome'],
       ['telefone', 'WhatsApp'],
       ['urgencia', 'Urgência'],
@@ -238,7 +216,6 @@ function abrirPlanilha() {
 var ORDEM_DAS_ABAS = [
   'Pedidos — Bússola',
   'Pagamentos — InfinitePay',
-  'Pedidos — Acompanhamento',
   'Consultas — Botica da Bruxa',
   'Interessadas — Vem Pra Roda',
 ]
