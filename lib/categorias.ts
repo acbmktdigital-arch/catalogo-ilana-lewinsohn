@@ -47,9 +47,17 @@ export const categorias: Categoria[] = [
        depois no lugar da versão só com os objetos, que não tinha ninguém.
 
        Dois recortes do mesmo arquivo, porque as molduras pedem coisas
-       diferentes: o card é quase 3:2 e a faixa do topo é 2,4:1. Nesta imagem
-       os dois cabem inteiros — a anterior obrigava a cortar a mesa embaixo
-       para não cortar a cabeça.
+       diferentes.
+
+       A faixa do topo é **2,24:1**, e não 2,4:1 como as capas anteriores: a
+       página é `max-w-md` (448px) e a faixa é `h-[200px]`, então 448÷200 é a
+       proporção exata do container no seu tamanho máximo. Casando com ela, a
+       imagem entra inteira e ainda mostra mais altura.
+
+       ⚠️ Com `object-cover`, imagem mais larga que o container é cortada **nas
+       laterais**, nunca no topo. Então cabeça cortada na faixa é sempre defeito
+       do recorte do arquivo, não do CSS — foi o que aconteceu na primeira
+       tentativa desta foto, que começava 90px abaixo e comia o coque.
 
        ⚠️ Esta versão, escolhida pela Vera em 20/09/2026, tem tatuagem visível
        no ombro, cabelo preso e interface aparecendo na tela do notebook. As
@@ -59,7 +67,7 @@ export const categorias: Categoria[] = [
        que mais denuncia imagem gerada. Ficou assim por decisão dela — não é
        descuido, e mudar de volta é trocar estas duas linhas. */
     imagem: '/images/online-mulher-laptop-card.jpg',
-    imagemCapa: '/images/online-mulher-laptop-capa.jpg',
+    imagemCapa: '/images/online-mulher-laptop-capa-alta.jpg',
     servicos: ['bussola-orientacao-xamanica', 'acompanhamento-terapeutico'],
   },
   {
