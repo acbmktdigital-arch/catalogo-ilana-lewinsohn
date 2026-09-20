@@ -16,11 +16,16 @@
  * ⚠️ Ao editar o Apps Script, é preciso Implantar → Gerenciar implantações →
  *    editar → Nova versão. Só salvar não publica.
  *
- * ⚠️ Este endereço é o do projeto instalado na planilha da Ilana, criado em
- *    18/09/2026. Havia um anterior, de um projeto solto na conta da Vera, que
- *    **continua no ar servindo código velho** — ele recusa avisos de pagamento
- *    sem dar erro visível. Para conferir qual é qual, abra o endereço no
- *    navegador: o certo diz "versão 10" ou mais.
+ * ⚠️ Este endereço é o do projeto instalado na planilha da **conta da Ilana**,
+ *    criado em 20/09/2026. Ele responde:
+ *
+ *      Recebedor do catálogo MASSIXA — versão 15
+ *      Avisa por e-mail: cantodafloresta8@gmail.com
+ *
+ *    Abrir no navegador é como se confere qual endereço é qual — e há outros
+ *    dois **ainda no ar servindo código velho**, das contas de teste da Vera.
+ *    Eles recusam avisos de pagamento sem dar erro visível. Se um deles voltar
+ *    a aparecer em algum lugar, dados somem em silêncio.
  */
 /**
  * O endereço fica aqui e em nenhum outro lugar.
@@ -35,7 +40,7 @@
  * quê. Configuração escondida que vence o código é pior que rigidez.
  */
 export const planilhaEndpoint =
-  'https://script.google.com/macros/s/AKfycbz8m-ARjAznphLS9geHUkD7xQhvczI93ejZzZ0nvCIiW1c7tNy9kJmAxmYXvKVWESvUKg/exec'
+  'https://script.google.com/macros/s/AKfycbyNtq-NoWpH8jKZpshmrbC5YrKeCb-s7_sj9ucEf2K1YkghASTwSfdDCvIbUHPWmScL6Q/exec'
 
 /**
  * As marcas que o site manda e espera de volta. Sem a marca na resposta, o
