@@ -19,26 +19,30 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       className="service-card block relative overflow-hidden rounded-xl mx-4 group"
       style={{ background: 'var(--cor-card)' }}
     >
-      {/* Duas regras, uma para cada contexto.
+      {/* CELULAR (até 639px): altura MÍNIMA de 78px, não altura livre.
 
-          CELULAR (até 639px): sem altura fixa, cada card tem a altura do
-          próprio conteúdo. É o que permite ter texto justo E intervalo igual
-          entre os cards ao mesmo tempo. Com altura travada sobra ar, e esse ar
-          ou desfigura o texto (empurrando o "SABER MAIS" para longe do título)
-          ou desiguala o intervalo (se o bloco for centralizado). Sem sobra não
-          há o que distribuir. O preço é a altura variar de card para card.
+          78px é a altura natural de um card de título com duas linhas:
+          12+12 de py-3, 2×18,75 do título a 15px/leading-tight, 6 do gap e 11
+          do "SABER MAIS" com leading-none. Assim o card de duas linhas não
+          muda, e os de uma linha sobem até ele. O resultado é a lista com uma
+          altura só.
 
-          DESKTOP (640px+): volta a altura fixa de 108px, como sempre foi. Aqui
-          o container trava em 448px, a coluna de texto fica bem mais larga e
-          nenhum título passa de 2 linhas — então a folga sobrando é pequena e
-          o desenho não sofre com ela. */}
-      <article className="flex items-stretch sm:h-[108px]">
-        {/* Celular: título e "SABER MAIS" colados, sem folga a distribuir — o
-            card cresce com eles, e a faixa entre dois cards é sempre 12 + 8
-            (o gap da lista) + 12.
-            Desktop: volta o respiro de 16px e a centralização de antes, que
-            só fazem sentido junto com a altura fixa. */}
-        <div className="flex-1 px-4 py-3 sm:py-4 flex flex-col gap-1.5 sm:gap-2 sm:justify-center">
+          Antes a altura era livre, para o texto ficar justo sem ar sobrando —
+          e os cards de duas linhas ficavam 20px mais altos que os de uma. A
+          Vera preferiu a lista uniforme, em 20/09/2026. A folga que sobra nos
+          títulos curtos é distribuída em cima e embaixo pelo justify-center,
+          então o "SABER MAIS" não se descola do título.
+
+          É mínima, e não fixa, de propósito: se um dia um título passar a três
+          linhas, o card cresce em vez de cortar o texto.
+
+          DESKTOP (640px+): altura fixa de 108px, como sempre foi. */}
+      <article className="flex items-stretch min-h-[78px] sm:h-[108px]">
+        {/* justify-center nos dois tamanhos: com a altura mínima, os títulos de
+            uma linha passam a ter folga, e centralizar joga essa folga metade
+            em cima e metade embaixo. Sem isso o texto encostaria no topo e o
+            "SABER MAIS" ficaria solto no meio do card. */}
+        <div className="flex-1 px-4 py-3 sm:py-4 flex flex-col gap-1.5 sm:gap-2 justify-center">
           {/* 15px no celular: medido com a própria Lora Italic, é o tamanho em
               que todos os títulos cabem em no máximo 2 linhas num aparelho de
               360px. A 16px, "Acompanhamento Terapêutico Integrativo" ia a 3 e
