@@ -72,8 +72,30 @@ https://wa.me/55DDDNUMERO?text=Olá%2C+quero+saber+mais+sobre+[Serviço]
 
 ## Deploy
 
+O site está na **Netlify**, em https://catalogomassixa.netlify.app — ligado ao
+GitHub, então todo push para `main` republica sozinho. Não há domínio próprio: é
+este endereço que vai na bio do Instagram.
+
+Não há nada para configurar. A Netlify reconhece Next.js e usa o adaptador
+OpenNext sozinha, e eles recomendam **não** fixar a versão dele — por isso não
+existe `netlify.toml` nem `@netlify/plugin-nextjs` no `package.json`. O
+`.nvmrc` define o Node 20, que ela respeita.
+
+Também não há variável de ambiente nenhuma, de propósito: o endereço da planilha
+mora em `lib/planilha.ts`. Ver o comentário lá — uma env var esquecida já custou
+uma tarde.
+
+Para conferir o build antes de empurrar:
+
 ```bash
-npx vercel
-# ou
 npm run build
 ```
+
+⚠️ Pare o `npm run dev` antes. Rodar os dois juntos corrompe o `.next` e derruba
+o servidor com 500.
+
+As 21 rotas são estáticas (`○` no relatório do build) — não há rota de servidor,
+API nem middleware, porque os formulários postam direto do navegador para o Apps
+Script. Na prática a Netlify serve arquivos.
+
+Até 19/09/2026 o site esteve na Vercel, em `catalogo-ilana-lewinsohn.vercel.app`.
