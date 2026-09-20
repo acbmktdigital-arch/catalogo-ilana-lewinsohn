@@ -1,4 +1,5 @@
 import SalesPageTemplateV3 from '@/components/sections/SalesPageTemplateV3'
+import { planilhaEndpoint, tipos } from '@/lib/planilha'
 
 export default function AcompanhamentoTerapeuticoPage() {
   return (
@@ -117,6 +118,15 @@ export default function AcompanhamentoTerapeuticoPage() {
          "a minha Acompanhamento Contínuo". Os três nomes abaixo estão no
          masculino para combinar com esta frase. */
       modalFraseInicial="Gostaria de agendar o meu"
+
+      /* Guarda uma cópia do pedido na planilha, além de abrir o WhatsApp. O
+         modo é o mesmo da Botica: a saída continua sendo a conversa, e uma
+         falha ao gravar não custa nada a quem preencheu, porque o WhatsApp já
+         abriu. A frequência escolhida vai junto — é ela que define o preço. */
+      modalEndpoint={planilhaEndpoint}
+      modalEndpointModo="planilha-e-saida"
+      modalTipoRegistro={tipos.pedidoAcompanhamento}
+
       modalTitulo="Seu acompanhamento contínuo"
       modalSubtitulo="Sessões de 60 minutos, online, na frequência que fizer sentido para o seu momento."
       modalLocal="no formato online"

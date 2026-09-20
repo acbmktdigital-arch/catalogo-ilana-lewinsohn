@@ -39,7 +39,7 @@ Dar um nome ao projeto: `Recebedor do catálogo MASSIXA`.
 Já vem pronto, é só conferir que não mudou na hora de colar:
 
 ```js
-var VERSAO = 15
+var VERSAO = 16
 var AVISAR_EMAIL = 'cantodafloresta8@gmail.com'
 var PLANILHA_ID = ''
 ```
@@ -99,15 +99,15 @@ isso o endereço continua servindo o código antigo, sem erro nenhum.
 Abrir o `/exec` no navegador. Ele responde em texto:
 
 ```
-Recebedor do catálogo MASSIXA — versão 15
+Recebedor do catálogo MASSIXA — versão 16
 Formulários: ...
 Pagamentos da InfinitePay: sim
 Avisa por e-mail: cantodafloresta8@gmail.com
 ```
 
-Conferir as duas linhas: **versão 15** e o e-mail da Ilana. É para isso que o
-`VERSAO` existe — se vier 14, o que está no ar é código antigo e faltou a Nova
-versão.
+Conferir as duas linhas: **versão 16** e o e-mail da Ilana. É para isso que o
+`VERSAO` existe — se vier um número menor, o que está no ar é código antigo e
+faltou a Nova versão.
 
 ## 8. Testar antes de ligar no site
 
