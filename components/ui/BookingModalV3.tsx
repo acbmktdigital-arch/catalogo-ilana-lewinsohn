@@ -36,7 +36,12 @@ type BookingModalV3Props = {
 
   /* Local citado na mensagem. Vazio em serviços online ou produtos. */
   local?: string
-  /* Início da frase do WhatsApp, antes do nome da modalidade. */
+  /* Início da frase do WhatsApp, antes do nome da modalidade.
+     ⚠️ O padrão está no feminino ("a minha"), e o nome da modalidade vem logo
+     depois. Quem escreve um `nomeNaMensagem` masculino precisa passar
+     `fraseInicial` também, senão sai "a minha Acompanhamento Contínuo" — foi o
+     que aconteceu nessa página até 20/09/2026. E o nome não deve trazer artigo
+     próprio: "uma sessão avulsa" vira "a minha uma sessão avulsa". */
   fraseInicial?: string
 
   /* Bloco de agenda: o aviso de que a Ilana atende à tarde, mais a pergunta

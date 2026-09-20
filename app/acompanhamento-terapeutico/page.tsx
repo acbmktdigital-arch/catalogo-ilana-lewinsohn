@@ -111,6 +111,12 @@ export default function AcompanhamentoTerapeuticoPage() {
       /* O "Investimento total" mostrava um valor só, mas o preço depende da
          frequência. A tabela completa fica na seção de preços, acima. */
       modalMostrarValor={false}
+      /* O padrão do modal é "Gostaria de agendar a minha", que serve às outras
+         páginas porque nelas o nome começa por "sessão", "Imersão", "Mentoria"
+         — todos femininos. Aqui é "o Acompanhamento", e a mensagem saía
+         "a minha Acompanhamento Contínuo". Os três nomes abaixo estão no
+         masculino para combinar com esta frase. */
+      modalFraseInicial="Gostaria de agendar o meu"
       modalTitulo="Seu acompanhamento contínuo"
       modalSubtitulo="Sessões de 60 minutos, online, na frequência que fizer sentido para o seu momento."
       modalLocal="no formato online"
@@ -133,7 +139,9 @@ export default function AcompanhamentoTerapeuticoPage() {
           id: 'avulsa',
           titulo: 'Avulsa',
           descricao: '1 sessão · R$ 197,00',
-          nomeNaMensagem: 'uma sessão avulsa de Acompanhamento',
+          /* Não "uma sessão avulsa": com a frase inicial viria "o meu uma
+             sessão avulsa". O nome entra depois de um artigo que já existe. */
+          nomeNaMensagem: 'Acompanhamento Contínuo avulso (1 sessão)',
           valor: 'R$ 197,00',
         },
       ]}
