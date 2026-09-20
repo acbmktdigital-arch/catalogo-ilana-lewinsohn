@@ -34,17 +34,21 @@ Apagar o `Code.gs` que vem de exemplo e colar `planilha-recebedor.gs` inteiro.
 
 Dar um nome ao projeto: `Recebedor do catálogo MASSIXA`.
 
-## 3. Conferir o `AVISAR_EMAIL`
+## 3. Conferir o topo do arquivo
 
-No topo do arquivo, `AVISAR_EMAIL` tem que estar com o e-mail da Ilana.
+Já vem pronto, é só conferir que não mudou na hora de colar:
 
-Deixar **vazio** também funcionaria — o código cai para
-`Session.getEffectiveUser().getEmail()`, que numa instalação dela seria ela
-mesma. Mas esse caminho nunca foi exercitado de verdade: nos testes o campo
-sempre esteve preenchido. Se ele devolver vazio num webhook anônimo, o e-mail
-não sai e nada denuncia. Preenchido custa uma linha e não tem esse risco.
+```js
+var VERSAO = 15
+var AVISAR_EMAIL = 'cantodafloresta8@gmail.com'
+var PLANILHA_ID = ''
+```
 
-`PLANILHA_ID` fica **vazio**: o projeto está preso à planilha.
+`PLANILHA_ID` vazio porque o projeto está preso à planilha.
+
+`AVISAR_EMAIL` preenchido em vez de vazio de propósito — o motivo está no
+comentário em cima dele, no `.gs`. Aceita vários endereços separados por
+vírgula, se em algum momento você quiser receber cópia.
 
 ## 4. Salvar
 
@@ -95,13 +99,15 @@ isso o endereço continua servindo o código antigo, sem erro nenhum.
 Abrir o `/exec` no navegador. Ele responde em texto:
 
 ```
-Recebedor do catálogo MASSIXA — versão 14
+Recebedor do catálogo MASSIXA — versão 15
 Formulários: ...
 Pagamentos da InfinitePay: sim
-Avisa por e-mail: <e-mail da Ilana>
+Avisa por e-mail: cantodafloresta8@gmail.com
 ```
 
-Conferir o número da versão e o e-mail. É para isso que o `VERSAO` existe.
+Conferir as duas linhas: **versão 15** e o e-mail da Ilana. É para isso que o
+`VERSAO` existe — se vier 14, o que está no ar é código antigo e faltou a Nova
+versão.
 
 ## 8. Testar antes de ligar no site
 
@@ -130,23 +136,44 @@ Ele recusa avisos de pagamento sem dar erro visível. Enquanto estiver de pé, u
 endereço errado em algum lugar engole dados em silêncio — foi exatamente assim
 que um pedido da Bússola se perdeu em 18/09.
 
-## 11. Só então: o link da InfinitePay
+## 11. Só então: os links da InfinitePay
 
-Conta da Ilana → novo link de checkout:
-
-| Campo | Valor |
-|---|---|
-| Descrição | Bússola de Orientação Xamânica |
-| Valor | R$ 296,00 |
-| `webhook_url` | o `/exec` novo |
-| `redirect_url` | **vazio** |
+Na conta da Ilana, **dois links**, nesta ordem. Os dois com o mesmo
+`webhook_url` — o `/exec` novo — e `redirect_url` **vazio**.
 
 `redirect_url` vazio de propósito: o comprador fica na página de comprovante da
-InfinitePay, que é o único lugar onde aparece o nome de quem pagou — o aviso do
+InfinitePay, que é o único lugar onde aparece o nome de quem pagou. O aviso do
 webhook manda valor e códigos, nunca o comprador.
+
+### 11a. Link de teste — R$ 1,00
+
+Descrição: `Teste — não divulgar`.
+
+Ele entra em `app/bussola-orientacao-xamanica/page.tsx` **sem commit**, como o
+link da Quantumlive viveu até agora. Serve para percorrer o caminho inteiro
+pelo site, do jeito que uma cliente percorreria.
+
+O que tem que acontecer, em ordem:
+
+| Onde | O que confere |
+|---|---|
+| Aba *Pedidos — Bússola* | linha com nome, WhatsApp e urgência, gravada **antes** do pagamento |
+| E-mail | aviso do pedido, com o link da aba no rodapé |
+| Aba *Pagamentos — InfinitePay* | linha do pagamento, com o comprovante |
+| E-mail | aviso da venda, com o link da aba |
+
+São **dois e-mails**, um de cada ponta. As duas linhas se cruzam pela hora: o
+pedido às 21h50 e o pagamento às 21h52. É assim que a Ilana sabe de quem é a
+venda — e o comprovante confirma, com o nome abreviado.
+
+Depois de conferir: apagar as duas linhas de teste e arquivar este link.
+
+### 11b. Link definitivo — R$ 296,00
+
+Descrição: `Bússola de Orientação Xamânica`.
 
 ⚠️ **O preço vive em dois lugares**: dentro do link e no texto da página. Mexer
 num sem o outro faz o site anunciar um valor e cobrar outro.
 
-Com o link em mãos, ele entra em `app/bussola-orientacao-xamanica/page.tsx`, no
-lugar do link de teste da conta Quantumlive — que até hoje nunca foi comitado.
+Este sim entra no `page.tsx` **e é comitado**. É o commit que liga o checkout em
+produção pela primeira vez — até hoje o que está no ar é o botão de WhatsApp.

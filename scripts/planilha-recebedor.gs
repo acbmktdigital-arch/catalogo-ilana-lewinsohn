@@ -50,7 +50,7 @@
  * número — então dá para conferir de olho se o que está no ar é o esperado.
  * ════════════════════════════════════════════════════════════════════════════
  */
-var VERSAO = 14
+var VERSAO = 15
 
 /**
  * Um formulário por entrada. A chave é a marca que o site manda em `tipo`, e
@@ -132,15 +132,18 @@ var TIPOS = {
 var ABA_PAGAMENTOS = 'Pagamentos — InfinitePay'
 
 /**
- * Para quem vai o aviso de venda. Vazio = o dono do script, que é quem
- * instalou — assim, na planilha da Ilana o aviso vai para ela sozinho.
+ * Para quem vai o aviso — de venda e de formulário. Aceita vários endereços
+ * separados por vírgula.
  *
- * ⚠️ PROVISÓRIO: está apontando para o e-mail de teste da Vera, porque durante
- *    os testes ela não tem acesso à caixa da Ilana. **Esvaziar antes de entrar
- *    no ar**, senão os avisos de venda de verdade vão para o lugar errado e a
- *    Ilana não fica sabendo de nada.
+ * Deixar vazio também funcionaria: o código cai para
+ * `Session.getEffectiveUser().getEmail()`, que numa instalação da Ilana seria
+ * ela mesma. Está preenchido de propósito. Esse caminho de reserva nunca foi
+ * exercitado de verdade — durante todos os testes o campo esteve preenchido —
+ * e `getEffectiveUser()` devolve vazio em algumas situações. Se devolvesse
+ * vazio num webhook anônimo, o e-mail não sairia e nada denunciaria. Uma linha
+ * explícita não tem esse risco.
  */
-var AVISAR_EMAIL = 'acb.iaprimeiro@gmail.com'
+var AVISAR_EMAIL = 'cantodafloresta8@gmail.com'
 
 /**
  * ════════════════════════════════════════════════════════════════════════════
