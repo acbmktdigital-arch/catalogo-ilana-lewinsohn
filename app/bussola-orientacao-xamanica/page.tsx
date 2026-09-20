@@ -1,4 +1,5 @@
 import SalesPageTemplateV3 from '@/components/sections/SalesPageTemplateV3'
+import { planilhaEndpoint, tipos } from '@/lib/planilha'
 
 export default function BussolaOrientacaoXamanicaPage() {
   return (
@@ -97,7 +98,10 @@ export default function BussolaOrientacaoXamanicaPage() {
 
       pricingImage="/images/bussola-orientacao-xamanica.jpg"
       pricingTitle="Bússola"
-      pricingSubtitle="Orientação Integrativa Xamânica, no formato online. Agende pelo WhatsApp."
+      /* O agendamento deixou de ser pelo WhatsApp em 20/09/2026, quando o
+         checkout entrou: agora a pessoa reserva e paga pelo site, e o WhatsApp
+         passa a ser o canal do contato seguinte, para combinar a data. */
+      pricingSubtitle="Orientação Integrativa Xamânica, no formato online. Reserve a sua sessão pelo site."
       precos={[
         {
           label: "Sessão online de 90 minutos",
@@ -127,10 +131,37 @@ export default function BussolaOrientacaoXamanicaPage() {
         },
         {
           q: "Como agendo?",
-          a: "Clique no botão e fale com Ilana pelo WhatsApp para combinar data e horário.",
+          a: "Clique no botão, preencha seus dados e faça o pagamento pelo site. Em até 4 dias úteis Ilana entra em contato pelo WhatsApp para combinar a data e o horário, dentro das próximas 4 semanas.",
         },
       ]}
 
+      /* Checkout Integrado da InfinitePay, na conta da Ilana. Link fixo: preço,
+         descrição e webhook_url ficam gravados dentro dele, então ele vale para
+         todas as compras e não é preciso gerar link por pessoa.
+
+         Conferido no próprio link em 20/09/2026: amount 29600 centavos,
+         redirect_url null, webhook_url apontando para o /exec da planilha dela.
+
+         redirect_url vazio de propósito: quem paga fica na página de
+         comprovante da InfinitePay, que é o único lugar onde aparece o nome de
+         quem comprou — o aviso do webhook manda valor e códigos, nunca o
+         comprador.
+
+         ⚠️ O preço vive em DOIS lugares: em `precos` e `modalidades`, aqui em
+         cima, e lá dentro do checkout. Mexer num sem mexer no outro faz o site
+         anunciar um valor e a cobrança vir outro. O link não é editável nessa
+         parte: mudar de preço é criar link novo e trocar esta linha. */
+      modalUrlAoEnviar="https://checkout.infinitepay.io/ilana-daniella-lhx/PR8Ymaucs0"
+      modalLabelEnviar="Ir para o pagamento"
+
+      /* Grava o formulário na planilha antes de mandar a pessoa para o
+         checkout. Sem isto, nome, telefone e urgência se perdem: o checkout
+         não carrega nada do que foi escrito, e o aviso de pagamento não diz
+         quem pagou. As duas linhas, cruzadas pela hora, fecham a
+         identificação. */
+      modalEndpoint={planilhaEndpoint}
+      modalEndpointModo="planilha-e-saida"
+      modalTipoRegistro={tipos.pedidoBussola}
       modalEtiqueta="Agendamento"
       /* A Bússola é online e a Ilana atende também à noite, então ela não pode
          herdar o aviso padrão, que diz "exclusivamente no período da tarde". */
