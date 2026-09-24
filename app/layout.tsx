@@ -35,16 +35,38 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRICAO,
 
-  /* A imagem da prévia é o arquivo app/opengraph-image.jpg, que o Next
-     encontra sozinho pelo nome e publica com as dimensões declaradas. Não
-     precisa ser citada aqui; o texto alternativo vem de
-     app/opengraph-image.alt.txt, ao lado dela. */
+  /* A imagem da prévia fica em public/ e é citada aqui à mão, em vez de usar
+     o arquivo app/opengraph-image.jpg que o Next acharia sozinho. Duas razões,
+     as duas descobertas em 23/09/2026 depois de o WhatsApp montar o cartão sem
+     foto:
+
+     1. O JPEG precisa ser BASELINE, não progressivo. O robô do Facebook e do
+        WhatsApp não decodifica progressivo para prévia — o cartão aparece com
+        título e texto, e a imagem simplesmente não vem. Gerando o arquivo à
+        mão, o encoder é nosso: `progressive=False`.
+
+     2. A convenção do Next publica a imagem com uma query no fim
+        (`?7b8f13ef...`), para furar cache. Em public/ o endereço é limpo, que
+        é o que robô de prévia lida melhor.
+
+     ⚠️ Sem a query de cache, trocar a imagem exige TROCAR O NOME do arquivo —
+     senão WhatsApp e Instagram seguem mostrando a antiga por muito tempo. É a
+     mesma regra das fotos do catálogo. */
   openGraph: {
     title: TITULO,
     description: DESCRICAO,
     type: 'website',
     locale: 'pt_BR',
     siteName: 'Ilana Lewinsohn',
+    images: [
+      {
+        url: '/og-catalogo.jpg',
+        width: 1200,
+        height: 630,
+        type: 'image/jpeg',
+        alt: 'Ilana Lewinsohn abraçada a um tronco na Mata Atlântica, de olhos fechados.',
+      },
+    ],
   },
 
   /* summary_large_image pede o cartão grande, com a foto ocupando a largura
