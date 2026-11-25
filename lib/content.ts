@@ -30,6 +30,28 @@ export const siteConfig = {
   },
 }
 
+/* ─── Fale comigo ───────────────────────────────────────────────────────────
+   Botões que aparecem na home, logo abaixo dos blocos do catálogo.
+   Para ativar um botão, preencha `url`. Enquanto `url` estiver vazia, o botão
+   aparece apagado e não leva a lugar nenhum — é o espaço reservado.
+   `icone`: 'whatsapp' | 'grupo' | 'link'.
+   ──────────────────────────────────────────────────────────────────────── */
+export type Contato = {
+  titulo: string
+  url: string
+  icone: 'whatsapp' | 'grupo' | 'link'
+}
+
+export const contatos: Contato[] = [
+  /* Grupo de WhatsApp de interesse em cursos (25/11/2026). Os outros dois
+     botões (grupo e espaço reservado) foram retirados a pedido da Vera. */
+  {
+    titulo: 'Quero ter Informações de Cursos',
+    url: 'https://chat.whatsapp.com/GmYCBbTUGZqGFPv82axbnL?s=cl&p=a&iam=2',
+    icone: 'whatsapp',
+  },
+]
+
 /* ─── Ambiente e materiais ──────────────────────────────────────────────────
    Aparece só nas páginas de atendimento PRESENCIAL (massagens e imersões).
    Editar aqui muda em todas de uma vez.
@@ -55,6 +77,37 @@ export type Service = {
 }
 
 export const services: Service[] = [
+  /* ─── Cuidar com Ervas ───────────────────────────────────────────────────
+     Links externos: preencha `ctaHref` com o endereço completo (https://...).
+     Vazio, o card aparece apagado com "Em breve" e não é clicável.
+     As fotos são provisórias, escolhidas entre as que estavam sem uso. */
+  {
+    id: 'ervas-imersao-gravada',
+    slug: 'ervas-imersao-gravada',
+    title: 'Imersão Gravada',
+    description: 'Imersão Cuidar com Ervas, gravada.',
+    image: '/images/ervas-imersao-ao-vivo-card.jpg',
+    ctaLabel: 'Acessar',
+    ctaHref: 'https://massixa.com/',
+  },
+  {
+    id: 'ervas-formacao',
+    slug: 'ervas-formacao',
+    title: 'Formação Cuidar com Ervas',
+    description: 'Formação Cuidar com Ervas.',
+    image: '/images/kapha-abhyanga.jpg',
+    ctaLabel: 'Acessar',
+    ctaHref: 'https://formacao-cuidarcomervas.massixa.com/',
+  },
+  {
+    id: 'ervas-aplicativo',
+    slug: 'ervas-aplicativo',
+    title: 'Aplicativo Cuidar com Ervas',
+    description: 'O aplicativo Cuidar com Ervas.',
+    image: '/images/app-cuidar-com-ervas-oregano.jpg',
+    ctaLabel: 'Acessar o app',
+    ctaHref: 'https://cuidarcomervas.massixa.com/login',
+  },
   {
     id: 'massixa-essencial',
     slug: 'massixa-essencial',

@@ -12,13 +12,52 @@ type ServiceCardProps = {
 const DOURADO_CLARO = '#EDD9A3'
 
 export default function ServiceCard({ service }: ServiceCardProps) {
+  /* Três casos: link interno (Link do Next), link externo (abre em nova aba)
+     e sem link ainda (card apagado, "Em breve", não clicável). */
+  const semLink = !service.ctaHref
+  const externo = /^https?:\/\//.test(service.ctaHref)
+  const classe = 'service-card block relative overflow-hidden rounded-xl mx-4 group'
+  const estilo = { background: 'var(--cor-card)', ...(semLink ? { opacity: 0.5 } : {}) }
+  const rotulo = semLink ? 'Em breve' : service.ctaLabel
+
+  const conteudo = <CorpoCard service={service} rotulo={rotulo} seta={!semLink} />
+
+  if (semLink) {
+    return (
+      <div className={classe} style={estilo} aria-disabled="true">
+        {conteudo}
+      </div>
+    )
+  }
+  if (externo) {
+    return (
+      <a
+        href={service.ctaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${service.ctaLabel}: ${service.title}`}
+        className={classe}
+        style={estilo}
+      >
+        {conteudo}
+      </a>
+    )
+  }
   return (
     <Link
       href={service.ctaHref}
       aria-label={`${service.ctaLabel}: ${service.title}`}
-      className="service-card block relative overflow-hidden rounded-xl mx-4 group"
-      style={{ background: 'var(--cor-card)' }}
+      className={classe}
+      style={estilo}
     >
+      {conteudo}
+    </Link>
+  )
+}
+
+function CorpoCard({ service, rotulo, seta }: { service: Service; rotulo: string; seta: boolean }) {
+  return (
+    <>
       {/* CELULAR (até 639px): altura MÍNIMA de 78px, não altura livre.
 
           78px é a altura natural de um card de título com duas linhas:
@@ -65,8 +104,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             className="font-sans text-[11px] leading-none sm:leading-normal uppercase tracking-[0.12em] font-semibold inline-flex items-center gap-1.5 transition-opacity group-hover:opacity-80"
             style={{ color: DOURADO_CLARO }}
           >
-            {service.ctaLabel}
-            <span aria-hidden="true">→</span>
+            {rotulo}
+            {seta && <span aria-hidden="true">→</span>}
           </span>
         </div>
 
@@ -88,6 +127,6 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           />
         </div>
       </article>
-    </Link>
+    </>
   )
 }
