@@ -1,5 +1,6 @@
 import HeroSection from '@/components/sections/HeroSection'
 import ServicesSection from '@/components/sections/ServicesSection'
+import ContactSection from '@/components/sections/ContactSection'
 import AboutSection from '@/components/sections/AboutSection'
 import { siteConfig } from '@/lib/content'
 
@@ -8,6 +9,7 @@ export default function HomePage() {
     <main className="min-h-screen max-w-md mx-auto relative overflow-hidden">
       <HeroSection />
       <ServicesSection />
+      <ContactSection />
       <AboutSection />
       <footer className="pt-3 pb-6 text-center" style={{ background: 'var(--cor-fundo)', color: '#FFFFFF' }}>
         <p className="font-heading text-xs italic opacity-60">

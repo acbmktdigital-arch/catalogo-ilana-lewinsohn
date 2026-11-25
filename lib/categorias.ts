@@ -31,6 +31,16 @@ export type Categoria = {
 
 export const categorias: Categoria[] = [
   {
+    /* Primeiro bloco da home, pedido da Vera em 25/11/2026. Os três itens
+       levam para fora do site (cursos e app), e não para páginas de venda —
+       os links ficam em lib/content.ts, nos serviços com slug `ervas-*`. */
+    slug: 'cuidar-com-ervas',
+    titulo: 'Cuidar com Ervas',
+    descricao: 'Imersão gravada, formação e o aplicativo Cuidar com Ervas.',
+    imagem: '/images/toque-da-jurema.jpg',
+    servicos: ['ervas-imersao-gravada', 'ervas-formacao', 'ervas-aplicativo'],
+  },
+  {
     slug: 'mentorias',
     titulo: 'Mentorias',
     descricao: 'Formação online para quem cuida e para quem conduz círculos.',
